@@ -40,27 +40,36 @@ var UITemplateRegistrator = new Class({
       }
 
       li({'class': className},
-          input({type:'checkbox',id:attribute.getCSSCheckboxID(), class:'attribute-checkbox', 'data-id': attribute.getName()}),
-        a({href: '#', id: attribute.getCSSAddID(), class: 'add', title: i18n.translate('Add attribute')}),
-        span({id: attribute.getCSSID(), title: attribute.getName()}, attribute.getName()),
-        showRemoveAttribute ? a({
-          href: '#',
-          id: attribute.getCSSRemoveID(),
-          'class': 'remove-attribute',
-          'title': i18n.translate('Hide')
-        }) : '',
-        showEditAttribute ? a({
-          href: '#',
-          id: attribute.getCSSEditID(),
-          'class': 'edit-attribute',
-          'title': i18n.translate('Edit')
-        }) : '',
-        a({
-          href: '#',
-          id: attribute.getCSSShowHistogramID(),
-          'class': 'show-histogram',
-          'title': i18n.translate('Show histogram')
-        })
+        div({'class': 'att-with-input'},
+          input({
+            type: 'checkbox',
+            id: attribute.getCSSCheckboxID(),
+            class: 'attribute-checkbox',
+            'data-id': attribute.getName()
+          }),
+          span({id: attribute.getCSSID(), title: attribute.getName()}, attribute.getName())
+        ),
+        div({'class': 'att-options'},
+          a({href: '#', id: attribute.getCSSAddID(), class: 'add', title: i18n.translate('Add attribute')}),
+          showRemoveAttribute ? a({
+            href: '#',
+            id: attribute.getCSSRemoveID(),
+            'class': 'remove-attribute',
+            'title': i18n.translate('Hide')
+          }) : '',
+          showEditAttribute ? a({
+            href: '#',
+            id: attribute.getCSSEditID(),
+            'class': 'edit-attribute',
+            'title': i18n.translate('Edit')
+          }) : '',
+          a({
+            href: '#',
+            id: attribute.getCSSShowHistogramID(),
+            'class': 'show-histogram',
+            'title': i18n.translate('Show histogram')
+          })
+        )
       );
     });
 
@@ -69,15 +78,24 @@ var UITemplateRegistrator = new Class({
         field = data.field;
 
       li({id: field.getCSSID()},
-          input({type:'checkbox',id:field.getCSSCheckboxID(), class:'data-field-checkbox', 'data-id': field.getName()}),
-        a({href: '#', id: field.getCSSAddID(), class: 'add', title: i18n.translate('Add to attributes')}),
-        span({title: field.getName()}, field.getName()),
-        a({
-          href: '#',
-          id: field.getCSSShowHistogramID(),
-          'class': 'show-histogram',
-          'title': i18n.translate('Show histogram')
-        })
+        div({'class': 'att-with-input'},
+          input({
+            type: 'checkbox',
+            id: field.getCSSCheckboxID(),
+            class: 'data-field-checkbox',
+            'data-id': field.getName()
+          }),
+          span({title: field.getName()}, field.getName())
+        ),
+        div({'class': 'att-options'},
+          a({href: '#', id: field.getCSSAddID(), class: 'add', title: i18n.translate('Add to attributes')}),
+          a({
+            href: '#',
+            id: field.getCSSShowHistogramID(),
+            'class': 'show-histogram',
+            'title': i18n.translate('Show histogram')
+          })
+        )
       );
     });
 
@@ -85,23 +103,23 @@ var UITemplateRegistrator = new Class({
       var i18n = data.i18n;
 
       div({id: 'change-ruleset-window'},
-          a({id: 'overlay-close', href: '#', 'title': i18n.translate('Close')}),
-          h2(i18n.translate('Current ruleset')),
-          div({id: 'current-ruleset', class: 'actionsDiv bigButtons'}),
-          br(),
-          h2(i18n.translate('Change ruleset to')),
-          div({id: 'change-ruleset-list', class: 'actionsDiv bigButtons'}),
-          br(),
-          input({id: 'add-ruleset', type: 'submit', value: i18n.translate('Add new ruleset')}));
+        a({id: 'overlay-close', href: '#', 'title': i18n.translate('Close')}),
+        h2(i18n.translate('Current ruleset')),
+        div({id: 'current-ruleset', class: 'actionsDiv bigButtons'}),
+        br(),
+        h2(i18n.translate('Change ruleset to')),
+        div({id: 'change-ruleset-list', class: 'actionsDiv bigButtons'}),
+        br(),
+        input({id: 'add-ruleset', type: 'submit', value: i18n.translate('Add new ruleset')}));
     });
 
     Mooml.register('exportWindowTemplate', function (data) {
       var i18n = data.i18n,
-          type = data.type,
-          links = data.links,
-          isMiningInProgress=data.isMiningInProgress,
-          isImportInProgress=data.isImportInProgress,
-          domLinks = [];
+        type = data.type,
+        links = data.links,
+        isMiningInProgress = data.isMiningInProgress,
+        isImportInProgress = data.isImportInProgress,
+        domLinks = [];
 
       Object.each(links, function (value, id) {
         console.log(value);
@@ -111,16 +129,16 @@ var UITemplateRegistrator = new Class({
       }.bind(this));
 
       div({id: 'export-window'},
-          a({id: 'overlay-close', href: '#', 'title': i18n.translate('Close')}),
-          h2(i18n.translate('Export '+type)),
-          div({id: 'export-list', class: 'actionsDiv bigButtons'},
-              domLinks
-          ));
+        a({id: 'overlay-close', href: '#', 'title': i18n.translate('Close')}),
+        h2(i18n.translate('Export ' + type)),
+        div({id: 'export-list', class: 'actionsDiv bigButtons'},
+          domLinks
+        ));
     });
 
     Mooml.register('changeRulesetWindowItemTemplate', function (data) {
       var id = data.id,
-          name = data.name+' (rules: '+data.rulesCount+')';
+        name = data.name + ' (rules: ' + data.rulesCount + ')';
 
       a({href: '#', rel: id}, name,
         span(data.description));
@@ -130,26 +148,26 @@ var UITemplateRegistrator = new Class({
       var i18n = data.i18n;
 
       form({id: 'add-ruleset-form'},
-          label({for: 'add-ruleset-name'}, i18n.translate('Ruleset name:')),
-          input({id: 'add-ruleset-name', type: 'text'}),
-          ' * '+i18n.translate('required'),
-          label({for: 'add-ruleset-description'}, i18n.translate('Ruleset description:')),
-          input({id: 'add-ruleset-description', type: 'text'}),
-          input({id: 'add-ruleset-submit', type: 'submit', value: i18n.translate('Add ruleset')}),
-          input({id: 'add-ruleset-storno', type: 'reset', value: i18n.translate('Storno')}))
+        label({for: 'add-ruleset-name'}, i18n.translate('Ruleset name:')),
+        input({id: 'add-ruleset-name', type: 'text'}),
+        ' * ' + i18n.translate('required'),
+        label({for: 'add-ruleset-description'}, i18n.translate('Ruleset description:')),
+        input({id: 'add-ruleset-description', type: 'text'}),
+        input({id: 'add-ruleset-submit', type: 'submit', value: i18n.translate('Add ruleset')}),
+        input({id: 'add-ruleset-storno', type: 'reset', value: i18n.translate('Storno')}))
     });
 
     Mooml.register('activeRulesetTemplate', function (data) {
       span({id: 'kb-ruleset'},
-          strong(data.name),
-          br(),
-          data.i18n.translate('rules')+': '+data.count
+        strong(data.name),
+        br(),
+        data.i18n.translate('rules') + ': ' + data.count
       );
     });
 
     Mooml.register('knowledgeBaseTemplate', function (data) {
       var id = data.rule_set_id,
-          name = data.name+' ('+data.rulesCount+')';
+        name = data.name + ' (' + data.rulesCount + ')';
 
       option({'value': id, 'selected': data.selected}, name);
     });
@@ -186,7 +204,12 @@ var UITemplateRegistrator = new Class({
           IM.hasThreshold() && IM.hasAlpha() ? ', ' : '',
           IM.hasAlpha() ? span({'class': 'alpha'}, 'α ' + IM.getAlpha()) : ''),
         a({id: IM.getCSSEditID(), href: '#', 'class': 'edit-im', 'title': i18n.translate('Edit')}),
-        a({id: IM.getCSSRemoveID(), href: '#', 'class': (IM.$required?'remove-im required':'remove-im'), 'title': i18n.translate('Remove')}));
+        a({
+          id: IM.getCSSRemoveID(),
+          href: '#',
+          'class': (IM.$required ? 'remove-im required' : 'remove-im'),
+          'title': i18n.translate('Remove')
+        }));
     });
 
     Mooml.register('cedentTemplate', function (data) {
@@ -254,11 +277,15 @@ var UITemplateRegistrator = new Class({
 
     Mooml.register('connectiveTemplate', function (data) {
       var connective = data.connective,
-          editable = data.editable,
-          i18n = data.i18n;
+        editable = data.editable,
+        i18n = data.i18n;
 
       div({id: connective.getCSSID(), 'class': 'connective'},
-          ((editable) ? a({href: '#', 'class': 'edit-connective', 'title': i18n.translate('edit connective')}, connective.toString()) : connective.toString())
+        ((editable) ? a({
+          href: '#',
+          'class': 'edit-connective',
+          'title': i18n.translate('edit connective')
+        }, connective.toString()) : connective.toString())
       );
 
     });
@@ -284,9 +311,9 @@ var UITemplateRegistrator = new Class({
         form({action: '#', method: 'POST', id: 'add-im-form', novalidate: ''},
           label({'for': 'add-im-select'}, i18n.translate('Interest measure:')),
           select({name: 'add-im-select', id: 'add-im-select'}),
-            p({'class': 'help'},
-                span('')
-            ),
+          p({'class': 'help'},
+            span('')
+          ),
           div({'class': 'autocomplete clearfix'}),
           input({type: 'submit', value: i18n.translate('Add')})));
     });
@@ -302,9 +329,9 @@ var UITemplateRegistrator = new Class({
           label({'for': 'edit-im-select'}, i18n.translate('Interest measure:')),
           em({class: 'normal'}, IM.getLocalizedName()),
           select({name: 'edit-im-select', id: 'edit-im-select', styles: {display: 'none'}}),
-            p({'class': 'help'},
-                span('')
-            ),
+          p({'class': 'help'},
+            span('')
+          ),
           div({'class': 'autocomplete clearfix'}),
           input({type: 'submit', value: i18n.translate('Edit')})));
     });
@@ -351,8 +378,8 @@ var UITemplateRegistrator = new Class({
         a({id: 'add-coefficient-close', href: '#', 'title': i18n.translate('Close')}),
         h2(i18n.translate('Set value type')),
         form({action: '#', method: 'POST', id: 'add-coefficient-form'},
-          label({for: 'add-coefficient-attribute'},i18n.translate('Attribute:')),
-          input({id:'add-coefficient-attribute',value:field.ref.name,readonly:'readonly',type:'text'}),
+          label({for: 'add-coefficient-attribute'}, i18n.translate('Attribute:')),
+          input({id: 'add-coefficient-attribute', value: field.ref.name, readonly: 'readonly', type: 'text'}),
           label({for: 'add-coefficient-select'}, i18n.translate('Value type:')),
           select({name: 'add-coefficient-select', id: 'add-coefficient-select'}),
           div({id: 'add-coefficient-autocomplete'})),
@@ -360,15 +387,15 @@ var UITemplateRegistrator = new Class({
     });
 
     Mooml.register('editCoefficientWindowTemplate', function (data) {
-      var i18n  = data.i18n;
+      var i18n = data.i18n;
       var field = data.field;
 
       div({id: 'edit-coefficient-window'},
         a({id: 'overlay-close', href: '#', 'title': i18n.translate('Close')}),
         h2(i18n.translate('Edit value type')),
         form({action: '#', method: 'POST', id: 'edit-coefficient-form'},
-          label({for: 'edit-coefficient-attribute'},i18n.translate('Attribute:')),
-          input({id:'edit-coefficient-attribute',value:field.ref.name,readonly:'readonly',type:'text'}),
+          label({for: 'edit-coefficient-attribute'}, i18n.translate('Attribute:')),
+          input({id: 'edit-coefficient-attribute', value: field.ref.name, readonly: 'readonly', type: 'text'}),
           label({'for': 'edit-coefficient-select'}, i18n.translate('Value type:')),
           select({name: 'edit-coefficient-select', id: 'edit-coefficient-select'}),
           div({id: 'edit-coefficient-autocomplete'})),
@@ -384,18 +411,26 @@ var UITemplateRegistrator = new Class({
           p({class: 'help'}, span('')),
           div(
             {id: 'add-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
-            div({class:'loading'},i18n.translate('Loading values...')),
-            input({type:'hidden',name:'add-coefficient-select',id:'add-coefficient-category',value:''})
+            div({class: 'loading'}, i18n.translate('Loading values...')),
+            input({type: 'hidden', name: 'add-coefficient-select', id: 'add-coefficient-category', value: ''})
           ),
-          input({type: 'submit', value: i18n.translate('Add'), id: 'add-coefficient-autocomplete-submit', disabled: 'disabled'})
+          input({
+            type: 'submit',
+            value: i18n.translate('Add'),
+            id: 'add-coefficient-autocomplete-submit',
+            disabled: 'disabled'
+          })
         );
       } else {
         div({id: 'add-coefficient-autocomplete'},
-            p({'class': 'help'},
-                span('')
-            ),
+          p({'class': 'help'},
+            span('')
+          ),
           div({'class': 'autocomplete clearfix'},
-            label({id: 'add-coefficient-minlength-label', 'for': 'add-coefficient-minlength'}, selectedCoefficient.fields.minLength.localizedName + ':'),
+            label({
+              id: 'add-coefficient-minlength-label',
+              'for': 'add-coefficient-minlength'
+            }, selectedCoefficient.fields.minLength.localizedName + ':'),
             input({
               type: 'number',
               min: 1,
@@ -409,7 +444,10 @@ var UITemplateRegistrator = new Class({
             div({id: 'add-coefficient-minlength-slider', 'class': 'slider'},
               div({'class': 'knob'})
             ),
-            label({id: 'add-coefficient-maxlength-label', 'for': 'add-coefficient-maxlength'}, selectedCoefficient.fields.maxLength.localizedName + ':'),
+            label({
+              id: 'add-coefficient-maxlength-label',
+              'for': 'add-coefficient-maxlength'
+            }, selectedCoefficient.fields.maxLength.localizedName + ':'),
             input({
               type: 'number',
               min: 1,
@@ -436,106 +474,127 @@ var UITemplateRegistrator = new Class({
       if (selectedCoefficient.getName() === 'One category') {
         div({id: 'edit-coefficient-autocomplete'},
           //select({name: 'edit-coefficient-select', id: 'edit-coefficient-select'}),
-            p({class: 'help'}, span('')),
-            div(
-              {id: 'edit-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
-              span({class:'loading'},i18n.translate('Loading values...')),
-              input({type:'hidden',name:'edit-coefficient-select',id:'edit-coefficient-category',value:''})
-            ),
-          input({type: 'submit', value: i18n.translate('Edit'), id: 'edit-coefficient-autocomplete-submit', disabled: 'disabled'})
+          p({class: 'help'}, span('')),
+          div(
+            {id: 'edit-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
+            span({class: 'loading'}, i18n.translate('Loading values...')),
+            input({type: 'hidden', name: 'edit-coefficient-select', id: 'edit-coefficient-category', value: ''})
+          ),
+          input({
+            type: 'submit',
+            value: i18n.translate('Edit'),
+            id: 'edit-coefficient-autocomplete-submit',
+            disabled: 'disabled'
+          })
         );
       } else {
         div({id: 'edit-coefficient-autocomplete'},
-            p({'class': 'help'},
-                span('')
+          p({'class': 'help'},
+            span('')
+          ),
+          div({'class': 'autocomplete clearfix'},
+            label({
+              id: 'edit-coefficient-minlength-label',
+              'for': 'edit-coefficient-minlength'
+            }, selectedCoefficient.fields.minLength.localizedName + ':'),
+            input({
+              type: 'number',
+              min: 1,
+              step: 1,
+              name: 'edit-coefficient-minlength',
+              id: 'edit-coefficient-minlength',
+              readonly: 'readonly',
+              value: field.getMinimalLength(),
+              pattern: '[0-9]+',
+              required: ''
+            }),
+            div({id: 'edit-coefficient-minlength-slider', 'class': 'slider'},
+              div({'class': 'knob'})
             ),
-            div({'class': 'autocomplete clearfix'},
-                label({id: 'edit-coefficient-minlength-label', 'for': 'edit-coefficient-minlength'}, selectedCoefficient.fields.minLength.localizedName + ':'),
-                input({
-                    type: 'number',
-                    min: 1,
-                    step: 1,
-                    name: 'edit-coefficient-minlength',
-                    id: 'edit-coefficient-minlength',
-                    readonly: 'readonly',
-                    value: field.getMinimalLength(),
-                    pattern: '[0-9]+',
-                    required: ''
-                }),
-                div({id: 'edit-coefficient-minlength-slider', 'class': 'slider'},
-                    div({'class': 'knob'})
-                ),
-                label({id: 'edit-coefficient-maxlength-label', 'for': 'edit-coefficient-maxlength'}, selectedCoefficient.fields.maxLength.localizedName + ':'),
-                input({
-                    type: 'number',
-                    min: 1,
-                    step: 1,
-                    name: 'edit-coefficient-maxlength',
-                    id: 'edit-coefficient-maxlength',
-                    readonly: 'readonly',
-                    value: field.getMaximalLength(),
-                    pattern: '[0-9]+',
-                    required: ''
-                }),
-                div({id: 'edit-coefficient-maxlength-slider', 'class': 'slider'},
-                    div({'class': 'knob'})
-                )
-            ),
+            label({
+              id: 'edit-coefficient-maxlength-label',
+              'for': 'edit-coefficient-maxlength'
+            }, selectedCoefficient.fields.maxLength.localizedName + ':'),
+            input({
+              type: 'number',
+              min: 1,
+              step: 1,
+              name: 'edit-coefficient-maxlength',
+              id: 'edit-coefficient-maxlength',
+              readonly: 'readonly',
+              value: field.getMaximalLength(),
+              pattern: '[0-9]+',
+              required: ''
+            }),
+            div({id: 'edit-coefficient-maxlength-slider', 'class': 'slider'},
+              div({'class': 'knob'})
+            )
+          ),
           input({type: 'submit', value: i18n.translate('Edit')}));
       }
     });
 
-    Mooml.register('addCoefficientWindowCategoryAutocompleteTemplate',function(data){
-      var i18n=data.i18n;
-      if (data.hasOwnProperty('error')){
+    Mooml.register('addCoefficientWindowCategoryAutocompleteTemplate', function (data) {
+      var i18n = data.i18n;
+      if (data.hasOwnProperty('error')) {
         //render error message
         div(
           {id: 'add-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
-          div({class:'error'},data.error),
-          input({type:'hidden',name:'add-coefficient-select',id:'add-coefficient-category',value:''})
+          div({class: 'error'}, data.error),
+          input({type: 'hidden', name: 'add-coefficient-select', id: 'add-coefficient-category', value: ''})
         )
-      }else if(data.hasOwnProperty('selectType') && (data.selectType==='input')){
+      } else if (data.hasOwnProperty('selectType') && (data.selectType === 'input')) {
         //render text input with datalist
         div(
           {id: 'add-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
-          div({class:'warning'},i18n.translate('This attribute has really much values! Please write the required one in the following field:')),
-          label({'for':'add-coefficient-category'},i18n.translate('Value:')),
-          input({name:'add-coefficient-category',id:'add-coefficient-category',list:'add-coefficient-category-list',autocomplete:'off'}),
-          datalist({id:'add-coefficient-category-list'})
+          div({class: 'warning'}, i18n.translate('This attribute has really much values! Please write the required one in the following field:')),
+          label({'for': 'add-coefficient-category'}, i18n.translate('Value:')),
+          input({
+            name: 'add-coefficient-category',
+            id: 'add-coefficient-category',
+            list: 'add-coefficient-category-list',
+            autocomplete: 'off'
+          }),
+          datalist({id: 'add-coefficient-category-list'})
         );
-      }else{
+      } else {
         //render select
         div(
           {id: 'add-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
-          label({'for':'add-coefficient-category'},i18n.translate('Value:')),
-          select({name:'add-coefficient-category',id:'add-coefficient-category'})
+          label({'for': 'add-coefficient-category'}, i18n.translate('Value:')),
+          select({name: 'add-coefficient-category', id: 'add-coefficient-category'})
         );
       }
     });
 
-    Mooml.register('editCoefficientWindowCategoryAutocompleteTemplate',function(data){
-      var i18n=data.i18n;
-      if (data.hasOwnProperty('error')){
+    Mooml.register('editCoefficientWindowCategoryAutocompleteTemplate', function (data) {
+      var i18n = data.i18n;
+      if (data.hasOwnProperty('error')) {
         //render error message
         div(
           {id: 'edit-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
-          div({class:'error'},data.error),
-          input({type:'hidden',name:'edit-coefficient-select',id:'edit-coefficient-category',value:''})
+          div({class: 'error'}, data.error),
+          input({type: 'hidden', name: 'edit-coefficient-select', id: 'edit-coefficient-category', value: ''})
         )
-      }else if(data.hasOwnProperty('selectType') && (data.selectType==='input')){
+      } else if (data.hasOwnProperty('selectType') && (data.selectType === 'input')) {
         //render text input with datalist
         div(
           {id: 'edit-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
-          label({'for':'edit-coefficient-category'},i18n.translate('Value:')),
-          input({name:'edit-coefficient-category',id:'edit-coefficient-category',list:'edit-coefficient-category-list',autocomplete:'off'}),
-          datalist({id:'edit-coefficient-category-list'})
+          label({'for': 'edit-coefficient-category'}, i18n.translate('Value:')),
+          input({
+            name: 'edit-coefficient-category',
+            id: 'edit-coefficient-category',
+            list: 'edit-coefficient-category-list',
+            autocomplete: 'off'
+          }),
+          datalist({id: 'edit-coefficient-category-list'})
         );
-      }else{
+      } else {
         //render select
         div(
           {id: 'edit-coefficient-category-autocomplete', class: 'autocomplete clearfix'},
-          label({'for':'edit-coefficient-category'},i18n.translate('Value:')),
-          select({name:'edit-coefficient-category',id:'edit-coefficient-category'})
+          label({'for': 'edit-coefficient-category'}, i18n.translate('Value:')),
+          select({name: 'edit-coefficient-category', id: 'edit-coefficient-category'})
         );
       }
     });
@@ -563,10 +622,10 @@ var UITemplateRegistrator = new Class({
     });
 
     Mooml.register('optionTemplate', function (data) {
-      if(data.hasOwnProperty('isSelected') && data.isSelected === true){
-        option({value: data.value, selected: 'selected'}, (data.hasOwnProperty('text')?data.text:data.value));
-      }else{
-        option({value: data.value}, (data.hasOwnProperty('text')?data.text:data.value));
+      if (data.hasOwnProperty('isSelected') && data.isSelected === true) {
+        option({value: data.value, selected: 'selected'}, (data.hasOwnProperty('text') ? data.text : data.value));
+      } else {
+        option({value: data.value}, (data.hasOwnProperty('text') ? data.text : data.value));
       }
     });
 
@@ -611,105 +670,147 @@ var UITemplateRegistrator = new Class({
         i18n = data.i18n,
         IMs = data.IMs;
 
-      li({id: foundRule.getCSSID(), 'class': 'found-rule'+(foundRule.isSelected()?' selected':'')+' KB'+foundRule.getRuleSetRelation()+(foundRule.isLoading()?' loading':'')},
-        input({type:'checkbox',id:foundRule.getCSSID()+'-checkbox', class:'found-rule-checkbox'}),
-        label({for: foundRule.getCSSID()+'-checkbox', 'class': 'rule'}, foundRule.getIdent()),
-        span({class:'ruleActions'},
-          (foundRule.isSelected()?
-            a({id: foundRule.getUnmarkCSSID(), href: '#', 'class': 'unmark', 'title': i18n.translate('Remove from Rule Clipboard')})
-            :
-            a({id: foundRule.getMarkCSSID(), href: '#', 'class': 'mark', 'title': i18n.translate('Add to Rule Clipboard')})
+      li({
+          id: foundRule.getCSSID(),
+          'class': 'found-rule' + (foundRule.isSelected() ? ' selected' : '') + ' KB' + foundRule.getRuleSetRelation() + (foundRule.isLoading() ? ' loading' : '')
+        },
+        input({type: 'checkbox', id: foundRule.getCSSID() + '-checkbox', class: 'found-rule-checkbox'}),
+        label({for: foundRule.getCSSID() + '-checkbox', 'class': 'rule'}, foundRule.getIdent()),
+        span({class: 'ruleActions'},
+          (foundRule.isSelected() ?
+              a({
+                id: foundRule.getUnmarkCSSID(),
+                href: '#',
+                'class': 'unmark',
+                'title': i18n.translate('Remove from Rule Clipboard')
+              })
+              :
+              a({
+                id: foundRule.getMarkCSSID(),
+                href: '#',
+                'class': 'mark',
+                'title': i18n.translate('Add to Rule Clipboard')
+              })
           ),
-          (foundRule.getRuleSetRelation()=="positive"?
-            a({id: foundRule.getKBAddPositiveCSSID(), href:'#', class:'kbRemovePositive', title:i18n.translate('Remove from Knowledge Base')})
-            :
-            a({id: foundRule.getKBAddPositiveCSSID(), href:'#', class:'kbAddPositive', title:i18n.translate('Add to Knowledge Base as interesting')})
+          (foundRule.getRuleSetRelation() == "positive" ?
+              a({
+                id: foundRule.getKBAddPositiveCSSID(),
+                href: '#',
+                class: 'kbRemovePositive',
+                title: i18n.translate('Remove from Knowledge Base')
+              })
+              :
+              a({
+                id: foundRule.getKBAddPositiveCSSID(),
+                href: '#',
+                class: 'kbAddPositive',
+                title: i18n.translate('Add to Knowledge Base as interesting')
+              })
           ),
-          (foundRule.getRuleSetRelation()=="negative"?
-            a({id: foundRule.getKBAddNegativeCSSID(), href:'#', class:'kbRemoveNegative', title:i18n.translate('Remove from Knowledge Base')})
-            :
-            a({id: foundRule.getKBAddNegativeCSSID(), href:'#', class:'kbAddNegative', title:i18n.translate('Add to Knowledge Base as not interesting')})
+          (foundRule.getRuleSetRelation() == "negative" ?
+              a({
+                id: foundRule.getKBAddNegativeCSSID(),
+                href: '#',
+                class: 'kbRemoveNegative',
+                title: i18n.translate('Remove from Knowledge Base')
+              })
+              :
+              a({
+                id: foundRule.getKBAddNegativeCSSID(),
+                href: '#',
+                class: 'kbAddNegative',
+                title: i18n.translate('Add to Knowledge Base as not interesting')
+              })
           ),
-          a({id: foundRule.getDetailsCSSID(),href: '#','class': 'details','title': i18n.translate('Show rule details')})
+          a({
+            id: foundRule.getDetailsCSSID(),
+            href: '#',
+            'class': 'details',
+            'title': i18n.translate('Show rule details')
+          })
         ),
         span({'class': 'ims'}, Mooml.render('ruleIMs', {ruleValues: foundRule.getRuleValues(), IMs: IMs}))
       );
     });
 
-    Mooml.register('foundRulesTemplate',function(data){
+    Mooml.register('foundRulesTemplate', function (data) {
       var FRManager = data.FRManager;
-      var foundRulesContainer = ul({id:'found-rules-rules'});
+      var foundRulesContainer = ul({id: 'found-rules-rules'});
 
-      if (FRManager.errorMessage!='' && FRManager.errorMessage!=null){
-        p({'class':'error'},"XXX"+FRManager.errorMessage+'XXX');
-      }else{
-        Array.each(FRManager.rules,function(foundRule){
-          foundRulesContainer.grab(Mooml.render('foundRuleTemplate',{
+      if (FRManager.errorMessage != '' && FRManager.errorMessage != null) {
+        p({'class': 'error'}, "XXX" + FRManager.errorMessage + 'XXX');
+      } else {
+        Array.each(FRManager.rules, function (foundRule) {
+          foundRulesContainer.grab(Mooml.render('foundRuleTemplate', {
             IMs: data.FRManager.IMs,
             foundRule: foundRule,
             i18n: data.i18n
           }));
-        }.bind([data,foundRulesContainer]));
+        }.bind([data, foundRulesContainer]));
       }
 
     });
 
-    Mooml.register('linksPaginator',function(data){
+    Mooml.register('linksPaginator', function (data) {
       var gotoFunction = data.gotoFunction,
-          pagesCount = data.pagesCount,
-          currentPage = parseInt(data.currentPage || 1);
-      var pageSteps=4;
+        pagesCount = data.pagesCount,
+        currentPage = parseInt(data.currentPage || 1);
+      var pageSteps = 4;
 
-      if (pagesCount>1){
-        var pageStart=currentPage-pageSteps;
-        if (pageStart<1){
-          pageEnd=currentPage+pageSteps-(pageStart-1);//připočtění položek nepoužitých vlevo
-          pageStart=1;
-        }else{
-          var pageEnd=currentPage+pageSteps;
+      if (pagesCount > 1) {
+        var pageStart = currentPage - pageSteps;
+        if (pageStart < 1) {
+          pageEnd = currentPage + pageSteps - (pageStart - 1);//připočtění položek nepoužitých vlevo
+          pageStart = 1;
+        } else {
+          var pageEnd = currentPage + pageSteps;
         }
-        if ((pageEnd+2)>=pagesCount){
-          pageStart=pageStart-(pageEnd-pagesCount);//připočtení položek nepoužitých vpravo
-          pageEnd=pagesCount;
+        if ((pageEnd + 2) >= pagesCount) {
+          pageStart = pageStart - (pageEnd - pagesCount);//připočtení položek nepoužitých vpravo
+          pageEnd = pagesCount;
         }
-        if (pageStart>3){
+        if (pageStart > 3) {
           //odkaz na první stránku (pokud není v základním přehledu)
-          a({href:'#',events:{
-            click: function (e) {
-              e.stop();
-              gotoFunction(1);
-            }.bind(gotoFunction)
-          }},1);
-          span('...');
-        }else{
-          pageStart=1;
-        }
-        for(var i=pageStart;i<=pageEnd;i++){
           a({
-            href:'#',
-            events:{
+            href: '#', events: {
+              click: function (e) {
+                e.stop();
+                gotoFunction(1);
+              }.bind(gotoFunction)
+            }
+          }, 1);
+          span('...');
+        } else {
+          pageStart = 1;
+        }
+        for (var i = pageStart; i <= pageEnd; i++) {
+          a({
+            href: '#',
+            events: {
               click: function (e) {
                 e.stop();
                 gotoFunction(e.target.get('text'));
               }.bind(gotoFunction)
             },
-            class: (currentPage==i?'active':'')
-          },i);
+            class: (currentPage == i ? 'active' : '')
+          }, i);
         }
-        if (pageEnd<pagesCount){
+        if (pageEnd < pagesCount) {
           //odkaz na poslední stránku (pokud není v základním přehledu)
           span('...');
-          a({href:'#',events:{
-            click: function (e) {
-              e.stop();
-              gotoFunction(e.target.get('text'));
-            }.bind(gotoFunction)
-          }},pagesCount);
+          a({
+            href: '#', events: {
+              click: function (e) {
+                e.stop();
+                gotoFunction(e.target.get('text'));
+              }.bind(gotoFunction)
+            }
+          }, pagesCount);
         }
       }
     });
 
-    Mooml.register('selectPaginator',function(data) {
+    Mooml.register('selectPaginator', function (data) {
       var gotoFunction = data.gotoFunction,
         pagesCount = data.pagesCount,
         currentPage = data.currentPage;
@@ -719,29 +820,29 @@ var UITemplateRegistrator = new Class({
         if (currentPage > 1) {
           a({
             href: '#',
-            events:{
-              click: function(e){
+            events: {
+              click: function (e) {
                 e.stop();
-                gotoFunction(currentPage-1);
-              }.bind([gotoFunction,currentPage])
+                gotoFunction(currentPage - 1);
+              }.bind([gotoFunction, currentPage])
             }
-          },'&lt;');
+          }, '&lt;');
         } else {
           a({
             href: '#',
             class: 'disabled',
-            events:{
-              click: function(e){
+            events: {
+              click: function (e) {
                 e.stop();
               }
             }
-          },'&lt;');
+          }, '&lt;');
         }
         //select
-        var options=[];
-        for(var i=1;i<=pagesCount;i++){
-          var option=new Element('option', {value: i, text: i+' / '+pagesCount});
-          if (i==currentPage){
+        var options = [];
+        for (var i = 1; i <= pagesCount; i++) {
+          var option = new Element('option', {value: i, text: i + ' / ' + pagesCount});
+          if (i == currentPage) {
             option.setAttribute('selected', 'selected');
           }
           options.push(option);
@@ -754,59 +855,59 @@ var UITemplateRegistrator = new Class({
               gotoFunction(page);
             }.bind(gotoFunction)
           }
-        },options);
+        }, options);
         //right arrow
         if (currentPage < pagesCount) {
           a({
             href: '#',
-            events:{
-              click: function(e){
+            events: {
+              click: function (e) {
                 e.stop();
-                gotoFunction(currentPage+1);
-              }.bind([gotoFunction,currentPage])
+                gotoFunction(currentPage + 1);
+              }.bind([gotoFunction, currentPage])
             }
-          },'&gt;');
+          }, '&gt;');
         } else {
           a({
             href: '#',
             class: 'disabled',
-            events:{
-              click: function(e){
+            events: {
+              click: function (e) {
                 e.stop();
               }
             }
-          },'&gt;');
+          }, '&gt;');
         }
       }
     });
 
-    Mooml.register('foundRulesPaginator',function(data){
+    Mooml.register('foundRulesPaginator', function (data) {
         var FRManager = data.FRManager,
           i18n = data.i18n,
           pageLoading = data.FRManager.pageLoading;
 
-        var gotoFunction = function(page){
+        var gotoFunction = function (page) {
           FRManager.gotoPage(page);
         }.bind(FRManager);
 
-        div({class:('paginator'+(pageLoading?' loading':''))},
-          (FRManager.pagesCount > 1 ? (Mooml.render(FRManager.getPaginatorType(),{
+        div({class: ('paginator' + (pageLoading ? ' loading' : ''))},
+          (FRManager.pagesCount > 1 ? (Mooml.render(FRManager.getPaginatorType(), {
             gotoFunction: gotoFunction,
             pagesCount: FRManager.pagesCount,
             currentPage: FRManager.currentPage
-          })):''),
-          span({class:'loading'},i18n.translate('loading...'))
+          })) : ''),
+          span({class: 'loading'}, i18n.translate('loading...'))
         );
       }
     );
 
     Mooml.register('foundRulesControlsTemplate', function (data) {
       var i18n = data.i18n,
-          IMs = data.FRManager.IMs,
-          FRManager = data.FRManager;
+        IMs = data.FRManager.IMs,
+        FRManager = data.FRManager;
 
-      var orderSelect=select({
-        id:'found-rules-order',
+      var orderSelect = select({
+        id: 'found-rules-order',
         events: {
           change: function (e) {
             FRManager.rulesOrder = e.target.get('value');
@@ -843,11 +944,11 @@ var UITemplateRegistrator = new Class({
         perPageSelect.grab(option)
       }.bind([perPageSelect, perPage]));
 
-      div({'class':'found-rules-controls'},
-        Mooml.render('foundRulesPaginator',{FRManager:FRManager,i18n:i18n}),
-        label({'for':'found-rules-order'},i18n.translate('Rules order:')),
+      div({'class': 'found-rules-controls'},
+        Mooml.render('foundRulesPaginator', {FRManager: FRManager, i18n: i18n}),
+        label({'for': 'found-rules-order'}, i18n.translate('Rules order:')),
         orderSelect,
-        label({'for':'found-rules-per-page'},i18n.translate('Rules per page:')),
+        label({'for': 'found-rules-per-page'}, i18n.translate('Rules per page:')),
         perPageSelect
       );
     });
@@ -856,7 +957,7 @@ var UITemplateRegistrator = new Class({
       var i18n = data.i18n,
         IMs = data.FRManager.IMs,
         FRManager = data.FRManager;
-      div({id:'found-rules-multi-controls'},
+      div({id: 'found-rules-multi-controls'},
         a({
           class: 'all',
           title: i18n.translate('Select all')
@@ -866,47 +967,47 @@ var UITemplateRegistrator = new Class({
           title: i18n.translate('Invert selection')
         }),
         a({
-          class:'none',
+          class: 'none',
           title: i18n.translate('Select none')
         }),
-        span({class:'actions'},
+        span({class: 'actions'},
           a({
-            href:'#',
-            class:'mark',
-            title:i18n.translate('Add to Rule Clipboard')
-          },i18n.translate('Add selected...')),
+            href: '#',
+            class: 'mark',
+            title: i18n.translate('Add to Rule Clipboard')
+          }, i18n.translate('Add selected...')),
           a({
-            href:'#',
-            class:'unmark',
-            title:i18n.translate('Remove from Rule Clipboard')
-          },i18n.translate('Remove...')),
+            href: '#',
+            class: 'unmark',
+            title: i18n.translate('Remove from Rule Clipboard')
+          }, i18n.translate('Remove...')),
           a({
-            href:'#',
-            class:'kbAddPositive',
-            title:i18n.translate('Add to Knowledge Base as interesting')
-          },i18n.translate('Interesting')),
+            href: '#',
+            class: 'kbAddPositive',
+            title: i18n.translate('Add to Knowledge Base as interesting')
+          }, i18n.translate('Interesting')),
           a({
-            href:'#',
-            class:'kbAddNegative',
-            title:i18n.translate('Add to Knowledge Base as not interesting')
-          },i18n.translate('Not interesting'))
+            href: '#',
+            class: 'kbAddNegative',
+            title: i18n.translate('Add to Knowledge Base as not interesting')
+          }, i18n.translate('Not interesting'))
         ),
-        span({class:'task-actions'},
+        span({class: 'task-actions'},
           a({
-            href:'#',
-            class:'mark-all'+(FRManager.importInProgress?' disabled':''),
-            title:(FRManager.importInProgress?i18n.translate('Import of results is still in progress'):i18n.translate('Add all rules to Rule Clipboard'))
-          },i18n.translate('Add all rules')),
+            href: '#',
+            class: 'mark-all' + (FRManager.importInProgress ? ' disabled' : ''),
+            title: (FRManager.importInProgress ? i18n.translate('Import of results is still in progress') : i18n.translate('Add all rules to Rule Clipboard'))
+          }, i18n.translate('Add all rules')),
           a({
-            href:'#',
-            class:'task-details'+(FRManager.importInProgress?' disabled':''),
-            title:(FRManager.importInProgress?i18n.translate('Import of results is still in progress'):i18n.translate('Show task details'))
-          },i18n.translate('Task details')),
+            href: '#',
+            class: 'task-details' + (FRManager.importInProgress ? ' disabled' : ''),
+            title: (FRManager.importInProgress ? i18n.translate('Import of results is still in progress') : i18n.translate('Show task details'))
+          }, i18n.translate('Task details')),
           a({
-            href:'#',
-            class:'task-export',
-            title:i18n.translate('Show task export options')
-          },i18n.translate('Task export'))
+            href: '#',
+            class: 'task-export',
+            title: i18n.translate('Show task export options')
+          }, i18n.translate('Task export'))
         )
       );
     });
@@ -917,7 +1018,7 @@ var UITemplateRegistrator = new Class({
       var imValuesPrecision = 1000;
 
       Array.each(data.IMs, function (IM) {
-        var str = IM.getLocalizedName() + ': <span class="value">' + (Math.round(IM.calculate(data.ruleValues.a, data.ruleValues.b, data.ruleValues.c, data.ruleValues.d) * imValuesPrecision) / imValuesPrecision)+'</span>';
+        var str = IM.getLocalizedName() + ': <span class="value">' + (Math.round(IM.calculate(data.ruleValues.a, data.ruleValues.b, data.ruleValues.c, data.ruleValues.d) * imValuesPrecision) / imValuesPrecision) + '</span>';
         span({}, str);
       }.bind([data, this]));
     })
@@ -927,11 +1028,11 @@ var UITemplateRegistrator = new Class({
     // to be able to re-render IMs in selectbox TODO merge be aware of id vs. class
     Mooml.register('markedRulesOrderTemplate', function (data) {
       var IMs = data.FRManager.IMs,
-          FRManager = data.FRManager,
-          taskId = FRManager.id;
+        FRManager = data.FRManager,
+        taskId = FRManager.id;
 
-      var orderSelect=select({
-        id:'marked-rules-order-'+taskId,
+      var orderSelect = select({
+        id: 'marked-rules-order-' + taskId,
         events: {
           change: function (e) {
             FRManager.rulesOrder = e.target.get('value');
@@ -957,20 +1058,20 @@ var UITemplateRegistrator = new Class({
     // same as foundRulesControlsTemplate - differences only in ids and adding markedRulesOrderTemplate TODO merge be aware of id vs. class
     Mooml.register('markedRulesControlsTemplate', function (data) {
       var i18n = data.i18n,
-          IMs = data.FRManager.IMs,
-          FRManager = data.FRManager,
-          taskId = FRManager.id;
+        IMs = data.FRManager.IMs,
+        FRManager = data.FRManager,
+        taskId = FRManager.id;
 
       var perPageSelect = new Element('select',
-          {
-            id: 'marked-rules-per-page-'+taskId,
-            events: {
-              change: function (e) {
-                e.stop();
-                FRManager.setRulesPerPage(e.target.get('value'));
-              }.bind(FRManager)
-            }
+        {
+          id: 'marked-rules-per-page-' + taskId,
+          events: {
+            change: function (e) {
+              e.stop();
+              FRManager.setRulesPerPage(e.target.get('value'));
+            }.bind(FRManager)
           }
+        }
       );
       var perPage = FRManager.rulesPerPage;
       Array.each(FRManager.getPerPageOptions(), function (perPageCount) {
@@ -981,185 +1082,217 @@ var UITemplateRegistrator = new Class({
         perPageSelect.grab(option)
       }.bind([perPageSelect, perPage]));
 
-      div({'class':'marked-rules-controls'},
-          Mooml.render('foundRulesPaginator',{FRManager:FRManager,i18n:i18n}),
-          label({'for':'marked-rules-order-'+taskId},i18n.translate('Rules order:')),
-          Mooml.render('markedRulesOrderTemplate',data),
-          label({'for':'marked-rules-per-page-'+taskId},i18n.translate('Rules per page:')),
-          perPageSelect
+      div({'class': 'marked-rules-controls'},
+        Mooml.render('foundRulesPaginator', {FRManager: FRManager, i18n: i18n}),
+        label({'for': 'marked-rules-order-' + taskId}, i18n.translate('Rules order:')),
+        Mooml.render('markedRulesOrderTemplate', data),
+        label({'for': 'marked-rules-per-page-' + taskId}, i18n.translate('Rules per page:')),
+        perPageSelect
       );
     });
 
     // same as foundRulesMultiControlsTemplate - differences only in task-actions TODO merge be aware of id vs. class
     Mooml.register('markedRulesMultiControlsTemplate', function (data) {
       var i18n = data.i18n,
-          task = data.FRManager,
-          actions,
-          taskActions;
-      if(task.isBase){
+        task = data.FRManager,
+        actions,
+        taskActions;
+      if (task.isBase) {
         status = 'minimize';
-        actions = span({class:'actions'},
+        actions = span({class: 'actions'},
           a({
-            href:'#',
-            class:'kb-unmark',
-            title:i18n.translate('Remove from Knowledge base')
-          },i18n.translate('Remove...'))
+            href: '#',
+            class: 'kb-unmark',
+            title: i18n.translate('Remove from Knowledge base')
+          }, i18n.translate('Remove...'))
         );
-        taskActions = span({class:'task-actions'},
+        taskActions = span({class: 'task-actions'},
           a({
-            href:task.id,
-            class:'task-export',
-            rel:'ruleset',
-            title:i18n.translate('Show ruleset export options')
-          },i18n.translate('Ruleset export'))
+            href: task.id,
+            class: 'task-export',
+            rel: 'ruleset',
+            title: i18n.translate('Show ruleset export options')
+          }, i18n.translate('Ruleset export'))
         );
-      } else{
-        actions = span({class:'actions'},
+      } else {
+        actions = span({class: 'actions'},
           /*a({
            href:'#',
            class:'mark',
            title:i18n.translate('Add to Rule Clipboard')
            },i18n.translate('Add selected...')),*/
           a({
-            href:'#',
-            class:'unmark',
-            title:i18n.translate('Remove from Rule Clipboard')
-          },i18n.translate('Remove...')),
+            href: '#',
+            class: 'unmark',
+            title: i18n.translate('Remove from Rule Clipboard')
+          }, i18n.translate('Remove...')),
           a({
-            href:'#',
-            class:'kb-add',
-            rel:'positive',
-            title:i18n.translate('Interesting')
-          },i18n.translate('Interesting')),
+            href: '#',
+            class: 'kb-add',
+            rel: 'positive',
+            title: i18n.translate('Interesting')
+          }, i18n.translate('Interesting')),
           a({
-            href:'#',
-            class:'kb-add',
-            rel:'negative',
-            title:i18n.translate('Not interesting')
-          },i18n.translate('Not interesting'))
+            href: '#',
+            class: 'kb-add',
+            rel: 'negative',
+            title: i18n.translate('Not interesting')
+          }, i18n.translate('Not interesting'))
         );
-        taskActions = span({class:'task-actions'},
+        taskActions = span({class: 'task-actions'},
           /*a({
            href:'#',
            class:'mark-all',
            title:i18n.translate('Add all rules to Rule Clipboard')
            },i18n.translate('Add all rules')),*/
           a({
-            href:'#',
-            class:'task-details'+(task.isImportInProgress()?' disabled':''),
-            title:(task.isImportInProgress()?i18n.translate('Import of results is still in progress'):i18n.translate('Show task details'))
-          },i18n.translate('Task details')),
+            href: '#',
+            class: 'task-details' + (task.isImportInProgress() ? ' disabled' : ''),
+            title: (task.isImportInProgress() ? i18n.translate('Import of results is still in progress') : i18n.translate('Show task details'))
+          }, i18n.translate('Task details')),
           a({
-            href:'#',
-            class:'task-export',
-            rel:'task',
-            title:i18n.translate('Show task export options')
-          },i18n.translate('Task export'))
+            href: '#',
+            class: 'task-export',
+            rel: 'task',
+            title: i18n.translate('Show task export options')
+          }, i18n.translate('Task export'))
         );
       }
-      div({class:'marked-rules-multi-controls'},
-          div({class: 'marked-rules-checkbox-controls'},
-              a({
-                class: 'all',
-                title: i18n.translate('Select all')
-              }),
-              a({
-                class: 'invert',
-                title: i18n.translate('Invert selection')
-              }),
-              a({
-                class:'none',
-                title: i18n.translate('Select none')
-              }),
-              actions
-          ),
-          taskActions
-          /*span({class:'task-actions'},
-              /*a({
-                href:'#',
-                class:'mark-all',
-                title:i18n.translate('Add all rules to Rule Clipboard')
-              },i18n.translate('Add all rules')),/
-              a({
-                href:'#',
-                class:'task-details',
-                title:i18n.translate('Show task details')
-              },i18n.translate('Task details'))
-          )*/
+      div({class: 'marked-rules-multi-controls'},
+        div({class: 'marked-rules-checkbox-controls'},
+          a({
+            class: 'all',
+            title: i18n.translate('Select all')
+          }),
+          a({
+            class: 'invert',
+            title: i18n.translate('Invert selection')
+          }),
+          a({
+            class: 'none',
+            title: i18n.translate('Select none')
+          }),
+          actions
+        ),
+        taskActions
+        /*span({class:'task-actions'},
+            /*a({
+              href:'#',
+              class:'mark-all',
+              title:i18n.translate('Add all rules to Rule Clipboard')
+            },i18n.translate('Add all rules')),/
+            a({
+              href:'#',
+              class:'task-details',
+              title:i18n.translate('Show task details')
+            },i18n.translate('Task details'))
+        )*/
       );
     });
     // Marked task
     Mooml.register('taskTemplate', function (data) {
       var task = data.FRManager,
-          status = data.status,
-          name;
-      if(task.isBase){
+        status = data.status,
+        name;
+      if (task.isBase) {
         status = 'minimize';
         name = div(
-            {class: 'marked-rules-task-name'},
-            task.name,
-            span({class: 'count'}, '(rules:  ', strong(task.rulesCount), ')'),
-            a({href: '#', class: 'rename-task', title: data.i18n.translate('Rename task')})
+          {class: 'marked-rules-task-name'},
+          task.name,
+          span({class: 'count'}, '(rules:  ', strong(task.rulesCount), ')'),
+          a({href: '#', class: 'rename-task', title: data.i18n.translate('Rename task')})
         );
-      } else{
+      } else {
         name = div(
-            {class: 'marked-rules-task-name'},
-            a({href: '#', class: 'toggle'},
-              span({class: 'toggle'}, '')
-            ),
-            a({href: '#', class: 'toggle'},task.name),
-            span({class: 'count'}, '(rules:  ', strong(task.rulesCount), ')'),
-            a({href: '#', class: 'rename-task', title: data.i18n.translate('Rename task')}),
-            a({href: '#', class: 'remove-task', title: data.i18n.translate('Remove task from Rule clipboard')})
+          {class: 'marked-rules-task-name'},
+          a({href: '#', class: 'toggle'},
+            span({class: 'toggle'}, '')
+          ),
+          a({href: '#', class: 'toggle'}, task.name),
+          span({class: 'count'}, '(rules:  ', strong(task.rulesCount), ')'),
+          a({href: '#', class: 'rename-task', title: data.i18n.translate('Rename task')}),
+          a({href: '#', class: 'remove-task', title: data.i18n.translate('Remove task from Rule clipboard')})
         );
       }
       div(
-          {id: 'task-'+task.id, class: status},
-          name,
-          Mooml.render('markedRulesControlsTemplate',data),
-          ul(),
-          Mooml.render('markedRulesMultiControlsTemplate',data)
+        {id: 'task-' + task.id, class: status},
+        name,
+        Mooml.render('markedRulesControlsTemplate', data),
+        ul(),
+        Mooml.render('markedRulesMultiControlsTemplate', data)
       );
     });
 
     // Marked rule
     Mooml.register('markedRuleTemplate', function (data) {
       var markedRule = data.rule,
-          i18n = data.i18n,
-          IMs = data.IMs;
+        i18n = data.i18n,
+        IMs = data.IMs;
 
       /*li({id: ruleId, class: 'marked-rule'},
         span({'class': 'rule'}, rule.getIdent()),
         a({id: rule.getMarkedRuleCSSRemoveID(), href: '#', 'class': 'clear', 'title': i18n.translate('Remove')}),
         span({'class': 'ims'}, rule.getIMIdent()));*/
-      
-      li({id: markedRule.getCSSID(), 'class': 'marked-rule'+(markedRule.isLoading()?' loading':'')},
-          input({type:'checkbox',id:markedRule.getCSSID()+'-checkbox', class:'marked-rule-checkbox'}),
-          label({for: markedRule.getCSSID()+'-checkbox', 'class': 'rule'}, markedRule.getIdent()),
-          span({class:'ruleActions'},
-              a({id: markedRule.getUnmarkCSSID(), href: '#', 'class': 'clear', 'title': i18n.translate('Remove from Rule Clipboard')}),
-              a({id: markedRule.getDetailsCSSID(),href: '#','class': 'details','title': i18n.translate('Show rule details')}),
-              a({id: markedRule.getUpCSSID(),href: '#','class': 'kb-add','rel': 'positive','title': i18n.translate('Interesting')}),
-              a({id: markedRule.getDownCSSID(),href: '#','class': 'kb-add','rel': 'negative','title': i18n.translate('Not interesting')})
-          ),
-          span({'class': 'ims'}, Mooml.render('ruleIMs', {ruleValues: markedRule.getRuleValues(), IMs: IMs}))
+
+      li({id: markedRule.getCSSID(), 'class': 'marked-rule' + (markedRule.isLoading() ? ' loading' : '')},
+        input({type: 'checkbox', id: markedRule.getCSSID() + '-checkbox', class: 'marked-rule-checkbox'}),
+        label({for: markedRule.getCSSID() + '-checkbox', 'class': 'rule'}, markedRule.getIdent()),
+        span({class: 'ruleActions'},
+          a({
+            id: markedRule.getUnmarkCSSID(),
+            href: '#',
+            'class': 'clear',
+            'title': i18n.translate('Remove from Rule Clipboard')
+          }),
+          a({
+            id: markedRule.getDetailsCSSID(),
+            href: '#',
+            'class': 'details',
+            'title': i18n.translate('Show rule details')
+          }),
+          a({
+            id: markedRule.getUpCSSID(),
+            href: '#',
+            'class': 'kb-add',
+            'rel': 'positive',
+            'title': i18n.translate('Interesting')
+          }),
+          a({
+            id: markedRule.getDownCSSID(),
+            href: '#',
+            'class': 'kb-add',
+            'rel': 'negative',
+            'title': i18n.translate('Not interesting')
+          })
+        ),
+        span({'class': 'ims'}, Mooml.render('ruleIMs', {ruleValues: markedRule.getRuleValues(), IMs: IMs}))
       );
     });
 
     // KB rule
     Mooml.register('KBRuleTemplate', function (data) {
       var markedRule = data.rule,
-          i18n = data.i18n,
-          IMs = data.IMs;
+        i18n = data.i18n,
+        IMs = data.IMs;
 
-      li({id: markedRule.getCSSID(), 'class': 'marked-rule'+(markedRule.isLoading()?' loading':'')},
-          input({type:'checkbox',id:markedRule.getCSSID()+'-checkbox', class:'marked-rule-checkbox'}),
-          label({for: markedRule.getCSSID()+'-checkbox', 'class': 'rule'}, markedRule.getIdent()),
-          span({class:'ruleActions'},
-              a({id: markedRule.getKBRemoveCSSID(), href: '#', 'class': 'clear', 'title': i18n.translate('Remove from Knowledge base')}),
-              a({id: markedRule.getDetailsCSSID(),href: '#','class': 'details','title': i18n.translate('Show rule details')})
-          ),
-          span({'class': 'ims'}, Mooml.render('ruleIMs', {ruleValues: markedRule.getRuleValues(), IMs: IMs}))
+      li({id: markedRule.getCSSID(), 'class': 'marked-rule' + (markedRule.isLoading() ? ' loading' : '')},
+        input({type: 'checkbox', id: markedRule.getCSSID() + '-checkbox', class: 'marked-rule-checkbox'}),
+        label({for: markedRule.getCSSID() + '-checkbox', 'class': 'rule'}, markedRule.getIdent()),
+        span({class: 'ruleActions'},
+          a({
+            id: markedRule.getKBRemoveCSSID(),
+            href: '#',
+            'class': 'clear',
+            'title': i18n.translate('Remove from Knowledge base')
+          }),
+          a({
+            id: markedRule.getDetailsCSSID(),
+            href: '#',
+            'class': 'details',
+            'title': i18n.translate('Show rule details')
+          })
+        ),
+        span({'class': 'ims'}, Mooml.render('ruleIMs', {ruleValues: markedRule.getRuleValues(), IMs: IMs}))
       );
     });
 
@@ -1197,68 +1330,68 @@ var UITemplateRegistrator = new Class({
     // Rename ruleset overlay
     Mooml.register('renameRulesetWindowTemplate', function (data) {
       var i18n = data.i18n,
-          taskId = data.taskId,
-          taskName = data.taskName,
-          taskDesc = data.taskDesc;
+        taskId = data.taskId,
+        taskName = data.taskName,
+        taskDesc = data.taskDesc;
 
       div({
-            id: 'rename-task-window'
+          id: 'rename-task-window'
+        },
+        a({
+            id: 'overlay-close',
+            href: '#',
+            'title': i18n.translate('Close')
+          }
+        ),
+        h2(
+          i18n.translate('Rename the Ruleset')
+        ),
+        form({
+            action: '#',
+            method: 'POST',
+            id: 'rename-task-form'
           },
-          a({
-                id: 'overlay-close',
-                href: '#',
-                'title': i18n.translate('Close')
-              }
+          label({
+              'for': 'rename-task-input'
+            },
+            i18n.translate('New name:')),
+          input({
+            name: 'rename-task-input',
+            id: 'rename-task-input',
+            type: 'text',
+            value: taskName,
+            maxlength: '100'
+          }),
+          div({class: 'clearfix'}),
+          label({
+              'for': 'rename-task-input-desc'
+            },
+            i18n.translate('New description:')),
+          textarea({
+            name: 'rename-task-input-desc',
+            id: 'rename-task-input-desc',
+            type: 'text',
+            value: taskDesc
+          }),
+          input({
+            type: 'hidden',
+            id: 'rename-task-id',
+            value: taskId
+          }),
+          br(),
+          div(
+            span({
+              id: 'rename-task-error'
+            })
           ),
-          h2(
-              i18n.translate('Rename the Ruleset')
-          ),
-          form({
-                action: '#',
-                method: 'POST',
-                id: 'rename-task-form'
-              },
-              label({
-                    'for': 'rename-task-input'
-                  },
-                  i18n.translate('New name:')),
-              input({
-                name: 'rename-task-input',
-                id: 'rename-task-input',
-                type: 'text',
-                value: taskName,
-                maxlength: '100'
-              }),
-              div({class: 'clearfix'}),
-              label({
-                    'for': 'rename-task-input-desc'
-                  },
-                  i18n.translate('New description:')),
-              textarea({
-                name: 'rename-task-input-desc',
-                id: 'rename-task-input-desc',
-                type: 'text',
-                value: taskDesc
-              }),
-              input({
-                type: 'hidden',
-                id: 'rename-task-id',
-                value: taskId
-              }),
-              br(),
-              div(
-                  span({
-                    id: 'rename-task-error'
-                  })
-              ),
-              div({
-                class: 'autocomplete clearfix'
-              }),
-              input({
-                type: 'submit',
-                value: i18n.translate('Rename')
-              })
-          )
+          div({
+            class: 'autocomplete clearfix'
+          }),
+          input({
+            type: 'submit',
+            value: i18n.translate('Rename')
+          })
+        )
       );
     });
 
@@ -1336,16 +1469,16 @@ var UITemplateRegistrator = new Class({
 
     Mooml.register('addAttributesTemplate', function (data) {
       var i18n = data.i18n,
-          url = data.url;
+        url = data.url;
 
       div({id: 'add-attributes-window'},
-          a({
-                id: 'overlay-close',
-                href: '#',
-                'title': i18n.translate('Close')
-              }
-          ),
-          iframe({src: url}));
+        a({
+            id: 'overlay-close',
+            href: '#',
+            'title': i18n.translate('Close')
+          }
+        ),
+        iframe({src: url}));
     });
 
     Mooml.register('editAttributeTemplate', function (data) {
@@ -1397,16 +1530,16 @@ var UITemplateRegistrator = new Class({
       div({id: 'user-warning-window'},
         p(data.message),
         div(
-          a({href:data.url},'OK')
+          a({href: data.url}, 'OK')
         )
       );
     });
 
     Mooml.register('loadingErrorWindowTemplate', function (data) {
-      div({id: 'loading-data-window', class:'error'},
+      div({id: 'loading-data-window', class: 'error'},
         p(data.i18n.translate('An error occured while loading application data.')),
         div(
-          a({href:data.url},'OK')
+          a({href: data.url}, 'OK')
         )
       );
     });

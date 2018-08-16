@@ -1,0 +1,451 @@
+centerContent()
+	margin-left auto
+	margin-right auto
+	position relative
+
+centerMainContent()
+	width minContentWidth2
+	margin 0 auto
+	position relative
+
+box()
+	color color
+	background-color #FFF
+	border none
+	box-shadow(0, 0, 10px, 0, boxShadowColor)
+	padding 20px
+
+overlay()
+	background-color #FFF
+	box-shadow(5px, 5px, 5px, 0, overlayShadowColor)
+	min-width 435px
+	/*margin 10% auto*/
+	position: fixed
+	left: 50%
+	top: 50%
+	transform: translate(-50%, -50%)
+	padding 35px 25px
+
+overlay-close()
+	color #126499
+	background transparent url('../images/sprite-icons.png') -67px -116px no-repeat /*TODO přesun ikony doprava*/
+	float right
+	position relative
+	top -20px
+	right -10px
+	width 18px
+	height 18px
+	&:hover
+		text-decoration underline
+
+h2()
+	color h2Color
+	font-family h2FontFamily
+	font-size h2FontSize
+	font-weight h2FontWeight
+	margin 0 0 20px 0
+
+h2Small()
+	h2()
+	font-size 0.8 * h2FontSize
+
+h2AR()
+	color h2ARColor
+	font h2ARFont
+	font-weight normal
+	border-bottom none
+
+button()
+	background buttonBackground
+	font-size buttonFontSize
+	font-family buttonFontFamily
+	font-weight buttonFontWeight
+	text-decoration none
+	cursor pointer
+	color buttonColor
+	border buttonBorder
+	text-align center
+	display inline-block
+	padding 8px 13px
+	&:hover
+	&:focus
+		background buttonHoverBackground
+		color buttonHoverColor
+		border buttonHoverBorder
+		text-decoration none
+
+bigButton()
+	button()
+	padding 12px 15px
+	text-align left
+	display block
+	margin 5px auto
+	span.details
+		margin-top 1px
+		display block
+		font-size buttonDetailsFontSize
+		font-weight buttonDetailsFontWeight
+		color buttonDetailsColor
+		position relative
+		span.right
+			display block
+			float right
+			visibility hidden
+	&:hover
+		span.details span.right
+			visibility visible
+
+mainButton()
+	button()
+	background mainButtonBackground
+	color mainButtonColor
+	border mainButtonBorder
+	text-align center
+	display block
+	margin 15px auto
+	font-size 1.3 * buttonFontSize
+	min-width 150px
+	&:hover
+	&:focus
+		background mainButtonHoverBackground
+		color mainButtonHoverColor
+		border mainButtonHoverBorder
+
+invisButton()
+	button()
+	background invisButtonBackground
+	color invisButtonColor
+	border invisButtonBorder
+	text-align center
+	&:hover
+	&:focus
+		background invisButtonHoverBackground
+		color invisButtonHoverColor
+		border invisButtonHoverBorder
+
+iconLink()
+	//display inline-block
+	display flex
+	//position relative
+	//top 5px
+	width 20px
+	height 20px
+	//margin-right 5px
+	+pc()
+		cursor pointer
+
+associationRule()
+	float left
+	height 38px
+	.id
+		font-size 0.8em
+		text-align right
+		display block
+		width 35px
+		margin-right 3px
+		margin-top 9px
+		float left
+	.cedent
+		cedent()
+	> .cedent
+		firstCedent()
+	.quantifier
+		float left
+		margin-top 5px
+
+cedent()
+	float left
+	border 1px dashed #FFF
+	/*border-radius(10px)*/
+	background-color #FFF
+	padding 2px
+	&.empty
+		border 1px dashed #000
+		color gray
+	a.group-fields
+		background transparent url('../images/sprite-icons.png') -168px -215px no-repeat
+		padding-left 17px
+		float right
+	.fields
+		fields()
+	.group-fields
+		font-size 14px
+		position relative
+		top 23px
+
+fields()
+	.field
+		field()
+	.field:hover
+		a.remove-field
+			visibility visible
+		a.edit-coefficient
+			visibility visible
+		a.mark-field
+			visibility visible
+		a.change-sign.positive
+			visibility visible
+	.connective
+		connective()
+	.left-bracket,
+	.right-bracket
+		bracket()
+
+field()
+	float left
+	height 40px
+	margin 0 2px
+	.coefficient
+		coefficient()
+	.field-drag
+		cursor move
+	.field-name
+		display block
+		float left
+		max-width 250px
+		overflow hidden
+		text-overflow ellipsis
+	.change-sign.negative,
+	.field-sign.negative
+		background transparent url('../images/sprite-icons.png') -118px -161px no-repeat
+		width 13px
+		height 20px
+		float left
+	.controls
+		fieldControls()
+
+fieldControls()
+	a.edit-coefficient
+		edit()
+		margin-left 2px
+		float right
+	a.remove-field
+		remove()
+		margin-left 5px
+		float right
+	a.mark-field
+		background transparent url('../images/sprite-icons.png') -67px -212px no-repeat
+		display block
+		width 16px
+		height 20px
+		margin-right 3px
+		float right
+		visibility hidden
+	a.marked-field
+		background transparent url('../images/sprite-icons.png') -68px -260px no-repeat
+		display block
+		width 16px
+		height 20px
+		margin-right 3px
+		float right
+		visibility visible
+	a.change-sign.positive
+		background transparent url('../images/sprite-icons.png') -118px -161px no-repeat
+		display block
+		width 16px
+		height 20px
+		float right
+		visibility hidden
+
+firstCedent()
+	> .fields
+		> .field, > .connective
+			margin-top 3px
+
+coefficient()
+	color #925213
+	font-size 0.85em
+	position relative
+	top -1px
+	margin-left 3px
+
+connective()
+	color #336600
+	font-size 14px
+	position relative
+	top 1px
+	margin 0 1px
+	float left
+	height 40px
+
+bracket()
+	font-size 18px
+	float left
+	position relative
+	top -2px
+
+interestMeasureMixin()
+	.name
+		font-size 14px
+		width 160px
+		float left
+	.threshold, .alpha
+		color interestMeasureValueColor
+
+ruleIMs()
+	font-size 0.8 * baseFontSize
+	color interestMeasureColor
+	*
+		-moz-user-select text
+		-ms-user-select text
+		-webkit-user-select text
+	> span
+		border-right 1px solid backgroundColor
+		padding-right 5px
+		margin-right 5px
+		&:last-child
+			border-right none
+		
+		.value
+			color interestMeasureValueColor
+
+ruleActions()
+	display inline-block
+	overflow auto
+	position relative
+	width 100px
+	height 20px
+	margin-left 15px
+	background transparent
+	> a
+		ruleActionsLink()
+		display block
+		width 20px
+		height 20px
+		float left
+		margin-right 5px
+		visibility hidden
+
+showAdd()
+	background transparent url("../images/sprite-icons.png") -166px -162px no-repeat
+	display block
+	float left
+	width 20px
+	height 20px
+	+m_tablet()
+		flex-group(1)
+
+edit()
+	background transparent url('../images/sprite-icons.png') -19px -262px no-repeat
+	display block
+	width 16px
+	height 20px
+	visibility hidden
+
+remove()
+	background transparent url('../images/sprite-icons.png') -19px -15px no-repeat
+	display block
+	width 16px
+	height 20px
+	visibility hidden
+
+showHistogram()
+	background transparent url('../images/sprite-icons.png') -20px -664px no-repeat
+	display block
+	width 16px
+	height 20px
+	//visibility hidden
+
+loading()
+	background transparent url('../images/sprite-icons.png') -18px -416px no-repeat
+	display block
+	width 16px
+	height 20px
+
+tip()
+	border-radius(5px)
+	box-shadow(0, 0, 5px, 0, boxShadowColor)
+	background-color #FFF
+	height 22px
+	padding 7px 5px 0 10px
+
+border-radius(n)
+	border-radius n
+	-webkit-border-radius n
+	-moz-border-radius n
+
+box-shadow(h, v, blur, spread, color)
+	box-shadow v h blur spread color
+	-webkit-box-shadow v h blur spread color
+	-moz-box-shadow v h blur spread color
+
+userSelect(value)
+	user-select: value
+	-webkit-touch-callout: value
+	-webkit-user-select: value
+	-khtml-user-select: value
+	-moz-user-select: value
+	-ms-user-select: value
+
+info()
+	background transparent url('../images/sprite-icons.png') -20px -714px no-repeat
+	display block
+	float right
+	position relative
+	top -2px
+	width 24px
+	height 24px
+
+tooltip()
+	color #000000
+	text-decoration none
+	outline none
+	cursor help
+	position relative
+	> span
+		font-size 0.9em
+		line-height 1.25em
+		margin-left -999em
+		padding: 0.5em 0.8em 0.8em 2em
+		position absolute
+	&:hover
+		> span
+			font-family fontFamily
+			width 250px
+			margin-left 0
+			position absolute
+			top 0
+			left 0
+			z-index 99
+		span.helpImg
+		span.warningImg
+			display block
+			width 48px
+			height 48px
+			left -20px
+			top -20px
+			position absolute
+			margin 0
+			padding 0
+			z-index 100
+		span.helpImg
+			background url('../images/icon-help-48.png') top left no-repeat transparent
+		span.warningImg
+			background url('../images/icon-warning-48.png') top left no-repeat transparent
+		em
+			display block
+			position relative
+			top 0
+			left 0
+			width 250px
+			font-size 1.2em
+			font-weight bold
+			font-style normal
+			padding-top boxMargin
+			padding-bottom boxMargin
+	
+	> .help
+		background-color #D3E6F4
+		border 1px solid #2BB0D7
+	
+	> .warning
+		background-color #FFFFAA
+		border 1px solid #FFAD33
+
+disabledLink()
+	cursor not-allowed
+	opacity 0.5
+	color unimportantTextColor
+	&:hover
+		text-decoration none
+		color unimportantTextColor

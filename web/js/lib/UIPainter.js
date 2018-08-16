@@ -82,10 +82,10 @@ var UIPainter = new Class({
       supportSimpleCompletion: true,
       initRepaint: true,
       onShow: function (element) {
-        element.setStyle('display', 'list-item');
+        element.show('flex')
       },
       onHide: function (element) {
-        element.setStyle('display', 'none');
+        element.hide()
       },
       onComplete: function (element) {
         attributesFilter.addClass('filter-active');
@@ -99,21 +99,32 @@ var UIPainter = new Class({
     this.UIListener.checkAttributesSelectedCheckboxes();
   },
 
-  showAddAllUnusedAttributesLink: function(){
+  showAddAllUnusedAttributesLink: function () {
     var ARManager = this.ARBuilder.getARManager();
-    var activeRule= ARManager.getActiveRule();
-    if (!this.ARBuilder.attributesFilter){return;}
-    var attributeNameFilter=this.ARBuilder.attributesFilter.prepareTestRegExp();
-    var allowAddAllUnusedAttributesLink=false;
+    var activeRule = ARManager.getActiveRule();
+    if (!this.ARBuilder.attributesFilter) {
+      return;
+    }
+    var attributeNameFilter = this.ARBuilder.attributesFilter.prepareTestRegExp();
+    var allowAddAllUnusedAttributesLink = false;
     Array.each(this.ARBuilder.getDD().getAttributes(), function (attribute) {
-      if (activeRule.isAttributeUsed(attribute)){return;/*atribut je už použit*/}
-      if (!attributeNameFilter.test(attribute.getName())){return;/*jméno atributu neodpovídá aktivnímu filtru*/}
-      if ((attribute.isHidden())){return;/*jde o skrytý atribut*/}
-      allowAddAllUnusedAttributesLink=true;
+      if (activeRule.isAttributeUsed(attribute)) {
+        return;
+        /*atribut je už použit*/
+      }
+      if (!attributeNameFilter.test(attribute.getName())) {
+        return;
+        /*jméno atributu neodpovídá aktivnímu filtru*/
+      }
+      if ((attribute.isHidden())) {
+        return;
+        /*jde o skrytý atribut*/
+      }
+      allowAddAllUnusedAttributesLink = true;
     }.bind(this));
-    if (allowAddAllUnusedAttributesLink){
+    if (allowAddAllUnusedAttributesLink) {
       $('add-all-unused-attributes').show();
-    }else{
+    } else {
       $('add-all-unused-attributes').hide();
     }
 
@@ -240,9 +251,13 @@ var UIPainter = new Class({
     var dataFields = $$('#data-fields ul')[0];
     var dataFieldsList = this.ARBuilder.getDD().getFields();
     // sort data fields by name
-    dataFieldsList.sort(function(a, b){
-      if (a.$name.toLowerCase() < b.$name.toLowerCase()){ return -1; }
-      if (a.$name.toLowerCase() > b.$name.toLowerCase()){ return 1; }
+    dataFieldsList.sort(function (a, b) {
+      if (a.$name.toLowerCase() < b.$name.toLowerCase()) {
+        return -1;
+      }
+      if (a.$name.toLowerCase() > b.$name.toLowerCase()) {
+        return 1;
+      }
       return 0;
     });
 
@@ -258,10 +273,10 @@ var UIPainter = new Class({
       matchAnywhere: false,
       supportSimpleCompletion: true,
       onShow: function (element) {
-        element.setStyle('display', 'list-item');
+        element.show('flex')
       },
       onHide: function (element) {
-        element.setStyle('display', 'none');
+        element.hide()
       },
       onComplete: function (element) {
         dataFieldsFilter.addClass('filter-active');
@@ -326,15 +341,15 @@ var UIPainter = new Class({
   renderExportWindow: function (taskId, type, isMiningInProgress, isImportInProgress) {
     var overlay = this.$UIStructurePainter.showOverlay();
     var url = "",
-        links = [],
-        errorMsg = this.i18n.translate('Unable to load export links! Try it again later.');
+      links = [],
+      errorMsg = this.i18n.translate('Unable to load export links! Try it again later.');
 
-    if(type == 'ruleset'){
+    if (type == 'ruleset') {
       links = this.config.getKnowledgeBaseExportLinks(taskId);
       //ignore the info about import of mining results (we do not work with task, but ruleset)
-      isMiningInProgress=false;
-      isImportInProgress=false;
-    } else if (type == 'discovered'){
+      isMiningInProgress = false;
+      isImportInProgress = false;
+    } else if (type == 'discovered') {
       links = this.config.getDiscoveredRulesExportLinks(taskId);
     } else {
       links = this.config.getRuleClipboardExportLinks(taskId);
@@ -358,10 +373,10 @@ var UIPainter = new Class({
     var currentRulesetElm = $('current-ruleset');
     currentRulesetElm.empty();
     Object.each(data, function (value, id) {
-      if(id == selectedId){
+      if (id == selectedId) {
         value['selected'] = 'selected';
         currentRulesetElm.grab(Mooml.render('changeRulesetWindowItemTemplate', value));
-      } else{
+      } else {
         ruleSetsListElm.grab(Mooml.render('changeRulesetWindowItemTemplate', value));
       }
     }.bind(this));
@@ -371,7 +386,7 @@ var UIPainter = new Class({
 
   renderAddRulesetForm: function () {
     var changeRulesetBox = $('change-ruleset-window'),
-        addRulesetInput = $('add-ruleset');
+      addRulesetInput = $('add-ruleset');
     changeRulesetBox.grab(Mooml.render('changeRulesetWindowAddTemplate', {i18n: this.i18n}));
     addRulesetInput.hide();
     this.UIListener.registerAddRulesetFormEventHandler();
@@ -379,14 +394,16 @@ var UIPainter = new Class({
 
   removeAddRulesetForm: function () {
     var addRulesetForm = $('add-ruleset-form'),
-        addRulesetInput = $('add-ruleset');
+      addRulesetInput = $('add-ruleset');
     addRulesetForm.destroy();
     addRulesetInput.show();
   },
 
   renderActiveRuleset: function (name, count) {
     var activeRulesetElm = $('kb-ruleset');
-    if(name == ''){ name = this.i18n.translate('(unnamed ruleset)'); }
+    if (name == '') {
+      name = this.i18n.translate('(unnamed ruleset)');
+    }
     Mooml.render('activeRulesetTemplate', {
       i18n: this.i18n,
       name: name,
@@ -396,26 +413,30 @@ var UIPainter = new Class({
 
   // to render only task
   renderMarkedTask: function (task, status) {
-    var taskElm = $('task-'+task.id),
-        taskStatus = (typeof status == 'undefined') ? taskElm.getProperty('class') : status,
-        mrElement = $$('#marked-rules div.marked-rules-tasks-content')[0],
-        newTaskElm = Mooml.render('taskTemplate',
+    var taskElm = $('task-' + task.id),
+      taskStatus = (typeof status == 'undefined') ? taskElm.getProperty('class') : status,
+      mrElement = $$('#marked-rules div.marked-rules-tasks-content')[0],
+      newTaskElm = Mooml.render('taskTemplate',
         {
           i18n: this.i18n,
           FRManager: task,
           status: taskStatus
         }
-    );
-    if(task.isBase){ mrElement = $$('#marked-rules div.marked-rules-base-content')[0] }
-    if(taskElm != undefined){
+      );
+    if (task.isBase) {
+      mrElement = $$('#marked-rules div.marked-rules-base-content')[0]
+    }
+    if (taskElm != undefined) {
       newTaskElm.replaces(taskElm);
-    } else{
+    } else {
       var where = 'bottom';
-      if(mrElement.hasClass('empty')){
+      if (mrElement.hasClass('empty')) {
         mrElement.removeClass('empty');
         //mrElement.getElement('div#marked-rules-empty').destroy();
       }
-      if(status == 'minimize'){ where = 'top'; }
+      if (status == 'minimize') {
+        where = 'top';
+      }
       mrElement.grab(newTaskElm, where);
     }
     this.UIListener.registerMarkedRulesEventHandlers(task);
@@ -423,24 +444,26 @@ var UIPainter = new Class({
   },
 
   // removes marked tasks div
-  removeMarkedTask:function(taskId, isBase){
+  removeMarkedTask: function (taskId, isBase) {
     var typeElm = (isBase ? 'base' : 'tasks'),
-        mrElement = $$('#marked-rules div.marked-rules-'+typeElm+'-content')[0],
-        taskElm = $('task-'+taskId);
-    if(taskElm){
-      $('task-'+taskId).destroy();
+      mrElement = $$('#marked-rules div.marked-rules-' + typeElm + '-content')[0],
+      taskElm = $('task-' + taskId);
+    if (taskElm) {
+      $('task-' + taskId).destroy();
     }
-    if(mrElement.getElements('div.marked-rules-task-name').length <= 1){
+    if (mrElement.getElements('div.marked-rules-task-name').length <= 1) {
       mrElement.addClass('empty');
     }
   },
 
   // same as updateFoundRule only template difference TODO merge
-  updateMarkedRule:function(foundRule){
+  updateMarkedRule: function (foundRule) {
     var foundRuleElement = $(foundRule.getCSSID());
-    if (!foundRuleElement){return;}
+    if (!foundRuleElement) {
+      return;
+    }
 
-    Mooml.render('markedRuleTemplate',{
+    Mooml.render('markedRuleTemplate', {
       i18n: this.i18n,
       IMs: foundRule.$task.IMs,
       rule: foundRule
@@ -450,17 +473,20 @@ var UIPainter = new Class({
   },
 
   renderMarkedRules: function (task) {
-    Mooml.render('markedRulesOrderTemplate',{FRManager: task, i18n: this.i18n}).replaces($('marked-rules-order-'+task.id));
-    var listElm = $$('#task-'+task.id+' ul')[0],
-        template = (task.isBase) ? 'KBRuleTemplate' : 'markedRuleTemplate';
+    Mooml.render('markedRulesOrderTemplate', {
+      FRManager: task,
+      i18n: this.i18n
+    }).replaces($('marked-rules-order-' + task.id));
+    var listElm = $$('#task-' + task.id + ' ul')[0],
+      template = (task.isBase) ? 'KBRuleTemplate' : 'markedRuleTemplate';
     listElm.empty();
     Object.each(task.rules, function (MR) {
       listElm.grab(Mooml.render(template,
-          {
-            i18n: this.i18n,
-            IMs: task.IMs,
-            rule: MR
-          }
+        {
+          i18n: this.i18n,
+          IMs: task.IMs,
+          rule: MR
+        }
       ));
       this.UIListener.registerMarkedRuleEventHandlers(MR);
     }.bind(this));
@@ -492,25 +518,25 @@ var UIPainter = new Class({
     return returnEl;
   },
 
-  renderMinerBasicInfo: function(){
-    var minerType=this.ARBuilder.getMinerType();
-    var applicationMainTitle=$('applicationMainTitle');
-    if (applicationMainTitle && minerType){
-      applicationMainTitle.addClass('type'+minerType.toUpperCase());
+  renderMinerBasicInfo: function () {
+    var minerType = this.ARBuilder.getMinerType();
+    var applicationMainTitle = $('applicationMainTitle');
+    if (applicationMainTitle && minerType) {
+      applicationMainTitle.addClass('type' + minerType.toUpperCase());
     }
-    var minerName=this.ARBuilder.getMinerName();
-    if (minerName){
-      document.title=minerName+' :: '+config.titleAppName;
-      var applicationSubTitle=$('applicationSubTitle');
-      if (applicationSubTitle){
-        applicationSubTitle.set('text',minerName);
-        applicationSubTitle.set('title',this.i18n.translate('Current miner name: ')+minerName);
+    var minerName = this.ARBuilder.getMinerName();
+    if (minerName) {
+      document.title = minerName + ' :: ' + config.titleAppName;
+      var applicationSubTitle = $('applicationSubTitle');
+      if (applicationSubTitle) {
+        applicationSubTitle.set('text', minerName);
+        applicationSubTitle.set('title', this.i18n.translate('Current miner name: ') + minerName);
       }
     }
   },
 
   renderActiveRule: function () {
-    var ARManager=this.ARBuilder.getARManager();
+    var ARManager = this.ARBuilder.getARManager();
 
     Mooml.render(
       'activeRuleTemplate',
@@ -593,10 +619,10 @@ var UIPainter = new Class({
       }
 
       if (index < cedent.getNumChildren()) { // Connective
-        if(this.ARBuilder.getARManager().getFLConnectives(cedent.getScope()).length > 1){
+        if (this.ARBuilder.getARManager().getFLConnectives(cedent.getScope()).length > 1) {
           this.renderConnective(cedent.getConnective(), elementFields, true);
           this.UIListener.registerCedentConnectiveEventHandlers(cedent);
-        } else{
+        } else {
           this.renderConnective(cedent.getConnective(), elementFields, false);
         }
       }
@@ -636,7 +662,11 @@ var UIPainter = new Class({
   },
 
   renderConnective: function (connective, elementParent, editable) {
-    var elementConnective = Mooml.render('connectiveTemplate', {connective: connective, i18n: this.i18n, editable: editable});
+    var elementConnective = Mooml.render('connectiveTemplate', {
+      connective: connective,
+      i18n: this.i18n,
+      editable: editable
+    });
     elementParent.grab(elementConnective);
   },
 
@@ -707,13 +737,13 @@ var UIPainter = new Class({
 
     // Render
     overlay.grab(Mooml.render(
-        'renameRulesetWindowTemplate',
-        {
-          i18n: this.i18n,
-          taskId: taskId,
-          taskName: taskName,
-          taskDesc: taskDesc
-        }
+      'renameRulesetWindowTemplate',
+      {
+        i18n: this.i18n,
+        taskId: taskId,
+        taskName: taskName,
+        taskDesc: taskDesc
+      }
     ));
 
     // Positioning of Overlay after rendering
@@ -847,47 +877,47 @@ var UIPainter = new Class({
     }).replaces($('add-coefficient-autocomplete'));
 
     if (selectedCoefficient.getName() === 'One category') {
-      var attributeId=field.ref.id;
+      var attributeId = field.ref.id;
       this.AttributeValuesManager.getAttributeValues({
         attributeId: field.ref.id,
-        onSuccess: function(data){
-          var select=null;
-          if (data.hasOwnProperty('length') && (data.length > 0)){
+        onSuccess: function (data) {
+          var select = null;
+          if (data.hasOwnProperty('length') && (data.length > 0)) {
             //some items loaded...
-            if (data.length > 100){
+            if (data.length > 100) {
               //too many items - render datalist
-              Mooml.render('addCoefficientWindowCategoryAutocompleteTemplate',{
+              Mooml.render('addCoefficientWindowCategoryAutocompleteTemplate', {
                 i18n: i18n,
                 selectType: 'input'
               }).replaces($('add-coefficient-category-autocomplete'));
-              select=$('add-coefficient-category-list');
-            }else{
+              select = $('add-coefficient-category-list');
+            } else {
               //render select
-              Mooml.render('addCoefficientWindowCategoryAutocompleteTemplate',{
+              Mooml.render('addCoefficientWindowCategoryAutocompleteTemplate', {
                 i18n: i18n,
                 selectType: 'select'
               }).replaces($('add-coefficient-category-autocomplete'));
-              select=$('add-coefficient-category');
+              select = $('add-coefficient-category');
             }
             //render options, enable submit
-            if (select !== null){
-              Array.each(data,function(value){
-                select.grab(Mooml.render('optionTemplate',{value:value}));
+            if (select !== null) {
+              Array.each(data, function (value) {
+                select.grab(Mooml.render('optionTemplate', {value: value}));
               });
-              var submit=$('add-coefficient-autocomplete-submit');
-              submit.setProperty('disabled',false);
+              var submit = $('add-coefficient-autocomplete-submit');
+              submit.setProperty('disabled', false);
               submit.removeAttribute('disabled');
             }
-          }else{
-            Mooml.render('addCoefficientWindowCategoryAutocompleteTemplate',{
+          } else {
+            Mooml.render('addCoefficientWindowCategoryAutocompleteTemplate', {
               i18n: i18n,
               error: i18n.translate('No values found. Please select another value type.')
             }).replaces($('add-coefficient-category-autocomplete'));
           }
         },
-        onError: function(){
+        onError: function () {
           //render error
-          Mooml.render('addCoefficientWindowCategoryAutocompleteTemplate',{
+          Mooml.render('addCoefficientWindowCategoryAutocompleteTemplate', {
             i18n: i18n,
             error: i18n.translate('Sorry, values load failed. Please select another value type.')
           }).replaces($('add-coefficient-category-autocomplete'));
@@ -895,11 +925,11 @@ var UIPainter = new Class({
       });
 
     } else {
-        if(selectedCoefficient.fields.minLength.hidden){
-            $('add-coefficient-minlength').set('value', selectedCoefficient.fields.minLength.minValue).set('type', 'hidden');
-            $('add-coefficient-minlength-label').setStyles({display: 'none'});
-            $('add-coefficient-minlength-slider').setStyles({display: 'none'});
-        } else if (selectedCoefficient.fields.minLength.minValue < selectedCoefficient.fields.minLength.maxValue) {
+      if (selectedCoefficient.fields.minLength.hidden) {
+        $('add-coefficient-minlength').set('value', selectedCoefficient.fields.minLength.minValue).set('type', 'hidden');
+        $('add-coefficient-minlength-label').setStyles({display: 'none'});
+        $('add-coefficient-minlength-slider').setStyles({display: 'none'});
+      } else if (selectedCoefficient.fields.minLength.minValue < selectedCoefficient.fields.minLength.maxValue) {
         var coefData = selectedCoefficient.fields.minLength;
         var maxChoicesExceeded = (coefData.maxValue > field.getRef().getNumChoices());
         var slider1 = new CoefficientAddSlider($('add-coefficient-minlength-slider'), $('add-coefficient-minlength'), coefData.minValue, coefData.minValueInclusive, maxChoicesExceeded ? field.getRef().getNumChoices() : coefData.maxValue, maxChoicesExceeded ? true : coefData.maxValueInclusive);
@@ -908,11 +938,11 @@ var UIPainter = new Class({
         $('add-coefficient-minlength-slider').setStyles({display: 'none'});
       }
 
-        if(selectedCoefficient.fields.maxLength.hidden){
-            $('add-coefficient-maxlength').set('value', selectedCoefficient.fields.maxLength.minValue).set('type', 'hidden');
-            $('add-coefficient-maxlength-label').setStyles({display: 'none'});
-            $('add-coefficient-maxlength-slider').setStyles({display: 'none'});
-        } else if (selectedCoefficient.fields.maxLength.minValue < selectedCoefficient.fields.maxLength.maxValue) {
+      if (selectedCoefficient.fields.maxLength.hidden) {
+        $('add-coefficient-maxlength').set('value', selectedCoefficient.fields.maxLength.minValue).set('type', 'hidden');
+        $('add-coefficient-maxlength-label').setStyles({display: 'none'});
+        $('add-coefficient-maxlength-slider').setStyles({display: 'none'});
+      } else if (selectedCoefficient.fields.maxLength.minValue < selectedCoefficient.fields.maxLength.maxValue) {
         var coefData = selectedCoefficient.fields.maxLength;
         var maxChoicesExceeded = (coefData.maxValue > field.getRef().getNumChoices());
         var slider2 = new CoefficientAddSlider($('add-coefficient-maxlength-slider'), $('add-coefficient-maxlength'), coefData.minValue, coefData.minValueInclusive, maxChoicesExceeded ? field.getRef().getNumChoices() : coefData.maxValue, maxChoicesExceeded ? true : coefData.maxValueInclusive);
@@ -942,47 +972,47 @@ var UIPainter = new Class({
 
     if (selectedCoefficient.getName() === 'One category') {
       //region render value selection
-      var attributeId=field.ref.id;
+      var attributeId = field.ref.id;
       this.AttributeValuesManager.getAttributeValues({
         attributeId: field.ref.id,
-        onSuccess: function(data){
-          var select=null;
-          if (data.hasOwnProperty('length') && (data.length > 0)){
+        onSuccess: function (data) {
+          var select = null;
+          if (data.hasOwnProperty('length') && (data.length > 0)) {
             //some items loaded...
-            if (data.length > 100){
+            if (data.length > 100) {
               //too many items - render datalist
-              Mooml.render('editCoefficientWindowCategoryAutocompleteTemplate',{
+              Mooml.render('editCoefficientWindowCategoryAutocompleteTemplate', {
                 i18n: i18n,
                 selectType: 'input'
               }).replaces($('edit-coefficient-category-autocomplete'));
-              select=$('edit-coefficient-category-list');
-            }else{
+              select = $('edit-coefficient-category-list');
+            } else {
               //render select
-              Mooml.render('editCoefficientWindowCategoryAutocompleteTemplate',{
+              Mooml.render('editCoefficientWindowCategoryAutocompleteTemplate', {
                 i18n: i18n,
                 selectType: 'select'
               }).replaces($('edit-coefficient-category-autocomplete'));
-              select=$('edit-coefficient-category');
+              select = $('edit-coefficient-category');
             }
             //render options, enable submit
-            if (select !== null){
-              Array.each(data,function(value){
-                select.grab(Mooml.render('optionTemplate',{value:value, isSelected: (field.category == value)}));
+            if (select !== null) {
+              Array.each(data, function (value) {
+                select.grab(Mooml.render('optionTemplate', {value: value, isSelected: (field.category == value)}));
               });
-              var submit=$('edit-coefficient-autocomplete-submit');
-              submit.setProperty('disabled',false);
+              var submit = $('edit-coefficient-autocomplete-submit');
+              submit.setProperty('disabled', false);
               submit.removeAttribute('disabled');
             }
-          }else{
-            Mooml.render('editCoefficientWindowCategoryAutocompleteTemplate',{
+          } else {
+            Mooml.render('editCoefficientWindowCategoryAutocompleteTemplate', {
               i18n: i18n,
               error: i18n.translate('No values found. Please select another value type.')
             }).replaces($('edit-coefficient-category-autocomplete'));
           }
         },
-        onError: function(){
+        onError: function () {
           //render error
-          Mooml.render('editCoefficientWindowCategoryAutocompleteTemplate',{
+          Mooml.render('editCoefficientWindowCategoryAutocompleteTemplate', {
             i18n: i18n,
             error: i18n.translate('Sorry, values load failed. Please select another value type.')
           }).replaces($('edit-coefficient-category-autocomplete'));
@@ -990,11 +1020,11 @@ var UIPainter = new Class({
       });
       //endregion render value selection
     } else {
-        if(selectedCoefficient.fields.minLength.hidden){
-            $('edit-coefficient-minlength').set('value', selectedCoefficient.fields.minLength.minValue).set('type', 'hidden');
-            $('edit-coefficient-minlength-label').setStyles({display: 'none'});
-            $('edit-coefficient-minlength-slider').setStyles({display: 'none'});
-        } else if (selectedCoefficient.fields.minLength.minValue < selectedCoefficient.fields.minLength.maxValue) {
+      if (selectedCoefficient.fields.minLength.hidden) {
+        $('edit-coefficient-minlength').set('value', selectedCoefficient.fields.minLength.minValue).set('type', 'hidden');
+        $('edit-coefficient-minlength-label').setStyles({display: 'none'});
+        $('edit-coefficient-minlength-slider').setStyles({display: 'none'});
+      } else if (selectedCoefficient.fields.minLength.minValue < selectedCoefficient.fields.minLength.maxValue) {
         var coefData = selectedCoefficient.fields.minLength;
         var maxChoicesExceeded = (coefData.maxValue > field.getRef().getNumChoices());
         var slider1 = new CoefficientEditSlider($('edit-coefficient-minlength-slider'), $('edit-coefficient-minlength'), coefData.minValue, coefData.minValueInclusive, maxChoicesExceeded ? field.getRef().getNumChoices() : coefData.maxValue, maxChoicesExceeded ? true : coefData.maxValueInclusive);
@@ -1002,11 +1032,11 @@ var UIPainter = new Class({
         $('edit-coefficient-minlength').set('value', selectedCoefficient.fields.minLength.minValue);
         $('edit-coefficient-minlength-slider').setStyles({display: 'none'});
       }
-        if(selectedCoefficient.fields.maxLength.hidden){
-            $('edit-coefficient-maxlength').set('value', selectedCoefficient.fields.maxLength.minValue).set('type', 'hidden');
-            $('edit-coefficient-maxlength-label').setStyles({display: 'none'});
-            $('edit-coefficient-maxlength-slider').setStyles({display: 'none'});
-        } else if (selectedCoefficient.fields.maxLength.minValue < selectedCoefficient.fields.maxLength.maxValue) {
+      if (selectedCoefficient.fields.maxLength.hidden) {
+        $('edit-coefficient-maxlength').set('value', selectedCoefficient.fields.maxLength.minValue).set('type', 'hidden');
+        $('edit-coefficient-maxlength-label').setStyles({display: 'none'});
+        $('edit-coefficient-maxlength-slider').setStyles({display: 'none'});
+      } else if (selectedCoefficient.fields.maxLength.minValue < selectedCoefficient.fields.maxLength.maxValue) {
         var coefData = selectedCoefficient.fields.maxLength;
         var maxChoicesExceeded = (coefData.maxValue > field.getRef().getNumChoices());
         var slider2 = new CoefficientEditSlider($('edit-coefficient-maxlength-slider'), $('edit-coefficient-maxlength'), coefData.minValue, coefData.minValueInclusive, maxChoicesExceeded ? field.getRef().getNumChoices() : coefData.maxValue, maxChoicesExceeded ? true : coefData.maxValueInclusive);
@@ -1067,11 +1097,13 @@ var UIPainter = new Class({
    * Funkce pro samostatné vykreslení jednoho nalezeného pravidla
    * @param foundRule
    */
-  updateFoundRule:function(foundRule){
+  updateFoundRule: function (foundRule) {
     var foundRuleElement = $(foundRule.getCSSID());
-    if (!foundRuleElement){return;}
+    if (!foundRuleElement) {
+      return;
+    }
 
-    Mooml.render('foundRuleTemplate',{
+    Mooml.render('foundRuleTemplate', {
       IMs: this.ARBuilder.$FRManager.IMs,
       foundRule: foundRule,
       i18n: this.i18n
@@ -1096,9 +1128,12 @@ var UIPainter = new Class({
     this.$UIStructurePainter.posOverlay();
   },
 
-  renderRuleDetailsDialog: function (taskId,ruleId) {
+  renderRuleDetailsDialog: function (taskId, ruleId) {
     var overlay = this.$UIStructurePainter.showOverlay();
-    overlay.grab(Mooml.render('showRuleDetailsDialogTemplate', {i18n: this.i18n, url: this.config.getRuleDetailsUrl(taskId,ruleId)}));
+    overlay.grab(Mooml.render('showRuleDetailsDialogTemplate', {
+      i18n: this.i18n,
+      url: this.config.getRuleDetailsUrl(taskId, ruleId)
+    }));
     this.UIListener.registerOverlayEventHandlers();
     // Positioning of Overlay after rendering
     this.$UIStructurePainter.posOverlay();
@@ -1131,8 +1166,8 @@ var UIPainter = new Class({
       }
     ).replaces($('found-rules'));
 
-    var foundRules=this.ARBuilder.$FRManager.rules;
-    Array.each(foundRules,function(foundRule){
+    var foundRules = this.ARBuilder.$FRManager.rules;
+    Array.each(foundRules, function (foundRule) {
       this.UIListener.registerFoundRuleEventHandlers(foundRule);
     }.bind(this));
 
@@ -1167,28 +1202,28 @@ var UIPainter = new Class({
    * @param isFixed True if the window should be fixed, false otherwise.
    */
   updateOverlayPosition: function (isFixed) {
-    var overlay = $('overlay');
-    var newHeight = null;
-
-    // Change the position and size
-    if (isFixed) {
-      overlay.setStyle('height', this.overlayHeight);
-      $('settings-window').setStyle('margin-top', this.settingsWindowTopMargin);
-      overlay.setStyle('position', 'fixed');
-    } else {
-      this.overlayHeight = overlay.getStyle('height');
-      this.settingsWindowTopMargin = $('settings-window').getStyle('margin-top');
-
-      newHeight = $$('body').getStyle('height');
-      overlay.setStyles({
-        height: newHeight,
-        position: 'absolute'
-      });
-      $('settings-window').setStyle('margin-top', '10px');
-    }
+    // var overlay = $('overlay');
+    // var newHeight = null;
+    //
+    // // Change the position and size
+    // if (isFixed) {
+    //   overlay.setStyle('height', this.overlayHeight);
+    //   $('settings-window').setStyle('margin-top', this.settingsWindowTopMargin);
+    //   overlay.setStyle('position', 'fixed');
+    // } else {
+    //   this.overlayHeight = overlay.getStyle('height');
+    //   this.settingsWindowTopMargin = $('settings-window').getStyle('margin-top');
+    //
+    //   newHeight = $$('body').getStyle('height');
+    //   overlay.setStyles({
+    //     height: newHeight,
+    //     position: 'absolute'
+    //   });
+    //   $('settings-window').setStyle('margin-top', '10px');
+    // }
   },
 
-  renderCurrentUserWarning: function(message, url) {
+  renderCurrentUserWarning: function (message, url) {
     var overlay = this.$UIStructurePainter.showOverlay();
     var window = Mooml.render('userWarningWindowTemplate', {message: message, url: url});
     overlay.grab(window);

@@ -18,11 +18,11 @@ var UIStructureListener = new Class({
         this.$UIStructurePainter = UIStructurePainter;
     },
 
-    registerResizeEventHandler: function() {
-        window.addEvent('resize', function() {
-            this.$UIStructurePainter.resizeWindow();
-        }.bind(this));
-    },
+    // registerResizeEventHandler: function() {
+    //     window.addEvent('resize', function() {
+    //         this.$UIStructurePainter.resizeWindow();
+    //     }.bind(this));
+    // },
 
     registerUnsupportedBrowserEventHandler: function (field) {
         // submit
@@ -128,14 +128,14 @@ var UIStructureListener = new Class({
 
         attributesToggle.addEvent('click', function (event) {
             event.stop();
-            var elToggle = $$('#attributes > div')[1];
+            var elToggle = $$('#attributes > div')[2];
             elToggle.toggle();
-            var elH2 = $$('#attributes h2')[0];
-            if(elH2.hasClass('minimize')){
-                attributesToggle.set('title', i18n.translate('Maximize'));
-                attributesFilterBox.hide();
-            } else{ attributesToggle.set('title', i18n.translate('Minimize')); }
-            elH2.toggleClass('minimize'); elH2.toggleClass('maximize');
+          var elNavigationHeader = $$('#attributes .data-attr-navigation')[0];
+          if(elNavigationHeader.hasClass('minimize')){
+            attributesToggle.set('title', i18n.translate('Maximize'));
+            attributesFilterBox.hide();
+          } else{ attributesToggle.set('title', i18n.translate('Minimize')); }
+          elNavigationHeader.toggleClass('minimize'); elNavigationHeader.toggleClass('maximize');
         }.bind(this));
 
         attributesSelectable.addEvent('click', function (event) {
@@ -183,8 +183,8 @@ var UIStructureListener = new Class({
 
         attributesFilter.addEvent('click', function (event) {
             event.stop();
-            if(attributesFilterBox.getStyle('display') == 'none'){
-                attributesFilterBox.show();
+            if(attributesFilterBox.getStyle('display') === 'none'){
+                attributesFilterBox.show('flex');
                 attributesFilterInput.focus();
                 attributesFilterInput.select();
             } else{
@@ -194,7 +194,7 @@ var UIStructureListener = new Class({
         }.bind(this));
 
         $$('#attributes-filter')[0].addEvent('keydown', function(event){
-            if(event.key == 'enter'){ attributesFilterBox.hide(); }
+            if(event.key === 'enter'){ attributesFilterBox.hide(); }
         });
 
         resetA.addEvent('click', function (event) {
@@ -240,8 +240,8 @@ var UIStructureListener = new Class({
 
         dataFieldsFilter.addEvent('click', function (event) {
             event.stop();
-            if(dataFieldsFilterBox.getStyle('display') == 'none'){
-                dataFieldsFilterBox.show();
+            if(dataFieldsFilterBox.getStyle('display') === 'none'){
+                dataFieldsFilterBox.show('flex');
                 dataFieldsFilterInput.focus();
                 dataFieldsFilterInput.select();
             } else{
@@ -251,7 +251,7 @@ var UIStructureListener = new Class({
         }.bind(this));
 
         $$('#data-fields-filter')[0].addEvent('keydown', function(event){
-            if(event.key == 'enter'){ attributesFilterBox.hide(); }
+            if(event.key === 'enter'){ attributesFilterBox.hide(); }
         });
 
         resetD.addEvent('click', function (event) {
@@ -276,15 +276,17 @@ var UIStructureListener = new Class({
 
         dataFieldsToggle.addEvent('click', function (event) {
             event.stop();
-            var elToggle = $$('#data-fields > div')[1];
+            var elToggle = $$('#data-fields > div')[2];
             elToggle.toggle();
-            var elH2 = $$('#data-fields h2')[0];
-            if(elH2.hasClass('minimize')){
+            var elNavigationHeader = $$('#data-fields .data-attr-navigation')[0];
+            if(elNavigationHeader.hasClass('minimize')){
                 dataFieldsToggle.set('title', i18n.translate('Maximize'));
                 dataFieldsFilterBox.hide();
+            } else {
+                dataFieldsToggle.set('title', i18n.translate('Minimize'));
             }
-            else{ dataFieldsToggle.set('title', i18n.translate('Minimize')); }
-            elH2.toggleClass('minimize'); elH2.toggleClass('maximize');
+            elNavigationHeader.toggleClass('minimize');
+            elNavigationHeader.toggleClass('maximize');
         }.bind(this));
 
         /*$('kb-select').addEvent('change', function (event) {

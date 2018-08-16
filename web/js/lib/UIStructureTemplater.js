@@ -15,6 +15,7 @@ var UIStructureTemplater = new Class({
     this.registerMarkedRules();
     this.registerMarkedRulesTabs();
     this.registerUnsupportedBrowserWindow();
+    this.registerDataAndAttrNavigation();
   },
 
   registerStructure: function () {
@@ -26,12 +27,15 @@ var UIStructureTemplater = new Class({
 
     Mooml.register('mainTemplate', function (data) {
       var i18n = data.i18n;
-
-      div({id: 'wrapper', 'class': 'clearfix'},
+      section({id: 'IZImain'},
         section({id: 'workplace', 'class': 'clearfix'},
           section({id: 'content'},
             section({id: 'active-rule'}),
             section({id: 'found-rules'})
+          ),
+          section({id: 'rules-wrapper'},
+            Mooml.render('registerMarkedRules'),
+            Mooml.render('registerMarkedRulesTabs')
           )
         ),
         nav({id: 'navigation'})
@@ -42,17 +46,17 @@ var UIStructureTemplater = new Class({
   registerUnsupportedBrowserWindow: function () {
     Mooml.register('unsupportedBrowserWindowTemplate', function (data) {
       var i18n = data.i18n,
-          name = data.browserName;
+        name = data.browserName;
 
       div({id: 'unsupported-browser-window'},
-          //a({id: 'overlay-close', href: '#'}, i18n.translate('Close')),
-          h2(i18n.translate('Unsupported browser')),
-          form({action: '#', method: 'POST', id: 'unsupported-browser-form'},
-              div({class: 'clearfix'},
-                  span(i18n.translate('WARNING: You are using an old and deprecated version of web browser') + ' (' + name + '). ' + i18n.translate('Please upgrade to enjoy this application!'))
-              ),
-              input({type: 'submit', value: i18n.translate('I understand')})
-          )
+        //a({id: 'overlay-close', href: '#'}, i18n.translate('Close')),
+        h2(i18n.translate('Unsupported browser')),
+        form({action: '#', method: 'POST', id: 'unsupported-browser-form'},
+          div({class: 'clearfix'},
+            span(i18n.translate('WARNING: You are using an old and deprecated version of web browser') + ' (' + name + '). ' + i18n.translate('Please upgrade to enjoy this application!'))
+          ),
+          input({type: 'submit', value: i18n.translate('I understand')})
+        )
       );
     });
   },
@@ -208,7 +212,7 @@ var UIStructureTemplater = new Class({
 
       if (byGroup) {
         section({id: 'attributes'},
-          h2({'class': 'minimize'}, i18n.translate('Attributes'), a({href: '#', 'class': 'toggle'}, '')),
+          h2({}, i18n.translate('Attributes'), a({href: '#', 'class': 'toggle'}, '')),
           div(
             ul(),
             span({
@@ -218,12 +222,10 @@ var UIStructureTemplater = new Class({
             div(a({id: 'attributes-by-list', href: '#'}, i18n.translate('attributes')))));
       } else {
         section({id: 'attributes'},
-          h2({'class': 'minimize'}, i18n.translate('Attributes'), a({
-            href: '#',
-            'class': 'toggle',
-            'title': i18n.translate('Minimize')
-          }, ''), a({href: '#', 'class': 'filter', 'title': i18n.translate('Filter')}, ''),
-            a({href: '#', 'class': 'selectable', 'title': i18n.translate('Selectable')}, '')),
+          div({'class': 'navigation-header'},
+            h2({}, i18n.translate('Attributes')),
+            Mooml.render('dataAndAttrNavigation', data)),
+          hr({'class': 'separator'}),
           div({'class': 'datas-filter'},
             input({
               'id': 'attributes-filter',
@@ -243,55 +245,8 @@ var UIStructureTemplater = new Class({
               styles: {'display': hasHiddenAttributes ? 'inline' : 'none'},
               title: i18n.translate('Show hidden attributes')
             }, i18n.translate('Show hidden')),
+            div({id: 'controls-wrapper'},
               div({class: 'navigation-checkbox-controls'},
-                  a({
-                      class: 'all',
-                      title: i18n.translate('Select all')
-                  }),
-                  a({
-                      class: 'invert',
-                      title: i18n.translate('Invert selection')
-                  }),
-                  a({
-                      class: 'none',
-                      title: i18n.translate('Select none')
-                  }),
-                  a({
-                      id: 'add-selected-attributes',
-                      href: '#',
-                      title: i18n.translate('Add selected attributes to rule pattern...')
-                  }, i18n.translate('Add selected'))
-              ),
-              a({
-                  id: 'add-all-unused-attributes',
-                  href: '#',
-                  title: i18n.translate('Add all unused attributes to rule pattern...')
-              }, i18n.translate('Add all unused'))
-          ));
-      }
-    });
-
-    Mooml.register('dataFieldsStructureTemplate', function (data) {
-      var i18n = data.i18n;
-
-      section({id: 'data-fields'},
-        h2({'class': 'minimize'}, i18n.translate('Data fields'), a({
-          href: '#',
-          'class': 'toggle',
-          'title': i18n.translate('Minimize')
-        }, ''), a({href: '#', 'class': 'filter', 'title': i18n.translate('Filter')}, ''),
-            a({href: '#', 'class': 'selectable', 'title': i18n.translate('Selectable')}, '')),
-        div({'class': 'datas-filter'},
-          input({
-            'id': 'data-fields-filter',
-            'title': i18n.translate('Input part of requested data field name - special characters * and ? are supported.'),
-            'type': 'text'
-          }),
-          a({href: '#', 'class': 'reset-filter', 'title': i18n.translate('Reset filter')})),
-        div(
-            {'class': 'clearfix'},
-          ul(),
-            div({class: 'navigation-checkbox-controls'},
                 a({
                   class: 'all',
                   title: i18n.translate('Select all')
@@ -305,11 +260,58 @@ var UIStructureTemplater = new Class({
                   title: i18n.translate('Select none')
                 }),
                 a({
-                  id: 'add-selected-data-fields',
+                  id: 'add-selected-attributes',
                   href: '#',
-                  title: i18n.translate('Add all selected data fields to attributes...')
-                }, i18n.translate('Add selected to attributes'))
-            )
+                  title: i18n.translate('Add selected attributes to rule pattern...')
+                }, i18n.translate('Add selected'))
+              ),
+              a({
+                id: 'add-all-unused-attributes',
+                href: '#',
+                title: i18n.translate('Add all unused attributes to rule pattern...')
+              }, i18n.translate('Add all unused'))
+            ),
+          ));
+      }
+    });
+
+    Mooml.register('dataFieldsStructureTemplate', function (data) {
+      var i18n = data.i18n;
+
+      section({id: 'data-fields'},
+        div({'class': 'navigation-header'},
+          h2({}, i18n.translate('Data fields')),
+          Mooml.render('dataAndAttrNavigation', data)),
+        hr({'class': 'separator'}),
+        div({'class': 'datas-filter'},
+          input({
+            'id': 'data-fields-filter',
+            'title': i18n.translate('Input part of requested data field name - special characters * and ? are supported.'),
+            'type': 'text'
+          }),
+          a({href: '#', 'class': 'reset-filter', 'title': i18n.translate('Reset filter')})),
+        div(
+          {'class': 'clearfix'},
+          ul(),
+          div({class: 'navigation-checkbox-controls'},
+            a({
+              class: 'all',
+              title: i18n.translate('Select all')
+            }),
+            a({
+              class: 'invert',
+              title: i18n.translate('Invert selection')
+            }),
+            a({
+              class: 'none',
+              title: i18n.translate('Select none')
+            }),
+            a({
+              id: 'add-selected-data-fields',
+              href: '#',
+              title: i18n.translate('Add all selected data fields to attributes...')
+            }, i18n.translate('Add selected to attributes'))
+          )
         ));
     });
 
@@ -317,18 +319,28 @@ var UIStructureTemplater = new Class({
       var i18n = data.i18n;
 
       section({id: 'knowledge-base-select'},
-          h2({'class': 'minimize'}, i18n.translate('Knowledge base')),
-          div({'class': 'clearfix'},
-              strong({id: 'kb-ruleset'}, i18n.translate('Loading')+'...'),
-              br(),
-              a({href: '#', 'id': 'change-ruleset', 'title': i18n.translate('Change ruleset')}, i18n.translate('Change ruleset'))
-          ));
+        div({'class': 'navigation-header'},
+          h2({}, i18n.translate('Knowledge base'))),
+        hr({'class': 'separator'}),
+        div({'class': 'clearfix'},
+          strong({id: 'kb-ruleset'}, i18n.translate('Loading') + '...'),
+          br(),
+          a({
+            href: '#',
+            'id': 'change-ruleset',
+            'title': i18n.translate('Change ruleset')
+          }, i18n.translate('Change ruleset'))
+        ));
     });
 
     Mooml.register('reportsStructureTemplate', function (data) {
       var i18n = data.i18n;
 
-      section({id: 'reports', class: 'clearfix', style: "display:none;"/*TODO pracovní skrytí bloku s analytickými zprávami*/},
+      section({
+          id: 'reports',
+          class: 'clearfix',
+          style: "display:none;"/*TODO pracovní skrytí bloku s analytickými zprávami*/
+        },
         h2({'class': 'minimize'}, i18n.translate('Analytical Reports'), a({href: '#', 'class': 'toggle'}, '')),
         ul(),
         a({href: '#', id: 'createUserReport'}, i18n.translate('Create new report'))
@@ -339,24 +351,34 @@ var UIStructureTemplater = new Class({
 
   registerActiveRule: function () {
 
-    Mooml.register('arActionBoxTemplate',function(data){
-      var rules=data.rules,
-          pruningAvailable=data.pruningAvailable,
-          pruningAllowed=data.pruningAllowed,
-          pruningActive=data.pruningActive,
-          miningInProgress=data.miningInProgress,
-          i18n=data.i18n;
+    Mooml.register('arActionBoxTemplate', function (data) {
+      var rules = data.rules,
+        pruningAvailable = data.pruningAvailable,
+        pruningAllowed = data.pruningAllowed,
+        pruningActive = data.pruningActive,
+        miningInProgress = data.miningInProgress,
+        i18n = data.i18n;
 
-      if (rules){
+      if (rules) {
         a({id: 'start-mining', href: '#'}, i18n.translate('Mine rules...'));
-        if (pruningAvailable){
-          div({id:'start-mining-with-pruning-label', title:i18n.translate('Prune founded rules using algorithm CBA (for classification). Allowed only for rule pattern with exactly one attribute in consequent.')},
-            input({type:"checkbox", value:"CBA", disabled:(!pruningAllowed), defaultChecked:(pruningActive&&pruningAllowed), name:"start-mining-with-pruning", id:"start-mining-with-pruning"}),
-            label({for:'start-mining-with-pruning'},i18n.translate('with pruning...'))
+        if (pruningAvailable) {
+          div({
+              id: 'start-mining-with-pruning-label',
+              title: i18n.translate('Prune founded rules using algorithm CBA (for classification). Allowed only for rule pattern with exactly one attribute in consequent.')
+            },
+            input({
+              type: "checkbox",
+              value: "CBA",
+              disabled: (!pruningAllowed),
+              defaultChecked: (pruningActive && pruningAllowed),
+              name: "start-mining-with-pruning",
+              id: "start-mining-with-pruning"
+            }),
+            label({for: 'start-mining-with-pruning'}, i18n.translate('with pruning...'))
           );
         }
       }
-      if (miningInProgress){
+      if (miningInProgress) {
         a({id: 'stop-mining', href: '#'}, i18n.translate('Stop mining'));
       }
     });
@@ -389,7 +411,7 @@ var UIStructureTemplater = new Class({
 
       if (activeRuleChanged) {
         //rule pattern changed
-        if (taskBox && taskText != '') {
+        if (taskBox && taskText !== '') {
           miningProgressText = div({'class': 'question'}, taskText);
         } else {
           miningProgressText = div({'class': 'info'}, i18n.translate('Create an association rule pattern to start mining...'));
@@ -397,15 +419,15 @@ var UIStructureTemplater = new Class({
       } else {
         if (miningInProgress) {
           miningProgressText = div({'class': 'in_progress'}, i18n.translate('Mining is in progress, it may take a while to get the results.'));
-        } else if (miningState == 'solved') {
-          if (data.foundRulesCount==0){
-            miningProgressText = div({'class': 'solved'}, i18n.translate('Mining has finished, but no rules were found!'),' ', i18n.translate('Try to modify the rule pattern...'));
-          }else{
+        } else if (miningState === 'solved') {
+          if (data.foundRulesCount === 0) {
+            miningProgressText = div({'class': 'solved'}, i18n.translate('Mining has finished, but no rules were found!'), ' ', i18n.translate('Try to modify the rule pattern...'));
+          } else {
             miningProgressText = div({'class': 'solved'}, i18n.translate('Mining has finished!'), ' ', i18n.translate('Work with discovered rules, or modify the rule pattern...'));
           }
-        } else if (miningState == 'failed') {
+        } else if (miningState === 'failed') {
           miningProgressText = div({'class': 'failed'}, i18n.translate('Mining has failed! Please try to modify the rule pattern...'));
-        } else if (miningState == 'interrupted') {
+        } else if (miningState === 'interrupted') {
           miningProgressText = div({'class': 'interrupted'}, i18n.translate('Mining was interrupted. Please try to modify the rule pattern...'));
         } else {
           miningProgressText = div({'class': 'info'}, i18n.translate('Create an association rule pattern to start mining...'));
@@ -417,11 +439,11 @@ var UIStructureTemplater = new Class({
         div({id: 'ar-wrapper', 'class': 'clearfix'},
           div({id: 'antecedent'},
             h3(i18n.translate('Antecedent'),
-                a({
-                    href: '#',
-                    id: 'empty-antecedent',
-                    'title': i18n.translate('Empty')
-                })
+              a({
+                href: '#',
+                id: 'empty-antecedent',
+                'title': i18n.translate('Empty')
+              })
             )
           ),
           div({id: 'interest-measures'},
@@ -429,16 +451,23 @@ var UIStructureTemplater = new Class({
             div(),
             displayAddIM ? a({href: '#', id: 'add-im'}, i18n.translate('Add interest measure')) : ''),
           div({id: 'succedent'}, h3(i18n.translate('Consequent'),
-              a({
-                  href: '#',
-                  id: 'empty-succedent',
-                  'title': i18n.translate('Empty')
-              })
+            a({
+              href: '#',
+              id: 'empty-succedent',
+              'title': i18n.translate('Empty')
+            })
           ))
         ),
         div({'class': 'clearfix'}),
         div({id: 'ar-action-box'},
-          Mooml.render('arActionBoxTemplate',{rules:rules,pruningAvailable:pruningAvailable,pruningAllowed:pruningAllowed,pruningActive:pruningActive,miningInProgress:miningInProgress,i18n:i18n}),
+          Mooml.render('arActionBoxTemplate', {
+            rules: rules,
+            pruningAvailable: pruningAvailable,
+            pruningAllowed: pruningAllowed,
+            pruningActive: pruningActive,
+            miningInProgress: miningInProgress,
+            i18n: i18n
+          }),
           miningProgressText
         )
       );
@@ -448,34 +477,34 @@ var UIStructureTemplater = new Class({
   registerFoundRules: function () {
 
     Mooml.register('foundRulesStructureTemplate', function (data) {
-      var FRManager=data.FRManager;
-      if (FRManager.rulesCount>0){
+      var FRManager = data.FRManager;
+      if (FRManager.rulesCount > 0) {
 
-        var rulesCountInfo = '('+data.i18n.translate('rules: ')+' <strong>'+FRManager.rulesCount+'</strong>';
-        if (FRManager.miningInterrupted){
-          rulesCountInfo+=', '+data.i18n.translate('interrupted');
+        var rulesCountInfo = '(' + data.i18n.translate('rules: ') + ' <strong>' + FRManager.rulesCount + '</strong>';
+        if (FRManager.miningInterrupted) {
+          rulesCountInfo += ', ' + data.i18n.translate('interrupted');
         }
-        if (FRManager.miningInProgress){
-          rulesCountInfo+=', '+data.i18n.translate('mining in progress...');
-        }else if(FRManager.importInProgress){
-          rulesCountInfo+=', '+data.i18n.translate('results import in progress...');
+        if (FRManager.miningInProgress) {
+          rulesCountInfo += ', ' + data.i18n.translate('mining in progress...');
+        } else if (FRManager.importInProgress) {
+          rulesCountInfo += ', ' + data.i18n.translate('results import in progress...');
         }
-        rulesCountInfo+=')';
+        rulesCountInfo += ')';
         //some rules for rendering
         section({id: 'found-rules'},
           h2(data.i18n.translate('Discovered rules')),
           div(
             {id: 'found-rules-task-name'},
             FRManager.getTaskName(),
-            span({class: 'count'},rulesCountInfo),
-            a({href: '#', class: 'rename-task' , title: data.i18n.translate('Rename task') })
+            span({class: 'count'}, rulesCountInfo),
+            a({href: '#', class: 'rename-task', title: data.i18n.translate('Rename task')})
           ),
-          Mooml.render('foundRulesControlsTemplate',data),
-          Mooml.render('foundRulesTemplate',data),
-          Mooml.render('foundRulesMultiControlsTemplate',data)
+          Mooml.render('foundRulesControlsTemplate', data),
+          Mooml.render('foundRulesTemplate', data),
+          Mooml.render('foundRulesMultiControlsTemplate', data)
         );
-      }else{
-        section({id:'found-rules'});
+      } else {
+        section({id: 'found-rules'});
       }
 
     });
@@ -488,32 +517,42 @@ var UIStructureTemplater = new Class({
       var i18n = data.i18n;
 
       section({id: 'marked-rules'},
-          div({class: 'marked-rules-tasks-content empty'},
-              div(
-                  {class: 'marked-rules-empty marked-rules-task-name'},
-                  data.i18n.translate('Here you can collect interesting rules...')
-              )
-          ),
-          div({class: 'marked-rules-base-content empty'},
-              div(
-                  {class: 'marked-rules-empty marked-rules-task-name'},
-                  data.i18n.translate('Here you can collect interesting rules...')
-              )
+        div({class: 'marked-rules-tasks-content empty'},
+          div(
+            {class: 'marked-rules-empty marked-rules-task-name'},
+            data.i18n.translate('Here you can collect interesting rules...')
           )
+        ),
+        div({class: 'marked-rules-base-content empty'},
+          div(
+            {class: 'marked-rules-empty marked-rules-task-name'},
+            data.i18n.translate('Here you can collect interesting rules...')
+          )
+        )
       );
     });
   },
 
-    registerMarkedRulesTabs: function () {
-        Mooml.register('markedRulesTabsStructureTemplate', function (data) {
-            var i18n = data.i18n;
+  registerMarkedRulesTabs: function () {
+    Mooml.register('markedRulesTabsStructureTemplate', function (data) {
+      var i18n = data.i18n;
 
-                section({id: 'marked-rules-tabs'},
-                    h2({'class': 'marked-rules-tab marked-rules-tasks marked-rules-tab-active'},
-                        a(i18n.translate('Rule clipboard'))),
-                    h2({'class': 'marked-rules-tab marked-rules-base'},
-                        a(i18n.translate('Knowledge base')))
-                );
-        });
-    }
+      section({id: 'marked-rules-tabs'},
+        h2({'class': 'marked-rules-tab marked-rules-tasks marked-rules-tab-active'},
+          a(i18n.translate('Rule clipboard'))),
+        h2({'class': 'marked-rules-tab marked-rules-base'},
+          a(i18n.translate('Knowledge base')))
+      );
+    });
+  },
+
+  registerDataAndAttrNavigation: function () {
+    Mooml.register('dataAndAttrNavigation', function (data) {
+      var i18n = data.i18n;
+      div({'class': 'data-attr-navigation minimize'},
+        a({href: '#', 'class': 'toggle', 'title': i18n.translate('Minimize')}, ''),
+        a({href: '#', 'class': 'filter', 'title': i18n.translate('Filter')}, ''),
+        a({href: '#', 'class': 'selectable', 'title': i18n.translate('Selectable')}, ''))
+    })
+  }
 });

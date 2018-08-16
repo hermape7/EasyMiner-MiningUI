@@ -189,14 +189,14 @@ div#overlay-inner form .tooltip {
   cursor: help;
   position: relative;
 }
-div#overlay-inner form .tooltip >span {
+div#overlay-inner form .tooltip > span {
   font-size: 0.9em;
   line-height: 1.25em;
   margin-left: -999em;
   padding: 0.5em 0.8em 0.8em 2em;
   position: absolute;
 }
-div#overlay-inner form .tooltip:hover >span {
+div#overlay-inner form .tooltip:hover > span {
   font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
   width: 250px;
   margin-left: 0;
@@ -576,14 +576,14 @@ div#overlay-inner #change-ruleset-window .bigButtons a span {
   cursor: help;
   position: relative;
 }
-#settings-form .tooltip >span {
+#settings-form .tooltip > span {
   font-size: 0.9em;
   line-height: 1.25em;
   margin-left: -999em;
   padding: 0.5em 0.8em 0.8em 2em;
   position: absolute;
 }
-#settings-form .tooltip:hover >span {
+#settings-form .tooltip:hover > span {
   font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
   width: 250px;
   margin-left: 0;
@@ -670,413 +670,6 @@ div#overlay-inner #change-ruleset-window .bigButtons a span {
   padding-left: 13px;
   position: relative;
   top: -9px;
-}
-nav {
-  color: #434343;
-  float: left;
-  width: 280px;
-  margin: 10px 5px 0 10px;
-  line-height: 20px;
-}
-#attributes {
-  color: #434343;
-  background-color: #fff;
-  border: none;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  padding: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 10px;
-}
-#attributes h2 {
-  color: #314e64;
-  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
-  font-size: 28px;
-  font-weight: normal;
-  margin: 0 0 20px 0;
-  font-size: 22.400000000000002px;
-  margin: 5px 20px 15px 20px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #314e64;
-}
-#attributes h2.minimize a {
-  background: transparent url("../images/sprite-icons.png") -20px -220px no-repeat;
-}
-#attributes h2.maximize a {
-  background: transparent url("../images/sprite-icons.png") -19px -169px no-repeat;
-}
-#attributes h2 a {
-  display: block;
-  width: 12px;
-  height: 12px;
-  float: right;
-  position: relative;
-  top: 5px;
-  margin-left: 5px /*FIXME*/;
-}
-#attributes ul#attributes-by-group {
-  background: transparent url("../images/icon-group4.png") 0 2px no-repeat;
-}
-#attributes #attributes-by-group > li {
-  padding-left: 20px;
-}
-#attributes #attributes-by-group span {
-  color: #314e64;
-  font-size: 14px;
-}
-#attributes #attributes-by-group span.coefficient {
-  color: #925213;
-  font-size: 0.85em;
-  position: relative;
-  top: -1px;
-  margin-left: 3px;
-}
-#attributes a#attributes-by-list,
-#attributes a#attributes-by-group {
-  font-size: 13px;
-}
-#attributes li {
-  cursor: move;
-  float: left;
-  clear: left;
-}
-#attributes li.rec1 {
-  background: transparent url("../images/sprite-icons.png") -20px -415px no-repeat;
-}
-#attributes li.rec2 {
-  background: transparent url("../images/sprite-icons.png") -20px -463px no-repeat;
-}
-#attributes li.used {
-  color: #aaa;
-}
-#attributes li .add {
-  background: transparent url("../images/sprite-icons.png") -166px -162px no-repeat;
-  float: left;
-  width: 20px;
-  height: 20px;
-  visibility: hidden;
-}
-#attributes li:hover {
-  color: #000;
-}
-#attributes li:hover .add {
-  visibility: visible;
-}
-#attributes a.edit-attribute {
-  background: transparent url("../images/sprite-icons.png") -19px -262px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-  visibility: hidden;
-  margin-left: 10px;
-  float: right;
-}
-#attributes li:hover a.edit-attribute {
-  visibility: visible;
-}
-#attributes a.show-histogram {
-  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-  visibility: hidden;
-  margin-left: 10px;
-  float: right;
-  visibility: hidden;
-}
-#attributes li:hover a.show-histogram {
-  visibility: visible;
-}
-#attributes a.remove-attribute {
-  background: transparent url("../images/sprite-icons.png") -19px -15px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-  visibility: hidden;
-  margin-left: 5px;
-  float: right;
-}
-#attributes li:hover a.remove-attribute {
-  visibility: visible;
-}
-#attributes #etree-progress {
-  color: #666;
-  font-size: 14px;
-  background: transparent url("../images/icon-loading-bw-16.gif") 0 3px no-repeat;
-  display: block;
-  padding-left: 20px;
-  margin: 5px 0 5px 20px;
-}
-#attributes #show-hidden-attributes {
-  color: #126499;
-  font-size: 14px;
-  float: right;
-  margin-top: 8px;
-}
-#attributes #add-all-unused-attributes {
-  clear: right;
-  color: #126499;
-  font-size: 14px;
-  float: right;
-  padding-left: 21px;
-  margin-top: 8px;
-  display: none;
-  background: transparent url("../images/sprite-icons.png") -166px -162px no-repeat;
-}
-#data-fields {
-  color: #434343;
-  background-color: #fff;
-  border: none;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  padding: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 10px;
-}
-#data-fields h2 {
-  color: #314e64;
-  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
-  font-size: 28px;
-  font-weight: normal;
-  margin: 0 0 20px 0;
-  font-size: 22.400000000000002px;
-  margin: 5px 20px 15px 20px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #314e64;
-}
-#data-fields h2.minimize a {
-  background: transparent url("../images/sprite-icons.png") -20px -220px no-repeat;
-}
-#data-fields h2.maximize a {
-  background: transparent url("../images/sprite-icons.png") -19px -169px no-repeat;
-}
-#data-fields h2 a {
-  display: block;
-  width: 12px;
-  height: 12px;
-  float: right;
-  position: relative;
-  top: 5px;
-  margin-left: 5px /*FIXME*/;
-}
-#data-fields ul {
-  margin-bottom: 10px;
-}
-#data-fields li {
-  cursor: move;
-  float: left;
-  clear: left;
-}
-#data-fields li .add {
-  background: transparent url("../images/sprite-icons.png") -166px -162px no-repeat;
-  display: block;
-  float: left;
-  width: 20px;
-  height: 20px;
-  visibility: hidden;
-}
-#data-fields li .show-histogram {
-  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-  visibility: hidden;
-  margin-left: 10px;
-  float: right;
-  visibility: hidden;
-}
-#data-fields li:hover {
-  color: #000;
-}
-#data-fields li:hover .add {
-  visibility: visible;
-}
-#data-fields li:hover .show-histogram {
-  visibility: visible;
-}
-#knowledge-base-select {
-  color: #434343;
-  background-color: #fff;
-  border: none;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  padding: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 10px;
-}
-#knowledge-base-select h2 {
-  color: #314e64;
-  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
-  font-size: 28px;
-  font-weight: normal;
-  margin: 0 0 20px 0;
-  font-size: 22.400000000000002px;
-  margin: 5px 20px 15px 20px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #314e64;
-}
-#knowledge-base-select .clearfix {
-  padding: 0 20px;
-  line-height: 1.8;
-}
-#knowledge-base-select .clearfix select {
-  width: 100%;
-}
-#knowledge-base-select .clearfix #change-ruleset {
-  color: #126499;
-  font-size: 14px;
-  float: right;
-}
-#navigation h2.maximize .filter,
-#navigation h2.maximize .selectable {
-  display: none;
-}
-#attributes .datas-filter,
-#data-fields .datas-filter {
-  display: none;
-  margin: 5px 20px;
-}
-#attributes input[type='text'],
-#data-fields input[type='text'] {
-  width: 180px;
-  padding: 2px 3px;
-  background: none;
-  border: 1px solid #aaa /*TODO nahradit parametry!*/;
-  -moz-user-select: text;
-  -ms-user-select: text;
-}
-#attributes a.reset-filter,
-#data-fields a.reset-filter {
-  float: right;
-  background: transparent url("../images/sprite-icons.png") -19px -15px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-  margin: 2px 0 0 5px;
-}
-#attributes .filter,
-#data-fields .filter {
-  display: block;
-  width: 20px;
-  height: 20px;
-  float: right;
-  top: 3px !important;
-  background: transparent url("../images/icon-filter.png") no-repeat 0 0 !important;
-}
-#attributes .selectable,
-#data-fields .selectable {
-  display: block;
-  width: 20px;
-  height: 20px;
-  float: right;
-  top: 3px !important;
-  background: transparent url("../images/icon-checkboxes.png") no-repeat 0 0 !important;
-}
-#attributes .filter-active,
-#data-fields .filter-active {
-  background-position: 0 -20px !important;
-}
-#attributes li span,
-#data-fields li span {
-  display: inline-block;
-  max-width: 190px;
-  height: 18px;
-  padding: 1px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-#attributes .navigation-checkbox-controls,
-#data-fields .navigation-checkbox-controls {
-  clear: both;
-  display: none;
-  float: left;
-  height: 28px;
-  overflow: hidden;
-  width: auto;
-}
-#attributes .navigation-checkbox-controls #add-selected-attributes,
-#data-fields .navigation-checkbox-controls #add-selected-attributes,
-#attributes .navigation-checkbox-controls #add-selected-data-fields,
-#data-fields .navigation-checkbox-controls #add-selected-data-fields {
-  display: none;
-  color: #126499;
-  font-size: 14px;
-  float: right;
-  padding-left: 21px;
-  margin-top: 8px;
-  background: transparent url("../images/sprite-icons.png") -166px -162px no-repeat;
-}
-#attributes .navigation-checkbox-controls .all,
-#data-fields .navigation-checkbox-controls .all {
-  display: inline-block;
-  position: relative;
-  top: 5px;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
-  float: left;
-  margin-right: 2px;
-  margin-top: 4px;
-  background: transparent url("../images/icon-select-all.png") center center no-repeat;
-}
-#attributes .navigation-checkbox-controls .none,
-#data-fields .navigation-checkbox-controls .none {
-  display: inline-block;
-  position: relative;
-  top: 5px;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
-  float: left;
-  margin-right: 2px;
-  margin-top: 4px;
-  background: transparent url("../images/icon-select-none.png") center center no-repeat;
-}
-#attributes .navigation-checkbox-controls .invert,
-#data-fields .navigation-checkbox-controls .invert {
-  display: inline-block;
-  position: relative;
-  top: 5px;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
-  float: left;
-  margin-right: 2px;
-  margin-top: 4px;
-  background: transparent url("../images/icon-select-invert.png") center center no-repeat;
-}
-#attributes.with-checkboxes-actions .navigation-checkbox-controls,
-#data-fields.with-checkboxes-actions .navigation-checkbox-controls {
-  width: 100%;
-}
-#attributes input[type='checkbox'],
-#data-fields input[type='checkbox'] {
-  display: none;
-  float: left;
-  width: 20px;
-  margin-top: 4px;
-}
-#attributes.show-checkboxes input[type='checkbox'],
-#data-fields.show-checkboxes input[type='checkbox'] {
-  display: block;
-}
-#attributes.show-checkboxes .add,
-#data-fields.show-checkboxes .add {
-  display: none;
-}
-#attributes.show-checkboxes .navigation-checkbox-controls,
-#data-fields.show-checkboxes .navigation-checkbox-controls {
-  display: block;
 }
 section#active-rule {
   position: relative;
@@ -1220,8 +813,8 @@ section#active-rule #antecedent .cedent .group-fields {
   position: relative;
   top: 23px;
 }
-section#active-rule #antecedent >.cedent >.fields >.field,
-section#active-rule #antecedent >.cedent >.fields >.connective {
+section#active-rule #antecedent >.cedent > .fields > .field,
+section#active-rule #antecedent >.cedent > .fields > .connective {
   margin-top: 3px;
 }
 section#active-rule #antecedent:hover a#empty-antecedent {
@@ -1229,7 +822,6 @@ section#active-rule #antecedent:hover a#empty-antecedent {
 }
 section#active-rule #interest-measures {
   margin-left: 20px;
-  width: 200px;
 }
 section#active-rule #interest-measures #add-im {
   font-size: 14px;
@@ -1415,8 +1007,8 @@ section#active-rule #succedent .cedent .group-fields {
   position: relative;
   top: 23px;
 }
-section#active-rule #succedent >.cedent >.fields >.field,
-section#active-rule #succedent >.cedent >.fields >.connective {
+section#active-rule #succedent >.cedent > .fields > .field,
+section#active-rule #succedent >.cedent > .fields > .connective {
   margin-top: 3px;
 }
 section#active-rule #succedent:hover a#empty-succedent {
@@ -1756,15 +1348,15 @@ section#active-rule #ar-action-box #start-mining-with-pruning-label input[type=c
   -ms-user-select: text;
   -webkit-user-select: text;
 }
-#found-rules ul li .ims >span {
+#found-rules ul li .ims > span {
   border-right: 1px solid #ededed;
   padding-right: 5px;
   margin-right: 5px;
 }
-#found-rules ul li .ims >span:last-child {
+#found-rules ul li .ims > span:last-child {
   border-right: none;
 }
-#found-rules ul li .ims >span .value {
+#found-rules ul li .ims > span .value {
   color: #7b0d2e;
 }
 #found-rules ul li.selected .rule {
@@ -1794,34 +1386,37 @@ section#active-rule #ar-action-box #start-mining-with-pruning-label input[type=c
   position: relative;
 }
 #found-rules #found-rules-multi-controls .all {
-  display: inline-block;
-  position: relative;
-  top: 5px;
+  display: flex;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
   background: transparent url("../images/icon-select-all.png") center center no-repeat;
 }
+@media only screen and (min-width: 1370px) {
+  #found-rules #found-rules-multi-controls .all {
+    cursor: pointer;
+  }
+}
 #found-rules #found-rules-multi-controls .none {
-  display: inline-block;
-  position: relative;
-  top: 5px;
+  display: flex;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
   background: transparent url("../images/icon-select-none.png") center center no-repeat;
 }
+@media only screen and (min-width: 1370px) {
+  #found-rules #found-rules-multi-controls .none {
+    cursor: pointer;
+  }
+}
 #found-rules #found-rules-multi-controls .invert {
-  display: inline-block;
-  position: relative;
-  top: 5px;
+  display: flex;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
   background: transparent url("../images/icon-select-invert.png") center center no-repeat;
+}
+@media only screen and (min-width: 1370px) {
+  #found-rules #found-rules-multi-controls .invert {
+    cursor: pointer;
+  }
 }
 #found-rules #found-rules-multi-controls .actions {
   margin-left: 10px;
@@ -1891,7 +1486,6 @@ section#active-rule #ar-action-box #start-mining-with-pruning-label input[type=c
   float: left;
   clear: left;
   padding: 0;
-  width: 1025px;
 }
 #marked-rules-tabs .marked-rules-tab {
   color: #434343;
@@ -1905,7 +1499,6 @@ section#active-rule #ar-action-box #start-mining-with-pruning-label input[type=c
   font: 36px 'Arial', /*'Droid Sans',*/ 'sans-serif';
   font-weight: normal;
   border-bottom: none;
-  width: 510px;
   margin: 0;
   padding: 0;
   background-color: rgba(255,255,255,0.6);
@@ -1941,7 +1534,6 @@ section#active-rule #ar-action-box #start-mining-with-pruning-label input[type=c
   box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
   -webkit-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
   -moz-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
-  min-width: 985px;
   margin: 0 0 0 10px;
   float: left;
   clear: left;
@@ -2126,15 +1718,15 @@ section#active-rule #ar-action-box #start-mining-with-pruning-label input[type=c
   -ms-user-select: text;
   -webkit-user-select: text;
 }
-#marked-rules ul li .ims >span {
+#marked-rules ul li .ims > span {
   border-right: 1px solid #ededed;
   padding-right: 5px;
   margin-right: 5px;
 }
-#marked-rules ul li .ims >span:last-child {
+#marked-rules ul li .ims > span:last-child {
   border-right: none;
 }
-#marked-rules ul li .ims >span .value {
+#marked-rules ul li .ims > span .value {
   color: #7b0d2e;
 }
 #marked-rules ul li.loading .ruleActions {
@@ -2153,34 +1745,37 @@ section#active-rule #ar-action-box #start-mining-with-pruning-label input[type=c
   border-bottom: 2px solid #126499;
 }
 #marked-rules .marked-rules-multi-controls .all {
-  display: inline-block;
-  position: relative;
-  top: 5px;
+  display: flex;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
   background: transparent url("../images/icon-select-all.png") center center no-repeat;
 }
+@media only screen and (min-width: 1370px) {
+  #marked-rules .marked-rules-multi-controls .all {
+    cursor: pointer;
+  }
+}
 #marked-rules .marked-rules-multi-controls .none {
-  display: inline-block;
-  position: relative;
-  top: 5px;
+  display: flex;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
   background: transparent url("../images/icon-select-none.png") center center no-repeat;
 }
+@media only screen and (min-width: 1370px) {
+  #marked-rules .marked-rules-multi-controls .none {
+    cursor: pointer;
+  }
+}
 #marked-rules .marked-rules-multi-controls .invert {
-  display: inline-block;
-  position: relative;
-  top: 5px;
+  display: flex;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
-  cursor: pointer;
   background: transparent url("../images/icon-select-invert.png") center center no-repeat;
+}
+@media only screen and (min-width: 1370px) {
+  #marked-rules .marked-rules-multi-controls .invert {
+    cursor: pointer;
+  }
 }
 #marked-rules .marked-rules-multi-controls .marked-rules-checkbox-controls {
   float: left;
@@ -2247,25 +1842,56 @@ section#active-rule #ar-action-box #start-mining-with-pruning-label input[type=c
   float: right;
   margin: 20px 20px 0 0;
 }
-* {
-  user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+#IZIMiner {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  width: 100%;
 }
-#wrapper {
-  min-height: 500px;
-  min-width: 1335px;
-  width: 1335px;
-  margin: 0 auto;
-  position: relative;
+#IZIMiner #IZImain {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  width: 100%;
+}
+@media only screen and (min-width: 1370px) {
+  #IZIMiner #IZImain {
+    padding: 0 10%;
+  }
 }
 section#workplace {
-  margin: 0 auto;
-  padding-bottom: 10px;
-  float: left;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  margin: 10px;
 }
 section#content {
   color: #434343;
@@ -2275,9 +1901,13 @@ section#content {
   -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
   -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
   padding: 20px;
-  min-width: 985px;
-  float: left;
-  margin: 10px 0 0 10px;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  width: 100%;
+  margin-bottom: 10px;
 }
 section#content h2 {
   color: #925213;
@@ -2292,4 +1922,775 @@ section#content h3 {
   border-bottom: 1px solid #314e64;
   line-height: 20px;
   margin-bottom: 10px;
+}
+nav#navigation {
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  width: 320px;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  margin: 10px 10px 10px 0;
+  color: #434343;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+  padding: 20px;
+  padding: 0;
+}
+nav#navigation a {
+  margin: 4px;
+}
+nav#navigation .separator {
+  height: 2px;
+  margin: 0.5em 0;
+  padding: 0;
+}
+.navigation-header {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.navigation-header h2 {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.navigation-header .data-attr-navigation {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+.navigation-header .data-attr-navigation a {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  width: 20px;
+  height: 20px;
+}
+.navigation-header .data-attr-navigation .selectable {
+  background: transparent url("../images/icon-checkboxes.png") no-repeat 0 0 !important;
+}
+.navigation-header .data-attr-navigation .filter {
+  background: transparent url("../images/icon-filter.png") no-repeat 0 0 !important;
+}
+.data-attr-navigation.minimize a.toggle {
+  background: transparent url("../images/sprite-icons.png") -16px -216px no-repeat;
+}
+.data-attr-navigation.maximize a.toggle {
+  background: transparent url("../images/sprite-icons.png") -15px -163px no-repeat;
+}
+#attributes,
+#data-fields {
+  padding: 20px 20px 5px 20px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+}
+#attributes h2,
+#data-fields h2 {
+  color: #314e64;
+  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
+  font-size: 28px;
+  font-weight: normal;
+  margin: 0 0 20px 0;
+  font-size: 22.400000000000002px;
+  margin: 0;
+}
+#attributes .clearfix,
+#data-fields .clearfix {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+#attributes .clearfix ul,
+#data-fields .clearfix ul {
+  width: 100%;
+}
+#attributes .clearfix ul li,
+#data-fields .clearfix ul li {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+#attributes .clearfix ul li a.add,
+#data-fields .clearfix ul li a.add {
+  background: transparent url("../images/sprite-icons.png") -166px -162px no-repeat;
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes .clearfix ul li a.add,
+  #data-fields .clearfix ul li a.add {
+    -webkit-box-ordinal-group: 1;
+    -moz-box-ordinal-group: 1;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .clearfix ul li a.add,
+  #data-fields .clearfix ul li a.add {
+    visibility: hidden;
+  }
+}
+#attributes .clearfix ul li a.show-histogram,
+#data-fields .clearfix ul li a.show-histogram {
+  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes .clearfix ul li a.show-histogram,
+  #data-fields .clearfix ul li a.show-histogram {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .clearfix ul li a.show-histogram,
+  #data-fields .clearfix ul li a.show-histogram {
+    visibility: hidden;
+  }
+}
+#attributes .clearfix ul li a.remove-attribute,
+#data-fields .clearfix ul li a.remove-attribute {
+  background: transparent url("../images/sprite-icons.png") -19px -15px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+  visibility: hidden;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes .clearfix ul li a.remove-attribute,
+  #data-fields .clearfix ul li a.remove-attribute {
+    visibility: visible;
+    -webkit-box-ordinal-group: 3;
+    -moz-box-ordinal-group: 3;
+    -ms-flex-order: 3;
+    -webkit-order: 3;
+    order: 3;
+  }
+}
+#attributes .clearfix ul li .att-options,
+#data-fields .clearfix ul li .att-options {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes .clearfix ul li .att-options,
+  #data-fields .clearfix ul li .att-options {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+  }
+}
+#attributes .clearfix ul li .att-with-input,
+#data-fields .clearfix ul li .att-with-input {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+#attributes .clearfix ul li input[type="checkbox"],
+#data-fields .clearfix ul li input[type="checkbox"] {
+  margin: 4px;
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .clearfix ul li input[type="checkbox"],
+  #data-fields .clearfix ul li input[type="checkbox"] {
+    margin: 2px;
+  }
+}
+#attributes .clearfix ul li span,
+#data-fields .clearfix ul li span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .clearfix ul li,
+  #data-fields .clearfix ul li {
+    cursor: move;
+  }
+}
+#attributes ul#attributes-by-group {
+  background: transparent url("../images/icon-group4.png") 0 2px no-repeat;
+}
+#attributes #attributes-by-group > li {
+  padding-left: 20px;
+}
+#attributes #attributes-by-group span {
+  color: #314e64;
+  font-size: 14px;
+}
+#attributes #attributes-by-group span.coefficient {
+  color: #925213;
+  font-size: 0.85em;
+  position: relative;
+  top: -1px;
+  margin-left: 3px;
+}
+#attributes a#attributes-by-list,
+#attributes a#attributes-by-group {
+  font-size: 13px;
+}
+#attributes li.rec1 {
+  background: transparent url("../images/sprite-icons.png") -20px -415px no-repeat;
+}
+#attributes li.rec2 {
+  background: transparent url("../images/sprite-icons.png") -20px -463px no-repeat;
+}
+#attributes li.used {
+  color: #aaa;
+}
+@media only screen and (min-width: 1370px) {
+  #attributes li:hover {
+    color: #000;
+  }
+  #attributes li:hover .add {
+    visibility: visible;
+  }
+}
+#attributes a.edit-attribute {
+  background: transparent url("../images/sprite-icons.png") -19px -262px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+  visibility: hidden;
+  margin-left: 10px;
+  float: right;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes a.edit-attribute {
+    visibility: visible;
+  }
+}
+#attributes li:hover a.edit-attribute {
+  visibility: visible;
+}
+#attributes a.show-histogram {
+  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes a.show-histogram {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  #attributes a.show-histogram {
+    visibility: hidden;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  #attributes li:hover a.show-histogram {
+    visibility: visible;
+  }
+}
+#attributes a.remove-attribute {
+  background: transparent url("../images/sprite-icons.png") -19px -15px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+  visibility: hidden;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes a.remove-attribute {
+    -webkit-box-ordinal-group: 3;
+    -moz-box-ordinal-group: 3;
+    -ms-flex-order: 3;
+    -webkit-order: 3;
+    order: 3;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  #attributes li:hover a.remove-attribute {
+    visibility: visible;
+  }
+}
+#attributes #controls-wrapper {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+#attributes #etree-progress {
+  color: #666;
+  font-size: 14px;
+  background: transparent url("../images/icon-loading-bw-16.gif") 0 3px no-repeat;
+  display: block;
+  padding-left: 20px;
+  margin: 5px 0 5px 20px;
+}
+#attributes #show-hidden-attributes {
+  color: #126499;
+  font-size: 14px;
+  float: right;
+  margin-top: 8px;
+}
+#attributes #add-all-unused-attributes {
+  color: #126499;
+  font-size: 0.9em;
+  padding-left: 22px;
+  background: transparent url("../images/sprite-icons.png") -166px -163px no-repeat;
+}
+#data-fields li .show-histogram {
+  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #data-fields li .show-histogram {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 2;
+    -webkit-order: 2;
+    order: 2;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  #data-fields li .show-histogram {
+    visibility: hidden;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  #data-fields li:hover {
+    color: #000;
+  }
+  #data-fields li:hover .add {
+    visibility: visible;
+  }
+  #data-fields li:hover .show-histogram {
+    visibility: visible;
+  }
+}
+#knowledge-base-select {
+  padding: 20px 20px 5px 20px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+  padding-bottom: 20px;
+}
+#knowledge-base-select h2 {
+  color: #314e64;
+  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
+  font-size: 28px;
+  font-weight: normal;
+  margin: 0 0 20px 0;
+  font-size: 22.400000000000002px;
+  margin: 0;
+}
+#knowledge-base-select .clearfix {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+#knowledge-base-select .clearfix #kb-ruleset {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+#knowledge-base-select .clearfix #change-ruleset {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: 0;
+  width: 100%;
+  color: #126499;
+}
+#navigation .maximize .filter,
+#navigation .maximize .selectable {
+  display: none;
+}
+#attributes .datas-filter,
+#data-fields .datas-filter {
+  display: none;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+#attributes input[type='text'],
+#data-fields input[type='text'] {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  background: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin-right: 5px;
+  height: 1.7em;
+  padding: 0;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+@media only screen and (min-width: 1370px) {
+  #attributes input[type='text'],
+  #data-fields input[type='text'] {
+    height: 1.5em;
+  }
+}
+#attributes a.reset-filter,
+#data-fields a.reset-filter {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  background: transparent url("../images/sprite-icons.png") -19px -15px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+  visibility: hidden;
+  visibility: visible;
+}
+#attributes .filter-active,
+#data-fields .filter-active {
+  background-position: 0 -20px !important;
+}
+#attributes .navigation-checkbox-controls,
+#data-fields .navigation-checkbox-controls {
+  display: none;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+#attributes .navigation-checkbox-controls #add-selected-attributes,
+#data-fields .navigation-checkbox-controls #add-selected-attributes,
+#attributes .navigation-checkbox-controls #add-selected-data-fields,
+#data-fields .navigation-checkbox-controls #add-selected-data-fields {
+  display: none;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: #126499;
+  font-size: 0.9em;
+  padding-left: 22px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  width: auto;
+  background: transparent url("../images/sprite-icons.png") -166px -163px no-repeat;
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .navigation-checkbox-controls #add-selected-attributes,
+  #data-fields .navigation-checkbox-controls #add-selected-attributes,
+  #attributes .navigation-checkbox-controls #add-selected-data-fields,
+  #data-fields .navigation-checkbox-controls #add-selected-data-fields {
+    cursor: pointer;
+  }
+}
+#attributes .navigation-checkbox-controls .all,
+#data-fields .navigation-checkbox-controls .all {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background: transparent url("../images/icon-select-all.png") center center no-repeat;
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .navigation-checkbox-controls .all,
+  #data-fields .navigation-checkbox-controls .all {
+    cursor: pointer;
+  }
+}
+#attributes .navigation-checkbox-controls .none,
+#data-fields .navigation-checkbox-controls .none {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background: transparent url("../images/icon-select-none.png") center center no-repeat;
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .navigation-checkbox-controls .none,
+  #data-fields .navigation-checkbox-controls .none {
+    cursor: pointer;
+  }
+}
+#attributes .navigation-checkbox-controls .invert,
+#data-fields .navigation-checkbox-controls .invert {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background: transparent url("../images/icon-select-invert.png") center center no-repeat;
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .navigation-checkbox-controls .invert,
+  #data-fields .navigation-checkbox-controls .invert {
+    cursor: pointer;
+  }
+}
+#attributes input[type='checkbox'],
+#data-fields input[type='checkbox'] {
+  display: none;
+}
+#attributes.show-checkboxes input[type='checkbox'],
+#data-fields.show-checkboxes input[type='checkbox'] {
+  display: flex;
+}
+#attributes.show-checkboxes .add,
+#data-fields.show-checkboxes .add {
+  display: none;
+}
+#attributes.show-checkboxes .navigation-checkbox-controls,
+#data-fields.show-checkboxes .navigation-checkbox-controls {
+  display: flex;
+}
+* {
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }

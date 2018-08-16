@@ -98,7 +98,7 @@ var UIListener = new Class({
         return false;
       } // disable right click drag & drop
 
-      var draggable = this.$dragDropHelper.createDraggable($(field.getCSSID()).getFirst('span'));
+      var draggable = this.$dragDropHelper.createDraggable($(field.getCSSID()).getFirst('div > span'));
       var droppable = $('attributes');
       var drag = this.$dragDropHelper.createDrag(draggable, droppable, {
         color: this.$colorHelper.getAttributesBackgroundColor(),
@@ -140,7 +140,7 @@ var UIListener = new Class({
         linkAddSelected = attributesBox.getElements('#add-selected-attributes'),
         linkAddUnused = attributesBox.getElements('#add-all-unused-attributes');
     if (selectedAttributes > 0){
-      linkAddSelected.show();
+      linkAddSelected.show('flex');
       attributesBox.addClass('with-checkboxes-actions');
       linkAddUnused.hide();
     }else{
@@ -157,7 +157,7 @@ var UIListener = new Class({
         linkAddSelected = dataFieldsBox.getElements('#add-selected-data-fields');
     if (selectedDataFields > 0){
       dataFieldsBox.addClass('with-checkboxes-actions');
-      linkAddSelected.show();
+      linkAddSelected.show('flex');
     }else{
       dataFieldsBox.removeClass('with-checkboxes-actions');
       linkAddSelected.hide();

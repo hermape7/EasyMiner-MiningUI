@@ -1,0 +1,289 @@
+nav#navigation
+	flex-column-start()
+	flex(320px, grow:0)
+	margin 10px 10px 10px 0
+	box()
+	padding 0
+	
+	a
+		margin 4px
+	.separator
+		height 2px
+		margin 0.5em 0
+		padding 0
+		
+navigationH2()
+	h2Small()
+	margin 0
+	
+padding-nav()
+	padding 20px 20px 5px 20px
+
+.navigation-header
+	flex-start-row()
+	flex-justify(space-between)
+	h2
+		flex-start-row()
+	.data-attr-navigation
+		flex-start-row()
+		flex-self(center)
+		a
+			flexbox(flex)
+			width 20px
+			height 20px
+		.selectable
+			background transparent url("../images/icon-checkboxes.png") no-repeat 0 0 !important
+		.filter
+			background transparent url("../images/icon-filter.png") no-repeat 0 0 !important
+
+.data-attr-navigation.minimize
+	a.toggle
+		background transparent url('../images/sprite-icons.png') -16px -216px no-repeat
+
+.data-attr-navigation.maximize
+	a.toggle
+		background transparent url('../images/sprite-icons.png') -15px -163px no-repeat
+
+#attributes
+#data-fields
+	padding-nav()
+	box-shadow(0, 0, 5px, 0, boxShadowColor)
+	h2
+		navigationH2()
+	.clearfix
+		flex-start-column()
+		ul
+			width 100%
+			li
+				flexbox(flex)
+				flex-direction(row)
+				flex-justify(space-between)
+				width 100%
+				a.add
+					showAdd()
+					+pc()
+						visibility hidden
+				a.show-histogram
+					showHistogram()
+					+m_tablet()
+						flex-group(2)
+					+pc()
+						visibility hidden
+				a.remove-attribute
+					remove()
+					+m_tablet()
+						visibility visible
+						flex-group(3)
+				.att-options
+					flex-start-row()
+					+m_tablet()
+						flex-group(2)
+				.att-with-input
+					flex-center-row()
+				input[type="checkbox"]
+					margin 4px
+					+pc()
+						margin 2px
+				span
+					overflow hidden
+					text-overflow ellipsis
+					white-space nowrap
+				+pc()
+					cursor move
+
+#attributes
+	ul#attributes-by-group
+		background transparent url('../images/icon-group4.png') 0 2px no-repeat
+	
+	#attributes-by-group > li
+		padding-left 20px
+	
+	#attributes-by-group span
+		color h2Color
+		font-size 14px
+	
+	#attributes-by-group span.coefficient
+		coefficient()
+	
+	a#attributes-by-list,
+	a#attributes-by-group
+		font-size 13px
+	
+	li
+		&.rec1
+			background transparent url('../images/sprite-icons.png') -20px -415px no-repeat
+		&.rec2
+			background transparent url('../images/sprite-icons.png') -20px -463px no-repeat
+		&.used
+			color #AAA
+		+pc()
+			&:hover
+				color #000
+				.add
+					visibility visible
+	
+	a.edit-attribute
+		edit()
+		+m_tablet()
+			visibility visible
+		margin-left 10px
+		float right
+	
+	li:hover a.edit-attribute
+		visibility visible
+	
+	a.show-histogram
+		showHistogram()
+		+m_tablet()
+			flex-group(2)
+		+pc()
+			visibility hidden
+	
+	+pc()
+		li:hover a.show-histogram
+			visibility visible
+	
+	a.remove-attribute
+		remove()
+		+m_tablet()
+			flex-group(3)
+	
+	+pc()
+		li:hover a.remove-attribute
+			visibility visible
+	#controls-wrapper
+		flex-center-row()
+		flex-justify(space-between)
+		width 100%
+	
+	#etree-progress
+		color #666
+		font-size 14px
+		background transparent url("../images/icon-loading-bw-16.gif") 0 3px no-repeat
+		display block
+		padding-left 20px
+		margin 5px 0 5px 20px
+	
+	#show-hidden-attributes
+		color linkColor
+		font-size 14px
+		float right
+		margin-top 8px
+	
+	#add-all-unused-attributes
+		//clear right
+		color linkColor
+		font-size 0.9em
+		//float right
+		padding-left 22px
+		//margin-top 8px
+		//display none
+		background transparent url("../images/sprite-icons.png") -166px -163px no-repeat
+
+#data-fields
+	li
+		.show-histogram
+			showHistogram()
+			+m_tablet()
+				flex-group(2) //margin-left 10px
+			//float right
+			+pc()
+				visibility hidden
+		+pc()
+			&:hover
+				color #000
+				.add
+					visibility visible
+				.show-histogram
+					visibility visible
+
+#knowledge-base-select
+	padding-nav()
+	box-shadow(0, 0, 5px, 0, boxShadowColor)
+	padding-bottom 20px
+	h2
+		navigationH2()
+	
+	.clearfix
+		flex-start-column()
+		
+		#kb-ruleset
+			flex-start-column()
+		
+		#change-ruleset
+			flex-self(start)
+			margin-left 0
+			width 100%
+			color linkColor
+
+#navigation .maximize .filter,
+#navigation .maximize .selectable
+	display none
+
+attributeIconLink()
+	iconLink()
+
+#attributes, #data-fields
+	.datas-filter
+		display none
+		flex-direction(row)
+		flex-justify(start)
+		flex-align(center)
+		width 100%
+	//margin 5px 20px
+	input[type='text']
+		flexbox(flex)
+		background none
+		box-sizing border-box
+		width 100%
+		margin-right 5px
+		height 1.7em
+		+pc()
+			height 1.5em
+		padding 0
+		border 1px solid rgba(0, 0, 0, 0.3)
+	a.reset-filter
+		flexbox(flex)
+		remove()
+		visibility visible
+	.filter-active
+		background-position 0 -20px !important
+	
+	.navigation-checkbox-controls
+		display none
+		flex-direction(row)
+		flex-justify(start)
+		flex-align(center)
+		#add-selected-attributes,
+		#add-selected-data-fields
+			display none
+			flex(grow:1)
+			color linkColor
+			font-size 0.9em
+			padding-left 22px
+			attributeIconLink()
+			width auto
+			background transparent url("../images/sprite-icons.png") -166px -163px no-repeat
+		.all
+			attributeIconLink()
+			background transparent url('../images/icon-select-all.png') center center no-repeat
+		.none
+			attributeIconLink()
+			background transparent url('../images/icon-select-none.png') center center no-repeat
+		.invert
+			attributeIconLink()
+			background transparent url('../images/icon-select-invert.png') center center no-repeat
+	
+	//&.with-checkboxes-actions .navigation-checkbox-controls
+	//	width 100%
+	
+	input[type='checkbox']
+		display none
+	
+	&.show-checkboxes
+		input[type='checkbox']
+			display flex
+		.add
+			display none
+		.navigation-checkbox-controls
+			display flex
