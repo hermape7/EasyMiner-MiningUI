@@ -242,7 +242,7 @@ var UIStructureTemplater = new Class({
             a({
               id: 'show-hidden-attributes',
               href: '#',
-              styles: {'display': hasHiddenAttributes ? 'inline' : 'none'},
+              styles: {'display': 'none'},
               title: i18n.translate('Show hidden attributes')
             }, i18n.translate('Show hidden')),
             div({id: 'controls-wrapper'},
@@ -259,11 +259,13 @@ var UIStructureTemplater = new Class({
                   class: 'none',
                   title: i18n.translate('Select none')
                 }),
-                a({
-                  id: 'add-selected-attributes',
-                  href: '#',
-                  title: i18n.translate('Add selected attributes to rule pattern...')
-                }, i18n.translate('Add selected'))
+                div({id: 'attributes-add-link'},
+                  a({
+                    id: 'add-selected-attributes',
+                    href: '#',
+                    title: i18n.translate('Add selected attributes to rule pattern...')
+                  }, i18n.translate('Add selected'))
+                ),
               ),
               a({
                 id: 'add-all-unused-attributes',
@@ -309,7 +311,8 @@ var UIStructureTemplater = new Class({
             a({
               id: 'add-selected-data-fields',
               href: '#',
-              title: i18n.translate('Add all selected data fields to attributes...')
+              title: i18n.translate('Add all selected data fields to attributes...'),
+              style: 'display:none'
             }, i18n.translate('Add selected to attributes'))
           )
         ));

@@ -17,7 +17,10 @@ navigationH2()
 	margin 0
 	
 padding-nav()
-	padding 20px 20px 5px 20px
+	padding 20px 20px 10px 20px
+	
+attributeIconLink()
+	iconLink()
 
 .navigation-header
 	flex-start-row()
@@ -46,6 +49,7 @@ padding-nav()
 
 #attributes
 #data-fields
+#knowledge-base-select
 	padding-nav()
 	box-shadow(0, 0, 5px, 0, boxShadowColor)
 	h2
@@ -59,21 +63,6 @@ padding-nav()
 				flex-direction(row)
 				flex-justify(space-between)
 				width 100%
-				a.add
-					showAdd()
-					+pc()
-						visibility hidden
-				a.show-histogram
-					showHistogram()
-					+m_tablet()
-						flex-group(2)
-					+pc()
-						visibility hidden
-				a.remove-attribute
-					remove()
-					+m_tablet()
-						visibility visible
-						flex-group(3)
 				.att-options
 					flex-start-row()
 					+m_tablet()
@@ -88,9 +77,39 @@ padding-nav()
 					overflow hidden
 					text-overflow ellipsis
 					white-space nowrap
+				.add
+					showAdd()
+				.show-histogram
+					showHistogram()
+				.remove-attribute
+					remove()
+				.add
+				.show-histogram
+				.remove-attribute
+					+pc()
+						cursor move
+						visibility hiden
+					+m_tablet()
+						visibility visible
 				+pc()
-					cursor move
+					&:hover
+						color #000
+						.add
+							visibility visible
+						.remove-attribute
+							visibility visible
+						.show-histogram
+							visibility visible
 
+		#kb-ruleset
+			flex-start-column()
+		
+		#change-ruleset
+			flex-self(start)
+			margin-left 0
+			width 100%
+			color linkColor
+			
 #attributes
 	ul#attributes-by-group
 		background transparent url('../images/icon-group4.png') 0 2px no-repeat
@@ -116,112 +135,37 @@ padding-nav()
 			background transparent url('../images/sprite-icons.png') -20px -463px no-repeat
 		&.used
 			color #AAA
-		+pc()
-			&:hover
-				color #000
-				.add
-					visibility visible
-	
-	a.edit-attribute
-		edit()
-		+m_tablet()
-			visibility visible
-		margin-left 10px
-		float right
-	
-	li:hover a.edit-attribute
-		visibility visible
-	
-	a.show-histogram
-		showHistogram()
-		+m_tablet()
-			flex-group(2)
-		+pc()
-			visibility hidden
-	
-	+pc()
-		li:hover a.show-histogram
-			visibility visible
-	
-	a.remove-attribute
-		remove()
-		+m_tablet()
-			flex-group(3)
-	
-	+pc()
-		li:hover a.remove-attribute
-			visibility visible
+			
 	#controls-wrapper
 		flex-center-row()
 		flex-justify(space-between)
 		width 100%
 	
 	#etree-progress
+		flexbox(flex)
+		flex-self(center)
 		color #666
-		font-size 14px
+		font-size 1em
 		background transparent url("../images/icon-loading-bw-16.gif") 0 3px no-repeat
-		display block
 		padding-left 20px
-		margin 5px 0 5px 20px
 	
 	#show-hidden-attributes
+		flexbox(flex)
+		flex-align(start)
 		color linkColor
 		font-size 14px
-		float right
-		margin-top 8px
 	
 	#add-all-unused-attributes
-		//clear right
 		color linkColor
 		font-size 0.9em
-		//float right
 		padding-left 22px
-		//margin-top 8px
-		//display none
 		background transparent url("../images/sprite-icons.png") -166px -163px no-repeat
-
-#data-fields
-	li
-		.show-histogram
-			showHistogram()
-			+m_tablet()
-				flex-group(2) //margin-left 10px
-			//float right
-			+pc()
-				visibility hidden
-		+pc()
-			&:hover
-				color #000
-				.add
-					visibility visible
-				.show-histogram
-					visibility visible
-
-#knowledge-base-select
-	padding-nav()
-	box-shadow(0, 0, 5px, 0, boxShadowColor)
-	padding-bottom 20px
-	h2
-		navigationH2()
-	
-	.clearfix
-		flex-start-column()
-		
-		#kb-ruleset
-			flex-start-column()
-		
-		#change-ruleset
-			flex-self(start)
-			margin-left 0
-			width 100%
-			color linkColor
 
 #navigation .maximize .filter,
 #navigation .maximize .selectable
 	display none
 
-attributeIconLink()
-	iconLink()
+
 
 #attributes, #data-fields
 	.datas-filter
@@ -230,11 +174,9 @@ attributeIconLink()
 		flex-justify(start)
 		flex-align(center)
 		width 100%
-	//margin 5px 20px
 	input[type='text']
 		flexbox(flex)
 		background none
-		box-sizing border-box
 		width 100%
 		margin-right 5px
 		height 1.7em
@@ -254,6 +196,8 @@ attributeIconLink()
 		flex-direction(row)
 		flex-justify(start)
 		flex-align(center)
+		+m_tablet()
+			margin 4px
 		#add-selected-attributes,
 		#add-selected-data-fields
 			display none
@@ -274,8 +218,13 @@ attributeIconLink()
 			attributeIconLink()
 			background transparent url('../images/icon-select-invert.png') center center no-repeat
 	
-	//&.with-checkboxes-actions .navigation-checkbox-controls
-	//	width 100%
+	&.with-checkboxes-actions
+		.navigation-checkbox-controls
+			width 100%
+	
+	#attributes-add-link
+		flexbox(flex)
+		margin-left auto
 	
 	input[type='checkbox']
 		display none

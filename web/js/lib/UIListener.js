@@ -144,6 +144,7 @@ var UIListener = new Class({
       attributesBox.addClass('with-checkboxes-actions');
       linkAddUnused.hide();
     }else{
+      linkAddUnused.show('flex');
       linkAddSelected.hide();
       attributesBox.removeClass('with-checkboxes-actions');
       this.ARBuilder.UIPainter.showAddAllUnusedAttributesLink();

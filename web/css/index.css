@@ -2050,14 +2050,16 @@ nav#navigation .separator {
   background: transparent url("../images/sprite-icons.png") -15px -163px no-repeat;
 }
 #attributes,
-#data-fields {
-  padding: 20px 20px 5px 20px;
+#data-fields,
+#knowledge-base-select {
+  padding: 20px 20px 10px 20px;
   box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
   -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
   -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
 }
 #attributes h2,
-#data-fields h2 {
+#data-fields h2,
+#knowledge-base-select h2 {
   color: #314e64;
   font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
   font-size: 28px;
@@ -2067,7 +2069,8 @@ nav#navigation .separator {
   margin: 0;
 }
 #attributes .clearfix,
-#data-fields .clearfix {
+#data-fields .clearfix,
+#knowledge-base-select .clearfix {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: -ms-flexbox /* TWEENER - IE 10 */;
@@ -2092,11 +2095,13 @@ nav#navigation .separator {
   align-items: flex-start;
 }
 #attributes .clearfix ul,
-#data-fields .clearfix ul {
+#data-fields .clearfix ul,
+#knowledge-base-select .clearfix ul {
   width: 100%;
 }
 #attributes .clearfix ul li,
-#data-fields .clearfix ul li {
+#data-fields .clearfix ul li,
+#knowledge-base-select .clearfix ul li {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: -ms-flexbox /* TWEENER - IE 10 */;
@@ -2116,74 +2121,9 @@ nav#navigation .separator {
   justify-content: space-between;
   width: 100%;
 }
-#attributes .clearfix ul li a.add,
-#data-fields .clearfix ul li a.add {
-  background: transparent url("../images/sprite-icons.png") -166px -162px no-repeat;
-  display: block;
-  float: left;
-  width: 20px;
-  height: 20px;
-}
-@media only screen and (min-width: 768px) and (max-width: 1180px) {
-  #attributes .clearfix ul li a.add,
-  #data-fields .clearfix ul li a.add {
-    -webkit-box-ordinal-group: 1;
-    -moz-box-ordinal-group: 1;
-    -ms-flex-order: 1;
-    -webkit-order: 1;
-    order: 1;
-  }
-}
-@media only screen and (min-width: 1370px) {
-  #attributes .clearfix ul li a.add,
-  #data-fields .clearfix ul li a.add {
-    visibility: hidden;
-  }
-}
-#attributes .clearfix ul li a.show-histogram,
-#data-fields .clearfix ul li a.show-histogram {
-  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-}
-@media only screen and (min-width: 768px) and (max-width: 1180px) {
-  #attributes .clearfix ul li a.show-histogram,
-  #data-fields .clearfix ul li a.show-histogram {
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-    -ms-flex-order: 2;
-    -webkit-order: 2;
-    order: 2;
-  }
-}
-@media only screen and (min-width: 1370px) {
-  #attributes .clearfix ul li a.show-histogram,
-  #data-fields .clearfix ul li a.show-histogram {
-    visibility: hidden;
-  }
-}
-#attributes .clearfix ul li a.remove-attribute,
-#data-fields .clearfix ul li a.remove-attribute {
-  background: transparent url("../images/sprite-icons.png") -19px -15px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-  visibility: hidden;
-}
-@media only screen and (min-width: 768px) and (max-width: 1180px) {
-  #attributes .clearfix ul li a.remove-attribute,
-  #data-fields .clearfix ul li a.remove-attribute {
-    visibility: visible;
-    -webkit-box-ordinal-group: 3;
-    -moz-box-ordinal-group: 3;
-    -ms-flex-order: 3;
-    -webkit-order: 3;
-    order: 3;
-  }
-}
 #attributes .clearfix ul li .att-options,
-#data-fields .clearfix ul li .att-options {
+#data-fields .clearfix ul li .att-options,
+#knowledge-base-select .clearfix ul li .att-options {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: -ms-flexbox /* TWEENER - IE 10 */;
@@ -2209,7 +2149,8 @@ nav#navigation .separator {
 }
 @media only screen and (min-width: 768px) and (max-width: 1180px) {
   #attributes .clearfix ul li .att-options,
-  #data-fields .clearfix ul li .att-options {
+  #data-fields .clearfix ul li .att-options,
+  #knowledge-base-select .clearfix ul li .att-options {
     -webkit-box-ordinal-group: 2;
     -moz-box-ordinal-group: 2;
     -ms-flex-order: 2;
@@ -2218,7 +2159,8 @@ nav#navigation .separator {
   }
 }
 #attributes .clearfix ul li .att-with-input,
-#data-fields .clearfix ul li .att-with-input {
+#data-fields .clearfix ul li .att-with-input,
+#knowledge-base-select .clearfix ul li .att-with-input {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: -ms-flexbox /* TWEENER - IE 10 */;
@@ -2243,26 +2185,136 @@ nav#navigation .separator {
   align-items: center;
 }
 #attributes .clearfix ul li input[type="checkbox"],
-#data-fields .clearfix ul li input[type="checkbox"] {
+#data-fields .clearfix ul li input[type="checkbox"],
+#knowledge-base-select .clearfix ul li input[type="checkbox"] {
   margin: 4px;
 }
 @media only screen and (min-width: 1370px) {
   #attributes .clearfix ul li input[type="checkbox"],
-  #data-fields .clearfix ul li input[type="checkbox"] {
+  #data-fields .clearfix ul li input[type="checkbox"],
+  #knowledge-base-select .clearfix ul li input[type="checkbox"] {
     margin: 2px;
   }
 }
 #attributes .clearfix ul li span,
-#data-fields .clearfix ul li span {
+#data-fields .clearfix ul li span,
+#knowledge-base-select .clearfix ul li span {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+#attributes .clearfix ul li .add,
+#data-fields .clearfix ul li .add,
+#knowledge-base-select .clearfix ul li .add {
+  background: transparent url("../images/sprite-icons.png") -166px -162px no-repeat;
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  visibility: hidden;
+}
+#attributes .clearfix ul li .show-histogram,
+#data-fields .clearfix ul li .show-histogram,
+#knowledge-base-select .clearfix ul li .show-histogram {
+  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+  visibility: hidden;
+}
+#attributes .clearfix ul li .remove-attribute,
+#data-fields .clearfix ul li .remove-attribute,
+#knowledge-base-select .clearfix ul li .remove-attribute {
+  background: transparent url("../images/sprite-icons.png") -19px -15px no-repeat;
+  display: block;
+  width: 16px;
+  height: 20px;
+  visibility: hidden;
+}
 @media only screen and (min-width: 1370px) {
-  #attributes .clearfix ul li,
-  #data-fields .clearfix ul li {
+  #attributes .clearfix ul li .add,
+  #data-fields .clearfix ul li .add,
+  #knowledge-base-select .clearfix ul li .add,
+  #attributes .clearfix ul li .show-histogram,
+  #data-fields .clearfix ul li .show-histogram,
+  #knowledge-base-select .clearfix ul li .show-histogram,
+  #attributes .clearfix ul li .remove-attribute,
+  #data-fields .clearfix ul li .remove-attribute,
+  #knowledge-base-select .clearfix ul li .remove-attribute {
     cursor: move;
+    visibility: hiden;
   }
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes .clearfix ul li .add,
+  #data-fields .clearfix ul li .add,
+  #knowledge-base-select .clearfix ul li .add,
+  #attributes .clearfix ul li .show-histogram,
+  #data-fields .clearfix ul li .show-histogram,
+  #knowledge-base-select .clearfix ul li .show-histogram,
+  #attributes .clearfix ul li .remove-attribute,
+  #data-fields .clearfix ul li .remove-attribute,
+  #knowledge-base-select .clearfix ul li .remove-attribute {
+    visibility: visible;
+  }
+}
+@media only screen and (min-width: 1370px) {
+  #attributes .clearfix ul li:hover,
+  #data-fields .clearfix ul li:hover,
+  #knowledge-base-select .clearfix ul li:hover {
+    color: #000;
+  }
+  #attributes .clearfix ul li:hover .add,
+  #data-fields .clearfix ul li:hover .add,
+  #knowledge-base-select .clearfix ul li:hover .add {
+    visibility: visible;
+  }
+  #attributes .clearfix ul li:hover .remove-attribute,
+  #data-fields .clearfix ul li:hover .remove-attribute,
+  #knowledge-base-select .clearfix ul li:hover .remove-attribute {
+    visibility: visible;
+  }
+  #attributes .clearfix ul li:hover .show-histogram,
+  #data-fields .clearfix ul li:hover .show-histogram,
+  #knowledge-base-select .clearfix ul li:hover .show-histogram {
+    visibility: visible;
+  }
+}
+#attributes .clearfix #kb-ruleset,
+#data-fields .clearfix #kb-ruleset,
+#knowledge-base-select .clearfix #kb-ruleset {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+#attributes .clearfix #change-ruleset,
+#data-fields .clearfix #change-ruleset,
+#knowledge-base-select .clearfix #change-ruleset {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-left: 0;
+  width: 100%;
+  color: #126499;
 }
 #attributes ul#attributes-by-group {
   background: transparent url("../images/icon-group4.png") 0 2px no-repeat;
@@ -2293,77 +2345,6 @@ nav#navigation .separator {
 }
 #attributes li.used {
   color: #aaa;
-}
-@media only screen and (min-width: 1370px) {
-  #attributes li:hover {
-    color: #000;
-  }
-  #attributes li:hover .add {
-    visibility: visible;
-  }
-}
-#attributes a.edit-attribute {
-  background: transparent url("../images/sprite-icons.png") -19px -262px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-  visibility: hidden;
-  margin-left: 10px;
-  float: right;
-}
-@media only screen and (min-width: 768px) and (max-width: 1180px) {
-  #attributes a.edit-attribute {
-    visibility: visible;
-  }
-}
-#attributes li:hover a.edit-attribute {
-  visibility: visible;
-}
-#attributes a.show-histogram {
-  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-}
-@media only screen and (min-width: 768px) and (max-width: 1180px) {
-  #attributes a.show-histogram {
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-    -ms-flex-order: 2;
-    -webkit-order: 2;
-    order: 2;
-  }
-}
-@media only screen and (min-width: 1370px) {
-  #attributes a.show-histogram {
-    visibility: hidden;
-  }
-}
-@media only screen and (min-width: 1370px) {
-  #attributes li:hover a.show-histogram {
-    visibility: visible;
-  }
-}
-#attributes a.remove-attribute {
-  background: transparent url("../images/sprite-icons.png") -19px -15px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-  visibility: hidden;
-}
-@media only screen and (min-width: 768px) and (max-width: 1180px) {
-  #attributes a.remove-attribute {
-    -webkit-box-ordinal-group: 3;
-    -moz-box-ordinal-group: 3;
-    -ms-flex-order: 3;
-    -webkit-order: 3;
-    order: 3;
-  }
-}
-@media only screen and (min-width: 1370px) {
-  #attributes li:hover a.remove-attribute {
-    visibility: visible;
-  }
 }
 #attributes #controls-wrapper {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -2396,127 +2377,38 @@ nav#navigation .separator {
   width: 100%;
 }
 #attributes #etree-progress {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
   color: #666;
-  font-size: 14px;
+  font-size: 1em;
   background: transparent url("../images/icon-loading-bw-16.gif") 0 3px no-repeat;
-  display: block;
   padding-left: 20px;
-  margin: 5px 0 5px 20px;
 }
 #attributes #show-hidden-attributes {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   color: #126499;
   font-size: 14px;
-  float: right;
-  margin-top: 8px;
 }
 #attributes #add-all-unused-attributes {
   color: #126499;
   font-size: 0.9em;
   padding-left: 22px;
   background: transparent url("../images/sprite-icons.png") -166px -163px no-repeat;
-}
-#data-fields li .show-histogram {
-  background: transparent url("../images/sprite-icons.png") -20px -664px no-repeat;
-  display: block;
-  width: 16px;
-  height: 20px;
-}
-@media only screen and (min-width: 768px) and (max-width: 1180px) {
-  #data-fields li .show-histogram {
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-    -ms-flex-order: 2;
-    -webkit-order: 2;
-    order: 2;
-  }
-}
-@media only screen and (min-width: 1370px) {
-  #data-fields li .show-histogram {
-    visibility: hidden;
-  }
-}
-@media only screen and (min-width: 1370px) {
-  #data-fields li:hover {
-    color: #000;
-  }
-  #data-fields li:hover .add {
-    visibility: visible;
-  }
-  #data-fields li:hover .show-histogram {
-    visibility: visible;
-  }
-}
-#knowledge-base-select {
-  padding: 20px 20px 5px 20px;
-  box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
-  padding-bottom: 20px;
-}
-#knowledge-base-select h2 {
-  color: #314e64;
-  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
-  font-size: 28px;
-  font-weight: normal;
-  margin: 0 0 20px 0;
-  font-size: 22.400000000000002px;
-  margin: 0;
-}
-#knowledge-base-select .clearfix {
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: -ms-flexbox /* TWEENER - IE 10 */;
-  display: -webkit-flex /* NEW - Chrome */;
-  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: start;
-  -moz-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
-#knowledge-base-select .clearfix #kb-ruleset {
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: -ms-flexbox /* TWEENER - IE 10 */;
-  display: -webkit-flex /* NEW - Chrome */;
-  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: start;
-  -moz-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
-#knowledge-base-select .clearfix #change-ruleset {
-  -webkit-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  margin-left: 0;
-  width: 100%;
-  color: #126499;
 }
 #navigation .maximize .filter,
 #navigation .maximize .selectable {
@@ -2552,7 +2444,6 @@ nav#navigation .separator {
   display: -webkit-flex /* NEW - Chrome */;
   display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
   background: none;
-  box-sizing: border-box;
   width: 100%;
   margin-right: 5px;
   height: 1.7em;
@@ -2603,6 +2494,12 @@ nav#navigation .separator {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #attributes .navigation-checkbox-controls,
+  #data-fields .navigation-checkbox-controls {
+    margin: 4px;
+  }
 }
 #attributes .navigation-checkbox-controls #add-selected-attributes,
 #data-fields .navigation-checkbox-controls #add-selected-attributes,
@@ -2669,6 +2566,19 @@ nav#navigation .separator {
   #data-fields .navigation-checkbox-controls .invert {
     cursor: pointer;
   }
+}
+#attributes.with-checkboxes-actions .navigation-checkbox-controls,
+#data-fields.with-checkboxes-actions .navigation-checkbox-controls {
+  width: 100%;
+}
+#attributes #attributes-add-link,
+#data-fields #attributes-add-link {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  margin-left: auto;
 }
 #attributes input[type='checkbox'],
 #data-fields input[type='checkbox'] {
