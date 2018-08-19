@@ -1009,407 +1009,6 @@ div#overlay-inner #change-ruleset-window .bigButtons a span {
   text-decoration: none;
   color: #888;
 }
-#marked-rules-tabs {
-  margin: 10px 0 0 10px;
-  float: left;
-  clear: left;
-  padding: 0;
-}
-#marked-rules-tabs .marked-rules-tab {
-  color: #434343;
-  background-color: #fff;
-  border: none;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  padding: 20px;
-  color: #925213;
-  font: 36px 'Arial', /*'Droid Sans',*/ 'sans-serif';
-  font-weight: normal;
-  border-bottom: none;
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: -ms-flexbox /* TWEENER - IE 10 */;
-  display: -webkit-flex /* NEW - Chrome */;
-  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  -moz-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  margin: 0;
-  padding: 0;
-  background-color: rgba(255,255,255,0.6);
-}
-#marked-rules-tabs .marked-rules-tab.marked-rules-tasks {
-  float: left;
-}
-#marked-rules-tabs .marked-rules-tab.marked-rules-base {
-  float: right;
-}
-#marked-rules-tabs .marked-rules-tab.marked-rules-tab-active {
-  background-color: #fff;
-  border-bottom: #fff 5px solid;
-}
-#marked-rules-tabs .marked-rules-tab:hover {
-  background-color: #fff;
-}
-#marked-rules-tabs .marked-rules-tab a {
-  padding: 20px 15px;
-  cursor: pointer;
-  display: block;
-  color: #925213 !important;
-  text-decoration: none !important;
-}
-#marked-rules {
-  color: #434343;
-  background-color: #fff;
-  border: none;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
-  padding: 20px;
-  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
-  -webkit-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
-  margin: 0 0 0 10px;
-  float: left;
-  clear: left;
-}
-#marked-rules h2 {
-  color: #925213;
-  font: 36px 'Arial', /*'Droid Sans',*/ 'sans-serif';
-  font-weight: normal;
-  border-bottom: none;
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: -ms-flexbox /* TWEENER - IE 10 */;
-  display: -webkit-flex /* NEW - Chrome */;
-  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  -moz-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-/*margin-left 10px*/
-  margin: 0 0 5px 0;
-}
-#marked-rules .maximize ul,
-#marked-rules .maximize .marked-rules-checkbox-controls,
-#marked-rules .maximize .marked-rules-controls {
-  display: none;
-}
-#marked-rules .maximize a.toggle span {
-  background: transparent url("../images/sprite-icons.png") -19px -169px no-repeat;
-}
-#marked-rules .minimize a.toggle span {
-  background: transparent url("../images/sprite-icons.png") -20px -220px no-repeat;
-}
-#marked-rules .marked-rules-base-content {
-  display: none;
-}
-#marked-rules .marked-rules-empty {
-  display: none;
-}
-#marked-rules .empty .marked-rules-empty {
-  display: block;
-}
-#marked-rules .marked-rules-task-name {
-  color: #314e64;
-  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
-  font-size: 28px;
-  font-weight: normal;
-  margin: 0 0 20px 0;
-  font-size: 22.400000000000002px;
-  margin: 10px 0;
-  position: relative;
-  padding-left: 20px;
-}
-#marked-rules .marked-rules-task-name .count {
-  color: #888;
-  margin-left: 15px;
-  font-size: 16px;
-}
-#marked-rules .marked-rules-task-name .count strong {
-  font-weight: normal;
-  color: #888;
-}
-#marked-rules .marked-rules-task-name a.rename-task {
-  margin-left: 10px;
-  width: 20px;
-  height: 25px;
-  position: relative;
-  top: 5px;
-  display: inline-block;
-  background: transparent url("../images/sprite/icon-edit.png") center bottom no-repeat;
-  visibility: hidden;
-}
-#marked-rules .marked-rules-task-name a.remove-task {
-  margin-left: 10px;
-  width: 20px;
-  height: 25px;
-  position: relative;
-  top: 5px;
-  display: inline-block;
-  background: transparent url("../images/icon-stop-20.png") center bottom no-repeat;
-  visibility: hidden;
-}
-#marked-rules .marked-rules-task-name a.toggle span.toggle {
-  display: block;
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  left: 0;
-  top: 10px;
-}
-#marked-rules .marked-rules-task-name:hover a.rename-task,
-#marked-rules .marked-rules-task-name:hover a.remove-task {
-  visibility: visible;
-}
-#marked-rules .clearfix {
-  clear: both;
-}
-#marked-rules p.error {
-  color: #d01d1d;
-  margin: 10px 0;
-}
-#marked-rules .marked-rules-controls {
-  position: relative;
-  overflow: auto;
-  text-align: right;
-  color: #888;
-  font-size: 12.8px;
-}
-#marked-rules .marked-rules-controls .paginator {
-  float: left;
-}
-#marked-rules .marked-rules-controls label {
-  display: inline-block;
-  padding: 0 5px 0 15px;
-  margin: 0;
-}
-#marked-rules .marked-rules-controls select {
-  padding: 5px;
-}
-#marked-rules ul {
-  padding-left: 0;
-}
-#marked-rules ul li {
-  margin: 0 0 5px 0;
-  padding: 0 0 5px 20px;
-  list-style: none;
-  cursor: default;
-  position: relative;
-  border-bottom: 1px solid #ededed;
-}
-#marked-rules ul li input.marked-rule-checkbox {
-  position: absolute;
-  left: 0;
-  top: 8px;
-}
-#marked-rules ul li .rule {
-  color: #434343;
-  cursor: default;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  -webkit-user-select: text;
-}
-#marked-rules ul li .loading {
-  display: none;
-}
-#marked-rules ul li .ruleActions {
-  display: inline-block;
-  overflow: auto;
-  position: relative;
-  width: 100px;
-  height: 20px;
-  margin-left: 15px;
-  background: transparent;
-  top: 5px;
-}
-#marked-rules ul li .ruleActions > a {
-  display: block;
-  width: 20px;
-  height: 20px;
-  float: left;
-  margin-right: 5px;
-  visibility: hidden;
-}
-#marked-rules ul li .ruleActions a.bk {
-  background: transparent url("../images/sprite-icons.png") -19px -119px no-repeat;
-}
-#marked-rules ul li .ruleActions a.clear {
-  background: transparent url("../images/icon-stop-20.png") left center no-repeat;
-}
-#marked-rules ul li .ruleActions a.details {
-  background: transparent url("../images/icon-info-20.png") left center no-repeat;
-}
-#marked-rules ul li .ruleActions a.kb-add[rel=positive] {
-  background: transparent url("../images/icon-thumb-up-20.png") left center no-repeat;
-}
-#marked-rules ul li .ruleActions a.kb-add[rel=positive]:hover {
-  background: transparent url("../images/icon-thumb-up-20-active.png") left center no-repeat;
-}
-#marked-rules ul li .ruleActions a.kb-add[rel=negative] {
-  background: transparent url("../images/icon-thumb-down-20.png") left center no-repeat;
-}
-#marked-rules ul li .ruleActions a.kb-add[rel=negative]:hover {
-  background: transparent url("../images/icon-thumb-down-20-active.png") left center no-repeat;
-}
-#marked-rules ul li .ims {
-  display: block;
-  font-size: 12.8px;
-  color: #888;
-}
-#marked-rules ul li .ims * {
-  -moz-user-select: text;
-  -ms-user-select: text;
-  -webkit-user-select: text;
-}
-#marked-rules ul li .ims > span {
-  border-right: 1px solid #ededed;
-  padding-right: 5px;
-  margin-right: 5px;
-}
-#marked-rules ul li .ims > span:last-child {
-  border-right: none;
-}
-#marked-rules ul li .ims > span .value {
-  color: #7b0d2e;
-}
-#marked-rules ul li.loading .ruleActions {
-  background: transparent url("../images/icon-loading-bw-20.gif") left center no-repeat;
-}
-#marked-rules ul li.loading .ruleActions >a {
-  visibility: hidden !important;
-}
-#marked-rules ul li:hover .ruleActions >a {
-  visibility: visible;
-}
-#marked-rules .marked-rules-multi-controls {
-  min-height: 25px;
-  position: relative;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #126499;
-}
-#marked-rules .marked-rules-multi-controls .all {
-  display: flex;
-  width: 20px;
-  height: 20px;
-  background: transparent url("../images/icon-select-all.png") center center no-repeat;
-}
-@media only screen and (min-width: 1370px) {
-  #marked-rules .marked-rules-multi-controls .all {
-    cursor: pointer;
-  }
-}
-#marked-rules .marked-rules-multi-controls .none {
-  display: flex;
-  width: 20px;
-  height: 20px;
-  background: transparent url("../images/icon-select-none.png") center center no-repeat;
-}
-@media only screen and (min-width: 1370px) {
-  #marked-rules .marked-rules-multi-controls .none {
-    cursor: pointer;
-  }
-}
-#marked-rules .marked-rules-multi-controls .invert {
-  display: flex;
-  width: 20px;
-  height: 20px;
-  background: transparent url("../images/icon-select-invert.png") center center no-repeat;
-}
-@media only screen and (min-width: 1370px) {
-  #marked-rules .marked-rules-multi-controls .invert {
-    cursor: pointer;
-  }
-}
-#marked-rules .marked-rules-multi-controls .marked-rules-checkbox-controls {
-  float: left;
-}
-#marked-rules .marked-rules-multi-controls .actions {
-  margin-left: 10px;
-}
-#marked-rules .marked-rules-multi-controls .actions >a {
-  padding-left: 24px;
-  height: 20px;
-  padding-top: 2px;
-  margin: 0 5px;
-  font-size: 14px;
-  display: inline-block;
-  display: none;
-}
-#marked-rules .marked-rules-multi-controls .actions >a.mark {
-  background: transparent url("../images/icon-ok-20.png") left center no-repeat;
-}
-#marked-rules .marked-rules-multi-controls .actions >a.unmark,
-#marked-rules .marked-rules-multi-controls .actions >a.kb-unmark {
-  background: transparent url("../images/icon-stop-20.png") left center no-repeat;
-}
-#marked-rules .marked-rules-multi-controls .actions >a.kb-add[rel=positive] {
-  background: transparent url("../images/icon-thumb-up-20.png") left center no-repeat;
-}
-#marked-rules .marked-rules-multi-controls .actions >a.kb-add[rel=negative] {
-  background: transparent url("../images/icon-thumb-down-20.png") left center no-repeat;
-}
-#marked-rules .marked-rules-multi-controls .actions >a.visible {
-  display: inline-block;
-}
-#marked-rules .marked-rules-multi-controls .task-actions {
-  float: right;
-  margin-top: 3px;
-}
-#marked-rules .marked-rules-multi-controls .task-actions >a {
-  padding-left: 24px;
-  height: 20px;
-  padding-top: 2px;
-  margin: 0 5px;
-  font-size: 14px;
-  display: inline-block;
-}
-#marked-rules .marked-rules-multi-controls .task-actions >a.mark-all {
-  background: transparent url("../images/icon-ok-20.png") left center no-repeat;
-}
-#marked-rules .marked-rules-multi-controls .task-actions >a.task-details {
-  background: transparent url("../images/icon-goreport-20.png") left center no-repeat;
-}
-#marked-rules .marked-rules-multi-controls .task-actions >a.task-export {
-  background: transparent url("../images/icon-export-20.png") left center no-repeat;
-}
-#marked-rules .marked-rules-multi-controls .task-actions >a.disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-  color: #888;
-}
-#marked-rules .marked-rules-multi-controls .task-actions >a.disabled:hover {
-  text-decoration: none;
-  color: #888;
-}
 #createUserReport {
   float: right;
   margin: 20px 20px 0 0;
@@ -2581,7 +2180,7 @@ nav#navigation .separator {
 #stop-mining:hover,
 #stop-mining:focus {
   border-color: #800000;
-  backgroun: #d50000;
+  background: #d50000;
 }
 #start-mining-with-pruning {
   margin: 2px;
@@ -2598,7 +2197,58 @@ nav#navigation .separator {
   display: -ms-flexbox /* TWEENER - IE 10 */;
   display: -webkit-flex /* NEW - Chrome */;
   display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
   width: 100%;
+  margin-top: 10px;
+}
+#marked-rules-tabs .marked-rules-tab,
+#marked-rules .marked-rules-tab {
+  margin: 0;
+  background-color: rgba(255,255,255,0.6);
+  font-size: 2em;
+  padding: 15px;
+}
+#marked-rules-tabs .marked-rules-tab.marked-rules-tab-active,
+#marked-rules .marked-rules-tab.marked-rules-tab-active {
+  background-color: #fff;
+}
+#marked-rules-tabs .marked-rules-tab:hover,
+#marked-rules .marked-rules-tab:hover {
+  background-color: #fff;
+}
+#marked-rules-tabs .marked-rules-tab > a,
+#marked-rules .marked-rules-tab > a {
+  color: #925213 !important;
+  text-decoration: none !important;
+}
+#marked-rules {
+  color: #434343;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+  padding: 20px;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 10px 10px 0 rgba(0,0,0,0.4);
+  margin: 0;
 }
 * {
   user-select: none;
