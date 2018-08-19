@@ -30,12 +30,9 @@ var UIStructureTemplater = new Class({
       section({id: 'IZImain'},
         section({id: 'workplace', 'class': 'clearfix'},
           section({id: 'content'},
+            h2(i18n.translate('Association rule pattern')),
             section({id: 'active-rule'}),
             section({id: 'found-rules'})
-          ),
-          section({id: 'rules-wrapper'},
-            Mooml.render('registerMarkedRules'),
-            Mooml.render('registerMarkedRulesTabs')
           )
         ),
         nav({id: 'navigation'})
@@ -362,27 +359,33 @@ var UIStructureTemplater = new Class({
         miningInProgress = data.miningInProgress,
         i18n = data.i18n;
 
-      if (rules) {
-        a({id: 'start-mining', href: '#'}, i18n.translate('Mine rules...'));
-        if (pruningAvailable) {
-          div({
-              id: 'start-mining-with-pruning-label',
-              title: i18n.translate('Prune founded rules using algorithm CBA (for classification). Allowed only for rule pattern with exactly one attribute in consequent.')
-            },
-            input({
-              type: "checkbox",
-              value: "CBA",
-              disabled: (!pruningAllowed),
-              defaultChecked: (pruningActive && pruningAllowed),
-              name: "start-mining-with-pruning",
-              id: "start-mining-with-pruning"
-            }),
-            label({for: 'start-mining-with-pruning'}, i18n.translate('with pruning...'))
-          );
-        }
-      }
       if (miningInProgress) {
         a({id: 'stop-mining', href: '#'}, i18n.translate('Stop mining'));
+      }
+      if (rules) {
+        if (pruningAvailable) {
+          div({id: 'ar-action-box-control'},
+            a({id: 'start-mining', href: '#'}, i18n.translate('Mine rules...')),
+            div({
+                id: 'start-mining-with-pruning-label',
+                title: i18n.translate('Prune founded rules using algorithm CBA (for classification). Allowed only for rule pattern with exactly one attribute in consequent.')
+              },
+              input({
+                type: "checkbox",
+                value: "CBA",
+                disabled: (!pruningAllowed),
+                defaultChecked: (pruningActive && pruningAllowed),
+                name: "start-mining-with-pruning",
+                id: "start-mining-with-pruning"
+              }),
+              label({for: 'start-mining-with-pruning'}, i18n.translate('with pruning...'))
+            )
+          )
+        } else {
+          div({id: 'ar-action-box-control'},
+            a({id: 'start-mining', href: '#'}, i18n.translate('Mine rules...'))
+          )
+        }
       }
     });
 
@@ -437,8 +440,8 @@ var UIStructureTemplater = new Class({
         }
       }
 
+      // h2(i18n.translate('Association rule pattern')),
       section({id: 'active-rule'},
-        h2(i18n.translate('Association rule pattern')),
         div({id: 'ar-wrapper', 'class': 'clearfix'},
           div({id: 'antecedent'},
             h3(i18n.translate('Antecedent'),
@@ -461,8 +464,9 @@ var UIStructureTemplater = new Class({
             })
           ))
         ),
-        div({'class': 'clearfix'}),
+        // div({'class': 'clearfix'}),
         div({id: 'ar-action-box'},
+          miningProgressText,
           Mooml.render('arActionBoxTemplate', {
             rules: rules,
             pruningAvailable: pruningAvailable,
@@ -470,8 +474,7 @@ var UIStructureTemplater = new Class({
             pruningActive: pruningActive,
             miningInProgress: miningInProgress,
             i18n: i18n
-          }),
-          miningProgressText
+          })
         )
       );
     });
@@ -544,7 +547,8 @@ var UIStructureTemplater = new Class({
         h2({'class': 'marked-rules-tab marked-rules-tasks marked-rules-tab-active'},
           a(i18n.translate('Rule clipboard'))),
         h2({'class': 'marked-rules-tab marked-rules-base'},
-          a(i18n.translate('Knowledge base')))
+          a(i18n.translate('Knowledge base'))
+        )
       );
     });
   },

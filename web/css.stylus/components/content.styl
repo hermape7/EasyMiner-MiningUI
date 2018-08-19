@@ -1,0 +1,118 @@
+#content
+	box()
+	flex-start-column()
+	flex(grow:1)
+	width 100%
+	#active-rule
+		flex-start-column()
+		flex-justify(space-between)
+		flex(grow:1)
+		width 100%
+		h2
+			flex-start-row()
+			font-size 2.1em
+			margin 0
+			
+		.no-restriction
+			background transparent url('../images/sprite-icons.png') -20px -714px no-repeat
+			padding 1px 0 0 17px; margin-top 2px
+			float left; clear left
+			cursor help
+	h2
+		h2AR()
+		margin 0
+		
+	h3
+		color h3ContentColor
+		font h3ContentFont
+		border-bottom 1px solid h3ContentColor
+		line-height 20px
+		margin-bottom 10px
+	
+#ar-wrapper
+	flex-start-row()
+	width 100%
+
+#antecedent
+#interest-measures
+#succedent
+	flex-start-column()
+	h3
+		width 100%
+
+#antecedent
+#succedent
+	flex(grow:2, basis:auto)
+	min-width 100px
+	max-width 300px
+	+m_tablet()
+		max-width 200px
+	.cedent
+		flexbox(flex)
+		width 100%
+		.fields
+			flex-start-row()
+			+m_tablet()
+				flex-start-column()
+			flex-wrap(wrap)
+			.connective
+				margin 0 5px
+				+m_tablet()
+					margin 2px 0
+			width 100%
+
+#antecedent
+#interest-measures
+	margin-right 20px
+	
+#empty-antecedent
+#empty-succedent
+	remove()
+	margin-top -2px
+	float right
+	+m_tablet()
+		visibility visibl
+	
+#interest-measures
+	flex(grow:1)
+	
+#ar-action-box
+	margin-top 10px
+	flex-start-row()
+	flex-justify(space-between)
+	width 100%
+	> div
+		padding 20px 0 20px 55px
+		&.in_progress
+			background boxBackgroundColor url('../images/icon-loading-bw-48.gif') left center no-repeat
+		&.question
+			background boxBackgroundColor url('../images/icon-help-48.png') left center no-repeat
+		&.solved
+			background boxBackgroundColor url('../images/icon-ok-48.png') left center no-repeat
+		&.interrupted
+			background boxBackgroundColor url('../images/icon-stop-48.png') left center no-repeat
+		&.failed
+			background boxBackgroundColor url('../images/icon-warning-48.png') left center no-repeat
+		&.info
+			background boxBackgroundColor url('../images/icon-info-48.png') left center no-repeat
+	#ar-action-box-control
+		padding 0
+		
+#start-mining
+#stop-mining
+	flexbox(flex)
+	mainButton()
+	margin 0
+
+#stop-mining
+	border-color #800000
+	background #800000
+	&:hover
+	&:focus
+		border-color #800000
+		backgroun #d50000
+	
+#start-mining-with-pruning
+	margin 2px
+	+m_tablet()
+		margin 4px
