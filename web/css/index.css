@@ -1,6 +1,6 @@
 #overlay {
   color: #434343;
-  font: font;
+  font: fontfamily;
   background: none rgba(0,0,0,0.6);
   position: fixed;
   top: 0;
@@ -1403,7 +1403,7 @@ nav#navigation .separator {
   #data-fields .clearfix ul li .remove-attribute,
   #knowledge-base-select .clearfix ul li .remove-attribute {
     cursor: move;
-    visibility: hiden;
+    visibility: hidden;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1180px) {
@@ -1478,7 +1478,7 @@ nav#navigation .separator {
   color: #126499;
 }
 #attributes ul#attributes-by-group {
-  background: transparent url("../images/icon-group4.png") 0 2px no-repeat;
+  background: transparent url("../images/sprite/icon-group.png") 0 2px no-repeat;
 }
 #attributes #attributes-by-group > li {
   padding-left: 20px;
@@ -1894,7 +1894,7 @@ nav#navigation .separator {
 }
 #content h3 {
   color: #314e64;
-  font: 16px;
+  font: 16px 'Arial', /*'Droid Sans',*/ 'sans-serif';
   border-bottom: 1px solid #314e64;
   line-height: 20px;
   margin-bottom: 10px;
@@ -2063,7 +2063,7 @@ nav#navigation .separator {
 @media only screen and (min-width: 768px) and (max-width: 1180px) {
   #empty-antecedent,
   #empty-succedent {
-    visibility: visibl;
+    visibility: visible;
   }
 }
 #interest-measures {
