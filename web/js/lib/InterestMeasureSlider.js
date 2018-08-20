@@ -135,9 +135,9 @@ var InterestMeasureSlider = new Class({
             pattern: '',
             'data-validators': 'dataType:"' + this.dataType + '" minValue:' + this.field.minValue + ' minValueInclusive:' + this.field.minValueInclusive + ' maxValue:' + this.field.maxValue + ' maxValueInclusive:' + this.field.maxValueInclusive,
             'class': this.action + '-im-value',
-            styles: {
-                width: width + 'ex'
-            }
+          // styles: {
+          //     width: width + 'ex'
+          // }
         });
 
         if (this.sliderEnabled) {

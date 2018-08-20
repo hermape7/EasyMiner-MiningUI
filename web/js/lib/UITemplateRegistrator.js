@@ -198,18 +198,21 @@ var UITemplateRegistrator = new Class({
         i18n = data.i18n;
 
       div({id: IM.getCSSID(), class: 'im'},
-        span({'class': 'name', 'title': IM.getFields().localizedName},
-          IM.getLocalizedName() + ': ',
+        div({},
+          span({'class': 'name', 'title': IM.getFields().localizedName},
+            IM.getLocalizedName() + ': '),
           IM.hasThreshold() ? span({'class': 'threshold'}, IM.getThreshold()) : '',
-          IM.hasThreshold() && IM.hasAlpha() ? ', ' : '',
+          IM.hasThreshold() && IM.hasAlpha() ? span({}, ', ') : '',
           IM.hasAlpha() ? span({'class': 'alpha'}, 'α ' + IM.getAlpha()) : ''),
-        a({id: IM.getCSSEditID(), href: '#', 'class': 'edit-im', 'title': i18n.translate('Edit')}),
-        a({
-          id: IM.getCSSRemoveID(),
-          href: '#',
-          'class': (IM.$required ? 'remove-im required' : 'remove-im'),
-          'title': i18n.translate('Remove')
-        }));
+        div({id: 'im-control'},
+          a({id: IM.getCSSEditID(), href: '#', 'class': 'edit-im', 'title': i18n.translate('Edit')}),
+          a({
+            id: IM.getCSSRemoveID(),
+            href: '#',
+            'class': (IM.$required ? 'remove-im required' : 'remove-im'),
+            'title': i18n.translate('Remove')
+          }))
+      )
     });
 
     Mooml.register('cedentTemplate', function (data) {
@@ -247,12 +250,16 @@ var UITemplateRegistrator = new Class({
           span({id: field.getCSSDragID()}, field.toString()));
       } else {
         div({id: field.getCSSID(), 'class': 'field'},
-          fieldSign === 'negative' ? a({
-            id: field.getCSSChangeSignID(),
-            href: '#',
-            'class': 'change-sign ' + fieldSign
-          }) : '',
-          span({id: field.getCSSDragID(), 'class': 'field-drag'}, field.toString()),
+          div({'class': 'field-details'},
+            fieldSign === 'negative' ? a({
+              id: field.getCSSChangeSignID(),
+              href: '#',
+              'class': 'change-sign ' + fieldSign
+            }) : '',
+            div({id: field.getCSSDragID(), 'class': 'field-drag'},
+              field.toString()
+            ),
+          ),
           div({'class': 'controls'},
             a({id: field.getCSSRemoveID(), href: '#', 'class': 'remove-field', 'title': i18n.translate('Remove')}),
             a({

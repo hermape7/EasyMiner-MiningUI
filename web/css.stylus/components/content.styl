@@ -3,32 +3,38 @@
 	flex-start-column()
 	flex(grow:1)
 	width 100%
+	h2
+		h2AR()
+		//margin 0
+		flex-start-row()
+		font-size 2.1em
+		margin 0 0 10px 0
+	
+	h3
+		color h3ContentColor
+		font h3ContentFont fontFamily
+		line-height 20px
+		font-size 1.2em
+		margin 0
+	
 	#active-rule
 		flex-start-column()
 		flex-justify(space-between)
 		flex(grow:1)
 		width 100%
-		h2
-			flex-start-row()
-			font-size 2.1em
-			margin 0
+		//h2
+		//	flex-start-row()
+		//	font-size 2.1em
+		//	margin 0
 			
 		.no-restriction
 			background transparent url('../images/sprite-icons.png') -20px -714px no-repeat
-			padding 1px 0 0 17px; margin-top 2px
-			float left; clear left
+			padding 1px 0 0 17px
+			margin-top 2px
+			float left
+			clear left
 			cursor help
-	h2
-		h2AR()
-		margin 0
-		
-	h3
-		color h3ContentColor
-		font h3ContentFont fontFamily
-		border-bottom 1px solid h3ContentColor
-		line-height 20px
-		margin-bottom 10px
-	
+
 #ar-wrapper
 	flex-start-row()
 	width 100%
@@ -38,28 +44,72 @@
 #succedent
 	flex-start-column()
 	h3
+		flexbox(flex)
+		//margin 2px 0
+		padding 6px 0
+	a
+		flexbox(flex)
+	.cedent-header
+		flex-center-row()
+		flex-justify(space-between)
 		width 100%
+		&:hover
+			#empty-antecedent
+			#empty-succedent
+				visibility visible
 
 #antecedent
 #succedent
 	flex(grow:2, basis:auto)
 	min-width 100px
-	max-width 300px
+	max-width 400px
 	+m_tablet()
 		max-width 200px
+	.header-separator
+		width 100%
+		margin 0 0 10px 0
+		border-top 1px solid h3ContentColor
 	.cedent
 		flexbox(flex)
 		width 100%
+		&.empty
+			border 1px dashed #000
+			color gray
 		.fields
+			width 100%
 			flex-start-row()
 			+m_tablet()
 				flex-start-column()
 			flex-wrap(wrap)
 			.connective
+				connective()
 				margin 0 5px
 				+m_tablet()
 					margin 2px 0
-			width 100%
+			.field
+				flex-start-column()
+				+m_tablet()
+					flex-center-row()
+					width 100%
+				div
+					flex-start-row()
+				.field-details
+					flex-center-row()
+				.controls
+					+m_tablet()
+						margin-left auto
+				a
+					flexbox(flex)
+				span
+					flexbox(flex)
+				fieldControls()
+				&:hover
+					a.remove-field
+						visibility visible
+					a.edit-coefficient
+						visibility visible
+					a.change-sign.positive, a.change-sign.negative
+						visibility visible
 
 #antecedent
 #interest-measures
@@ -68,13 +118,60 @@
 #empty-antecedent
 #empty-succedent
 	remove()
-	margin-top -2px
-	float right
 	+m_tablet()
 		visibility visible
+		margin 4px
 	
 #interest-measures
 	flex(grow:1)
+	.im-header
+		width 100%
+		border-bottom 1px solid h3ContentColor
+		margin 0 0 10px 0
+	//padding 6px 0
+	//+m_tablet()
+	//	padding 6px 0
+	#add-im
+		font-size 0.9em
+		background transparent url('../images/sprite-icons.png') -165px -164px no-repeat
+		padding-left 23px
+		+m_tablet()
+			margin 4px
+	div
+		width 100%
+	.im
+		flex-start-row()
+		width 100%
+		interestMeasureMixin()
+		//float left
+		//clear left
+		margin-bottom 7px
+		.edit-im
+			edit()
+			margin-right 5px
+			+m_tablet()
+				visibility visible
+		&:hover .edit-im
+			visibility visible
+		.remove-im
+			remove()
+			&.required
+				visibility hidden
+			+m_tablet()
+				visibility visible
+		&:hover .remove-im
+			visibility visible
+			&.required
+				visibility hidden
+		div
+			flex-start-row()
+		#im-control
+			flex-justify(end)
+
+//span
+//	flexbox(flex)
+//a
+//	flexbox(flex)
 	
 #ar-action-box
 	margin-top 10px

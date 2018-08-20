@@ -444,25 +444,32 @@ var UIStructureTemplater = new Class({
       section({id: 'active-rule'},
         div({id: 'ar-wrapper', 'class': 'clearfix'},
           div({id: 'antecedent'},
-            h3(i18n.translate('Antecedent'),
+            div({'class': 'cedent-header'},
+              h3(i18n.translate('Antecedent')),
               a({
                 href: '#',
                 id: 'empty-antecedent',
                 'title': i18n.translate('Empty')
               })
-            )
+            ),
+            hr({'class': 'header-separator'})
           ),
           div({id: 'interest-measures'},
-            h3(i18n.translate('Interest measures')),
+            h3({'class': 'im-header'}, i18n.translate('Interest measures')),
             div(),
-            displayAddIM ? a({href: '#', id: 'add-im'}, i18n.translate('Add interest measure')) : ''),
-          div({id: 'succedent'}, h3(i18n.translate('Consequent'),
-            a({
-              href: '#',
-              id: 'empty-succedent',
-              'title': i18n.translate('Empty')
-            })
-          ))
+            displayAddIM ? a({href: '#', id: 'add-im'}, i18n.translate('Add interest measure')) : ''
+          ),
+          div({id: 'succedent'},
+            div({'class': 'cedent-header'},
+              h3(i18n.translate('Consequent')),
+              a({
+                href: '#',
+                id: 'empty-succedent',
+                'title': i18n.translate('Empty')
+              })
+            ),
+            hr({'class': 'header-separator'})
+          )
         ),
         // div({'class': 'clearfix'}),
         div({id: 'ar-action-box'},

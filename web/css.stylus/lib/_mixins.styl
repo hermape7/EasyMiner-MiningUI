@@ -54,7 +54,6 @@ h2AR()
 	font h2ARFont
 	font-weight normal
 	border-bottom none
-	flex-start-row()
 
 button()
 	background buttonBackground
@@ -218,35 +217,39 @@ field()
 fieldControls()
 	a.edit-coefficient
 		edit()
-		margin-left 2px
-		float right
+		+m_tablet()
+			visibility visible
+			margin 4px
 	a.remove-field
 		remove()
-		margin-left 5px
-		float right
+		+m_tablet()
+			margin 4px
+			visibility visible
 	a.mark-field
 		background transparent url('../images/sprite-icons.png') -67px -212px no-repeat
-		display block
 		width 16px
 		height 20px
-		margin-right 3px
-		float right
 		visibility hidden
+		+m_tablet()
+			visibility visible
+			margin 4px
 	a.marked-field
 		background transparent url('../images/sprite-icons.png') -68px -260px no-repeat
-		display block
 		width 16px
 		height 20px
-		margin-right 3px
-		float right
 		visibility visible
+		+m_tablet()
+			visibility visible
+			margin 4px
 	a.change-sign.positive
-		background transparent url('../images/sprite-icons.png') -118px -161px no-repeat
-		display block
+	a.change-sign.negative
+		background transparent url('../images/sprite-icons.png') -116px -164px no-repeat
 		width 16px
 		height 20px
-		float right
 		visibility hidden
+		+m_tablet()
+			visibility visible
+			margin 4px
 
 firstCedent()
 	> .fields
@@ -263,11 +266,12 @@ coefficient()
 connective()
 	color #336600
 	font-size 14px
-	position relative
-	top 1px
-	margin 0 1px
-	float left
-	height 40px
+
+//position relative
+//top 1px
+//margin 0 1px
+//float left
+//height 40px
 
 bracket()
 	font-size 18px
@@ -277,9 +281,8 @@ bracket()
 
 interestMeasureMixin()
 	.name
-		font-size 14px
-		width 160px
-		float left
+		font-size 0.9em
+		margin-right 0.4rem
 	.threshold, .alpha
 		color interestMeasureValueColor
 
@@ -319,29 +322,29 @@ ruleActions()
 
 showAdd()
 	background transparent url("../images/sprite-icons.png") -166px -162px no-repeat
-	display block
-	float left
+	//display block
+	//float left
 	width 20px
 	height 20px
 	visibility hidden
 
 edit()
 	background transparent url('../images/sprite-icons.png') -19px -262px no-repeat
-	display block
+	//display block
 	width 16px
 	height 20px
 	visibility hidden
 
 remove()
-	background transparent url('../images/sprite-icons.png') -19px -15px no-repeat
-	display block
+	background transparent url('../images/sprite-icons.png') -18px -16px no-repeat
+	//display block
 	width 16px
 	height 20px
 	visibility hidden
 	
 showHistogram()
 	background transparent url('../images/sprite-icons.png') -20px -664px no-repeat
-	display block
+	//display block
 	width 16px
 	height 20px
 	visibility hidden
