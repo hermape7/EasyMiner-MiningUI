@@ -544,7 +544,7 @@
 }
 #overlay {
   color: #434343;
-  font: fontfamily;
+    font: 1em fontfamily;
   background: none rgba(0,0,0,0.6);
   position: fixed;
   top: 0;
@@ -947,16 +947,23 @@ nav#navigation .separator {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+#attributes .clearfix ul li .att-with-input span,
+#data-fields .clearfix ul li .att-with-input span,
+#knowledge-base-select .clearfix ul li .att-with-input span {
+    width: 100%;
 }
 #attributes .clearfix ul li input[type="checkbox"],
 #data-fields .clearfix ul li input[type="checkbox"],
@@ -1004,21 +1011,19 @@ nav#navigation .separator {
 @media only screen and (min-width: 1370px) {
   #attributes .clearfix ul li .add,
   #data-fields .clearfix ul li .add,
-  #knowledge-base-select .clearfix ul li .add,
-  #attributes .clearfix ul li .show-histogram,
-  #data-fields .clearfix ul li .show-histogram,
-  #knowledge-base-select .clearfix ul li .show-histogram,
-  #attributes .clearfix ul li .remove-attribute,
-  #data-fields .clearfix ul li .remove-attribute,
-  #knowledge-base-select .clearfix ul li .remove-attribute {
-    cursor: move;
+  #knowledge-base-select .clearfix ul li .add {
     visibility: hidden;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1180px) {
   #attributes .clearfix ul li .add,
   #data-fields .clearfix ul li .add,
-  #knowledge-base-select .clearfix ul li .add,
+  #knowledge-base-select .clearfix ul li .add {
+      visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
   #attributes .clearfix ul li .show-histogram,
   #data-fields .clearfix ul li .show-histogram,
   #knowledge-base-select .clearfix ul li .show-histogram,
@@ -1029,11 +1034,6 @@ nav#navigation .separator {
   }
 }
 @media only screen and (min-width: 1370px) {
-  #attributes .clearfix ul li:hover,
-  #data-fields .clearfix ul li:hover,
-  #knowledge-base-select .clearfix ul li:hover {
-    color: #000;
-  }
   #attributes .clearfix ul li:hover .add,
   #data-fields .clearfix ul li:hover .add,
   #knowledge-base-select .clearfix ul li:hover .add {

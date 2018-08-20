@@ -149,14 +149,14 @@ var ARManager = new Class({
   },
 
   addAttributeToCedent: function (attribute, cedent) {
-    if (attribute.choices && attribute.choices.length==1){
+    if (attribute.choices && attribute.choices.length === 1) {
       var field = new FieldAR(this.generateFieldID(), attribute, 'One category', null, new StringHelper(), String(attribute.choices[0]));
-    }else{
+    } else {
       var field = new FieldAR(this.generateFieldID(), attribute, 'Subset', null, new StringHelper(), 1, 1);
     }
 
-    if (!cedent){
-      cedent=this.activeRule.getAntecedent();
+    if (!cedent) {
+      cedent = this.activeRule.getAntecedent();
     }
 
     cedent.addChild(field);
@@ -317,9 +317,9 @@ var ARManager = new Class({
     return this.FL.getIM(name);
   },
 
-    getFLConnectives: function (scope) {
-        return this.FL.getAllowedConnectives(scope);
-    },
+  getFLConnectives: function (scope) {
+    return this.FL.getAllowedConnectives(scope);
+  },
 
   generateCedentID: function () {
     return ++this.maxCedentID;
@@ -361,7 +361,7 @@ var ARManager = new Class({
 
   mineRulesConfirm: function () {
     //pokud není povoleno prořezávání pravidel, tak zkontrolujeme, jestli není zadané ve vzoru pravidla
-    if (this.isRulePruningActive() && !this.isRulePruningEnabled()){
+    if (this.isRulePruningActive() && !this.isRulePruningEnabled()) {
       this.enableRulePruning(false);
     }
     this.activeRule.setChanged(false);//pravidlo není změněno (je právě spuštěno dolování)
@@ -397,10 +397,10 @@ var ARManager = new Class({
    * Enables rule pruning during the mining (special IM in rule pattern)
    * @param state
    */
-  enableRulePruning: function(state){
-    if(state && this.FL.specialIMs['CBA']){
+  enableRulePruning: function (state) {
+    if (state && this.FL.specialIMs['CBA']) {
       this.activeRule.addSpecialIM(this.FL.specialIMs['CBA'].initIMAR());
-    }else{
+    } else {
       this.activeRule.removeSpecialIM("CBA");
     }
   },
@@ -408,26 +408,32 @@ var ARManager = new Class({
   /**
    * @returns {boolean}
    */
-  isRulePruningActive: function(){
-    return ("CBA" in this.activeRule.specialIMs)||false;
+  isRulePruningActive: function () {
+    return ("CBA" in this.activeRule.specialIMs) || false;
   },
 
   /**
    * @returns {boolean}
    */
-  isRulePruningAvailable: function(){
+  isRulePruningAvailable: function () {
     return ("CBA" in this.FL.specialIMs) || false;
   },
 
   /**
    * @returns {boolean}
    */
-  isRulePruningEnabled: function(){
-    if (!this.isRulePruningAvailable()){return false;}//rule pruning (CBA) is not in allowed special interest measures
-    if (this.activeRule.getSuccedent().getNumChildren()!=1 || this.activeRule.getSuccedent().getNumChildCedents()!=0){return false;}//in succedent, there are more partial cedents or attributes
-    if (this.activeRule.getAntecedent().getNumChildren()==0 && this.activeRule.getAntecedent().getNumChildCedents()==0){return false;}//blank antecedent
-    var succedentAttribute=this.activeRule.getSuccedent().getChildren()[0];
-    return (succedentAttribute.type=='Subset' && succedentAttribute.maximalLength==1 && succedentAttribute.minimalLength==1);
+  isRulePruningEnabled: function () {
+    if (!this.isRulePruningAvailable()) {
+      return false;
+    }//rule pruning (CBA) is not in allowed special interest measures
+    if (this.activeRule.getSuccedent().getNumChildren() != 1 || this.activeRule.getSuccedent().getNumChildCedents() != 0) {
+      return false;
+    }//in succedent, there are more partial cedents or attributes
+    if (this.activeRule.getAntecedent().getNumChildren() == 0 && this.activeRule.getAntecedent().getNumChildCedents() == 0) {
+      return false;
+    }//blank antecedent
+    var succedentAttribute = this.activeRule.getSuccedent().getChildren()[0];
+    return (succedentAttribute.type == 'Subset' && succedentAttribute.maximalLength == 1 && succedentAttribute.minimalLength == 1);
   }
 
 

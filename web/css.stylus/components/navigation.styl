@@ -10,14 +10,14 @@ nav#navigation
 		height 2px
 		margin 0.5em 0
 		padding 0
-		
+
 navigationH2()
 	h2Small()
 	margin 0
-	
+
 padding-nav()
 	padding 20px 20px 10px 20px
-	
+
 attributeIconLink()
 	iconLink()
 
@@ -68,7 +68,10 @@ attributeIconLink()
 					+m_tablet()
 						flex-group(2)
 				.att-with-input
-					flex-center-row()
+					flex-start-row()
+					width 100%
+					span
+						width 100%
 				input[type="checkbox"]
 					margin 4px
 					+pc()
@@ -84,16 +87,18 @@ attributeIconLink()
 				.remove-attribute
 					remove()
 				.add
-				.show-histogram
-				.remove-attribute
 					+pc()
-						cursor move
+						//cursor move
 						visibility hidden
 					+m_tablet()
 						visibility visible
+				.show-histogram
+				.remove-attribute
+					+m_tablet()
+						visibility visible
+				
 				+pc()
 					&:hover
-						color #000
 						.add
 							visibility visible
 						.remove-attribute
@@ -109,7 +114,7 @@ attributeIconLink()
 			margin-left 0
 			width 100%
 			color linkColor
-			
+
 #attributes
 	ul#attributes-by-group
 		background transparent url('../images/sprite/icon-group.png') 0 2px no-repeat
@@ -135,7 +140,7 @@ attributeIconLink()
 			background transparent url('../images/sprite-icons.png') -20px -463px no-repeat
 		&.used
 			color #AAA
-			
+	
 	#controls-wrapper
 		flex-center-row()
 		flex-justify(space-between)
@@ -165,9 +170,8 @@ attributeIconLink()
 #navigation .maximize .selectable
 	display none
 
-
-
-#attributes, #data-fields
+#attributes,
+#data-fields
 	.datas-filter
 		display none
 		flex-direction(row)

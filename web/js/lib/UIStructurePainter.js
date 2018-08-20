@@ -211,7 +211,13 @@ var UIStructurePainter = new Class({
     },
 
     showLoadingOverlay: function(message) {
-        $('overlay-inner').grab(new Element('div', {id: 'loading-data-window', class: 'loading', html: this.$i18n.translate(message)}));
+      $('overlay-inner').grab(
+        new Element('div',
+          {
+            id: 'loading-data-window',
+            class: 'loading',
+            html: this.$i18n.translate(message)
+          }));
         this.showOverlay();
     },
 
@@ -236,35 +242,35 @@ var UIStructurePainter = new Class({
     },
 
     posOverlay: function () {
-        var $elementOverlay = $('overlay'),
-            $elementOverlayInner = $('overlay-inner'),
-            $content = $elementOverlayInner.getChildren('div'),
-            top = $content.getScrollSize();
-
-        /*$elementOverlayInner.setStyles({
-            width: window.innerWidth
-        });*/
-
-        if($content.length > 0) {
-            if (top[0]['y'] + 20 > window.innerHeight) {
-                $content.addClass("bigger");
-                $elementOverlay.setStyles({
-                    position: 'absolute'
-                });
-                $elementOverlayInner.setStyles({
-                    position: 'absolute'
-                });
-                this.$UIScroller.scrollTo(0, 0);
-            } else {
-                $content.removeClass("bigger");
-                $elementOverlay.setStyles({
-                    position: 'fixed'
-                });
-                $elementOverlayInner.setStyles({
-                    position: 'fixed'
-                });
-            }
-        }
+      // var $elementOverlay = $('overlay'),
+      //     $elementOverlayInner = $('overlay-inner'),
+      //     $content = $elementOverlayInner.getChildren('div'),
+      //     top = $content.getScrollSize();
+      //
+      // /*$elementOverlayInner.setStyles({
+      //     width: window.innerWidth
+      // });*/
+      //
+      // if($content.length > 0) {
+      //     if (top[0]['y'] + 20 > window.innerHeight) {
+      //         $content.addClass("bigger");
+      //         $elementOverlay.setStyles({
+      //             position: 'absolute'
+      //         });
+      //         $elementOverlayInner.setStyles({
+      //             position: 'absolute'
+      //         });
+      //         this.$UIScroller.scrollTo(0, 0);
+      //     } else {
+      //         $content.removeClass("bigger");
+      //         $elementOverlay.setStyles({
+      //             position: 'fixed'
+      //         });
+      //         $elementOverlayInner.setStyles({
+      //             position: 'fixed'
+      //         });
+      //     }
+      // }
     }
 
 });

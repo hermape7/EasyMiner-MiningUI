@@ -8,99 +8,99 @@
  */
 var Attribute = new Class({
 
-	id: null,
-	name: '',
-	type:null,
-	choices: [],
-	stringHelper: null,
-	value: null,
-	hidden: false,
+  id: null,
+  name: '',
+  type: null,
+  choices: [],
+  stringHelper: null,
+  value: null,
+  hidden: false,
 
-	initialize: function (id, name, type, choices, stringHelper, hidden, value) {
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.choices = choices;
-		this.stringHelper = stringHelper;
-		this.hidden = hidden;
-		this.value = value || 0;
-	},
-	
-	getName: function () {
-		return this.name;
-	},
-	
-	getNormalizedName: function () {
-		return this.stringHelper.normalizeString(this.name);
-	},
+  initialize: function (id, name, type, choices, stringHelper, hidden, value) {
+    this.id = id;
+    this.name = name;
+    this.type = type;
+    this.choices = choices;
+    this.stringHelper = stringHelper;
+    this.hidden = hidden;
+    this.value = value || 0;
+  },
 
-	getChoices: function () {
-		return this.choices;
-	},
+  getName: function () {
+    return this.name;
+  },
 
-    getNumChoices: function() {
-        return this.getChoices().length;
-    },
+  getNormalizedName: function () {
+    return this.stringHelper.normalizeString(this.name);
+  },
 
-    getStringHelper: function() {
-        return this.stringHelper;
-    },
-	
-	getValue: function () {
-		return this.value;
-	},
-	
-	setValue: function (value) {
-		this.value = value;
-	},
+  getChoices: function () {
+    return this.choices;
+  },
 
-	getId: function(){
-		return this.id;
-	},
+  getNumChoices: function () {
+    return this.getChoices().length;
+  },
 
-	setId: function (id){
-		this.id = id;
-	},
+  getStringHelper: function () {
+    return this.stringHelper;
+  },
 
-	isHidden: function () {
-		return this.hidden;
-	},
+  getValue: function () {
+    return this.value;
+  },
 
-	setHidden: function (hidden) {
-		this.hidden = hidden;
-	},
-	
-	isRecommended: function () {
-		return (this.value >= 0.75);
-	},
-	
-	isPartiallyRecommended: function () {
-		return (this.value >= 0.3);
-	},
-	
-	/* misc */
-	getCSSID: function () {
-		return 'attribute-nav-' + this.getNormalizedName();
-	},
+  setValue: function (value) {
+    this.value = value;
+  },
 
-    getCSSAddID: function() {
-        return 'attribute-add-' + this.getNormalizedName();
-    },
+  getId: function () {
+    return this.id;
+  },
 
-	getCSSCheckboxID: function () {
-		return 'attribute-checkbox-' + this.getNormalizedName();
-	},
+  setId: function (id) {
+    this.id = id;
+  },
 
-    getCSSEditID: function () {
-        return 'attribute-edit-' + this.getNormalizedName();
-    },
+  isHidden: function () {
+    return this.hidden;
+  },
 
-    getCSSRemoveID: function() {
-        return 'attribute-remove-' + this.getNormalizedName();
-    },
+  setHidden: function (hidden) {
+    this.hidden = hidden;
+  },
 
-    getCSSShowHistogramID: function () {
-        return 'attribute-show-histogram-' + this.getNormalizedName();
-    }
+  isRecommended: function () {
+    return (this.value >= 0.75);
+  },
+
+  isPartiallyRecommended: function () {
+    return (this.value >= 0.3);
+  },
+
+  /* misc */
+  getCSSID: function () {
+    return 'attribute-nav-' + this.getNormalizedName();
+  },
+
+  getCSSAddID: function () {
+    return 'attribute-add-' + this.getNormalizedName();
+  },
+
+  getCSSCheckboxID: function () {
+    return 'attribute-checkbox-' + this.getNormalizedName();
+  },
+
+  getCSSEditID: function () {
+    return 'attribute-edit-' + this.getNormalizedName();
+  },
+
+  getCSSRemoveID: function () {
+    return 'attribute-remove-' + this.getNormalizedName();
+  },
+
+  getCSSShowHistogramID: function () {
+    return 'attribute-show-histogram-' + this.getNormalizedName();
+  }
 
 });
