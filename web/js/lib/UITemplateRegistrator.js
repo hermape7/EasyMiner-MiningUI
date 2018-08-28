@@ -363,7 +363,7 @@ var UITemplateRegistrator = new Class({
         a({id: 'overlay-close', href: '#', 'title': i18n.translate('Close')}),
         h2(i18n.translate('Add attribute')),
         form({action: '#', method: 'POST', id: 'click-add-attribute-form'},
-          div({class: 'clearfix'},
+          div(
             label({'for': 'click-add-attribute-select'}, i18n.translate('Add to')),
             select({name: 'click-add-attribute-select', id: 'click-add-attribute-select'},
               option({'value': 'antecedent'}, i18n.translate('Antecedent')),
@@ -385,10 +385,14 @@ var UITemplateRegistrator = new Class({
         a({id: 'add-coefficient-close', href: '#', 'title': i18n.translate('Close')}),
         h2(i18n.translate('Set value type')),
         form({action: '#', method: 'POST', id: 'add-coefficient-form'},
-          label({for: 'add-coefficient-attribute'}, i18n.translate('Attribute:')),
-          input({id: 'add-coefficient-attribute', value: field.ref.name, readonly: 'readonly', type: 'text'}),
-          label({for: 'add-coefficient-select'}, i18n.translate('Value type:')),
-          select({name: 'add-coefficient-select', id: 'add-coefficient-select'}),
+          div(
+            label({for: 'add-coefficient-attribute'}, i18n.translate('Attribute:')),
+            input({id: 'add-coefficient-attribute', value: field.ref.name, readonly: 'readonly', type: 'text'}),
+          ),
+          div(
+            label({for: 'add-coefficient-select'}, i18n.translate('Value type:')),
+            select({name: 'add-coefficient-select', id: 'add-coefficient-select'}),
+          ),
           div({id: 'add-coefficient-autocomplete'})),
         div({'class': 'clearfix'}));
     });

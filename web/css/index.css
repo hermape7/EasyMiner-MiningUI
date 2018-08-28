@@ -123,17 +123,22 @@
   top: -9px;
 }
 .paginator a {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  margin-left: auto;
+  margin-right: auto;
   background: #075783;
-  font-size: 14px;
+  font-size: 0.875em;
   font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
   font-weight: normal;
   text-decoration: none;
   cursor: pointer;
   color: #fff;
   border: 1px solid #314e64;
-  text-align: center;
-  display: inline-block;
-  padding: 8px 13px;
+  padding: 0.4375em;
   background: #fff;
   color: #075783;
   border: 1px solid #ededed;
@@ -142,6 +147,11 @@
   padding: 3px 6px;
   min-width: 16px;
   margin: 0 1px;
+}
+@media only screen and (min-width: 1370px) {
+  .paginator a {
+    padding: 0.3125em;
+  }
 }
 .paginator a:hover,
 .paginator a:focus {
@@ -544,7 +554,7 @@
 }
 #overlay {
   color: #434343;
-    font: 1em fontfamily;
+  font: 1em fontfamily;
   background: none rgba(0,0,0,0.6);
   position: fixed;
   top: 0;
@@ -577,7 +587,11 @@ div#overlay-inner {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
+}
+div#overlay-inner h2 {
+  width: 100%;
+  margin: 0;
 }
 div#overlay-inner form {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
@@ -585,12 +599,371 @@ div#overlay-inner form {
   display: -ms-flexbox /* TWEENER - IE 10 */;
   display: -webkit-flex /* NEW - Chrome */;
   display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  width: 100%;
+  margin-top: 0.625em;
+}
+div#overlay-inner form > div {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  width: 100%;
+}
+div#overlay-inner form > div label,
+div#overlay-inner form > div input,
+div#overlay-inner form > div select {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+div#overlay-inner form > div label {
+  padding: 0.625em;
+  max-width: 80px;
+}
+div#overlay-inner form > div label[for="add-coefficient-select"] {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+div#overlay-inner form input[type="submit"] {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  margin-left: auto;
+  margin-right: auto;
+  background: #075783;
+  font-size: 0.875em;
+  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #314e64;
+  padding: 0.4375em;
+  background: #4c8e0e;
+  color: #fff;
+  border: 1px solid #4c8e0e;
+  margin: 15px auto;
+  font-size: 1.125em;
+}
+@media only screen and (min-width: 1370px) {
+  div#overlay-inner form input[type="submit"] {
+    padding: 0.3125em;
+  }
+}
+div#overlay-inner form input[type="submit"]:hover,
+div#overlay-inner form input[type="submit"]:focus {
+  background: #2d83be;
+  color: #fff;
+  border: 1px solid #314e64;
+  text-decoration: none;
+}
+div#overlay-inner form input[type="submit"]:hover,
+div#overlay-inner form input[type="submit"]:focus {
+  background: #64ba12;
+  color: #fff;
+  border: 1px solid #4c8e0e;
+}
+div#overlay-inner form #add-coefficient-autocomplete {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+div#overlay-inner form #add-coefficient-autocomplete p {
+  width: 100%;
+  padding: 0.625em;
+}
+#change-ruleset-window,
+#add-attribute-window,
+#add-attributes-window,
+#edit-attribute-window,
+#new-task-window,
+#show-histogram-window,
+#create-user-report-window,
+#export-business-rules-window,
+#model-tester-window,
+#show-br-base-window {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  background-color: #fff;
+  width: 70%;
+}
+@media only screen and (min-width: 1370px) {
+  #change-ruleset-window,
+  #add-attribute-window,
+  #add-attributes-window,
+  #edit-attribute-window,
+  #new-task-window,
+  #show-histogram-window,
+  #create-user-report-window,
+  #export-business-rules-window,
+  #model-tester-window,
+  #show-br-base-window {
+    width: 60%;
+  }
+}
+#change-ruleset-window iframe,
+#add-attribute-window iframe,
+#add-attributes-window iframe,
+#edit-attribute-window iframe,
+#new-task-window iframe,
+#show-histogram-window iframe,
+#create-user-report-window iframe,
+#export-business-rules-window iframe,
+#model-tester-window iframe,
+#show-br-base-window iframe {
+  width: 100%;
+  background-color: #fff;
+  padding: 1.25em;
+  min-height: 35em;
+  border-width: 0;
+}
+#change-ruleset-window #overlay-close,
+#add-attribute-window #overlay-close,
+#add-attributes-window #overlay-close,
+#edit-attribute-window #overlay-close,
+#new-task-window #overlay-close,
+#show-histogram-window #overlay-close,
+#create-user-report-window #overlay-close,
+#export-business-rules-window #overlay-close,
+#model-tester-window #overlay-close,
+#show-br-base-window #overlay-close {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  color: #126499;
+  background: transparent url("../images/sprite-icons.png") -67px -116px no-repeat;
+  margin: 5px 5px 0 0;
+  width: 18px;
+  height: 18px;
+}
+@media only screen and (min-width: 768px) and (max-width: 1180px) {
+  #change-ruleset-window #overlay-close,
+  #add-attribute-window #overlay-close,
+  #add-attributes-window #overlay-close,
+  #edit-attribute-window #overlay-close,
+  #new-task-window #overlay-close,
+  #show-histogram-window #overlay-close,
+  #create-user-report-window #overlay-close,
+  #export-business-rules-window #overlay-close,
+  #model-tester-window #overlay-close,
+  #show-br-base-window #overlay-close {
+    margin: 12px 12px 0 0;
+  }
+}
+#change-ruleset-window #overlay-close:hover,
+#add-attribute-window #overlay-close:hover,
+#add-attributes-window #overlay-close:hover,
+#edit-attribute-window #overlay-close:hover,
+#new-task-window #overlay-close:hover,
+#show-histogram-window #overlay-close:hover,
+#create-user-report-window #overlay-close:hover,
+#export-business-rules-window #overlay-close:hover,
+#model-tester-window #overlay-close:hover,
+#show-br-base-window #overlay-close:hover {
+  text-decoration: underline;
+}
+#loading-data-window,
+#user-warning-window {
+  text-align: center;
+  background: #fff url("../images/icon-stop-72.png") center 30px no-repeat;
+  padding: 120px 20px 20px 20px;
+}
+#loading-data-window p,
+#user-warning-window p {
+  margin: 10px 0 20px 0;
+}
+#loading-data-window a,
+#user-warning-window a {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  margin-left: auto;
+  margin-right: auto;
+  background: #075783;
+  font-size: 0.875em;
+  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #314e64;
+  padding: 0.4375em;
+  background: #4c8e0e;
+  color: #fff;
+  border: 1px solid #4c8e0e;
+  margin: 15px auto;
+  font-size: 1.125em;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  margin-left: auto;
+  margin-right: auto;
+  background: #075783;
+  font-size: 0.875em;
+  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #314e64;
+  padding: 0.4375em;
+  background: #fff;
+  color: #075783;
+  border: 1px solid #ededed;
+  text-align: center;
+  display: block;
+  width: 100px;
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 1370px) {
+  #loading-data-window a,
+  #user-warning-window a {
+    padding: 0.3125em;
+  }
+}
+#loading-data-window a:hover,
+#user-warning-window a:hover,
+#loading-data-window a:focus,
+#user-warning-window a:focus {
+  background: #2d83be;
+  color: #fff;
+  border: 1px solid #314e64;
+  text-decoration: none;
+}
+#loading-data-window a:hover,
+#user-warning-window a:hover,
+#loading-data-window a:focus,
+#user-warning-window a:focus {
+  background: #64ba12;
+  color: #fff;
+  border: 1px solid #4c8e0e;
+}
+@media only screen and (min-width: 1370px) {
+  #loading-data-window a,
+  #user-warning-window a {
+    padding: 0.3125em;
+  }
+}
+#loading-data-window a:hover,
+#user-warning-window a:hover,
+#loading-data-window a:focus,
+#user-warning-window a:focus {
+  background: #2d83be;
+  color: #fff;
+  border: 1px solid #314e64;
+  text-decoration: none;
+}
+#loading-data-window a:hover,
+#user-warning-window a:hover,
+#loading-data-window a:focus,
+#user-warning-window a:focus {
+  background: #fff;
+  color: #2d83be;
+  border: 1px solid #2d83be;
 }
 #loading-data-window.loading {
-  padding-bottom: 40px;
+  font-size: 1.2em;
   background: #fff url("../images/icon-loading-bw-72.gif") center 30px no-repeat;
 }
-#add-im-window {
+#add-coefficient-window,
+#edit-coefficient-window,
+#add-im-window,
+#edit-im-window {
   -webkit-box-direction: normal;
   -moz-box-direction: normal;
   -webkit-box-orient: vertical;
@@ -618,11 +991,17 @@ div#overlay-inner form {
   -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
   padding: 20px;
 }
-#add-im-window .help {
+#add-coefficient-window .help,
+#edit-coefficient-window .help,
+#add-im-window .help,
+#edit-im-window .help {
   color: #666;
   font-size: 0.9em;
 }
-#add-im-window .autocomplete {
+#add-coefficient-window .autocomplete,
+#edit-coefficient-window .autocomplete,
+#add-im-window .autocomplete,
+#edit-im-window .autocomplete {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: -ms-flexbox /* TWEENER - IE 10 */;
@@ -655,10 +1034,20 @@ div#overlay-inner form {
   flex-wrap: wrap;
   width: 100%;
 }
-#add-im-window .autocomplete label {
+#add-coefficient-window .autocomplete label,
+#edit-coefficient-window .autocomplete label,
+#add-im-window .autocomplete label,
+#edit-im-window .autocomplete label {
   margin-right: 5px;
 }
-#add-im-window .autocomplete #add-im-threshold-value {
+#add-coefficient-window .autocomplete #add-im-threshold-value,
+#edit-coefficient-window .autocomplete #add-im-threshold-value,
+#add-im-window .autocomplete #add-im-threshold-value,
+#edit-im-window .autocomplete #add-im-threshold-value,
+#add-coefficient-window .autocomplete #edit-im-threshold-value,
+#edit-coefficient-window .autocomplete #edit-im-threshold-value,
+#add-im-window .autocomplete #edit-im-threshold-value,
+#edit-im-window .autocomplete #edit-im-threshold-value {
   display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
   display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
   display: -ms-flexbox /* TWEENER - IE 10 */;
@@ -681,28 +1070,203 @@ div#overlay-inner form {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  box-sizing: border-box;
   width: 100%;
-  margin: 5px 0;
+  padding: 5px 0;
   height: 3em;
-  padding: 0;
   border: 1px solid rgba(0,0,0,0.3);
   max-width: 3em;
   margin-right: 5px;
 }
 @media only screen and (min-width: 1370px) {
-  #add-im-window .autocomplete #add-im-threshold-value {
+  #add-coefficient-window .autocomplete #add-im-threshold-value,
+  #edit-coefficient-window .autocomplete #add-im-threshold-value,
+  #add-im-window .autocomplete #add-im-threshold-value,
+  #edit-im-window .autocomplete #add-im-threshold-value,
+  #add-coefficient-window .autocomplete #edit-im-threshold-value,
+  #edit-coefficient-window .autocomplete #edit-im-threshold-value,
+  #add-im-window .autocomplete #edit-im-threshold-value,
+  #edit-im-window .autocomplete #edit-im-threshold-value {
     height: 2em;
   }
 }
 @media only screen and (min-width: 768px) {
-  #add-im-window .autocomplete #add-im-threshold-value {
+  #add-coefficient-window .autocomplete #add-im-threshold-value,
+  #edit-coefficient-window .autocomplete #add-im-threshold-value,
+  #add-im-window .autocomplete #add-im-threshold-value,
+  #edit-im-window .autocomplete #add-im-threshold-value,
+  #add-coefficient-window .autocomplete #edit-im-threshold-value,
+  #edit-coefficient-window .autocomplete #edit-im-threshold-value,
+  #add-im-window .autocomplete #edit-im-threshold-value,
+  #edit-im-window .autocomplete #edit-im-threshold-value {
     font-size: 1em;
   }
 }
-#add-im-window .autocomplete #message {
+#add-coefficient-window .autocomplete #message,
+#edit-coefficient-window .autocomplete #message,
+#add-im-window .autocomplete #message,
+#edit-im-window .autocomplete #message {
   width: 100%;
-  margin: 5px;
+  margin: 5px 0;
+}
+#click-add-attribute-window {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.6);
+  -webkit-box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.6);
+  -moz-box-shadow: 5px 5px 5px 0 rgba(0,0,0,0.6);
+  min-width: 25em;
+  padding: 2.1875em 1.5625em;
+}
+#click-add-attribute-window a {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #126499;
+  background: transparent url("../images/sprite-icons.png") -67px -116px no-repeat /*TODO přesun ikony doprava*/;
+  width: 18px;
+  height: 18px;
+  padding: 1em;
+  background-position-x: -60px;
+  background-position-y: -110px;
+}
+#click-add-attribute-window a:hover {
+  text-decoration: underline;
+}
+#click-add-attribute-window #click-add-attribute-form input {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  margin-left: auto;
+  margin-right: auto;
+  background: #075783;
+  font-size: 0.875em;
+  font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #314e64;
+  padding: 0.4375em;
+  background: #4c8e0e;
+  color: #fff;
+  border: 1px solid #4c8e0e;
+  margin: 15px auto;
+  font-size: 1.125em;
+  width: 20%;
+}
+@media only screen and (min-width: 1370px) {
+  #click-add-attribute-window #click-add-attribute-form input {
+    padding: 0.3125em;
+  }
+}
+#click-add-attribute-window #click-add-attribute-form input:hover,
+#click-add-attribute-window #click-add-attribute-form input:focus {
+  background: #2d83be;
+  color: #fff;
+  border: 1px solid #314e64;
+  text-decoration: none;
+}
+#click-add-attribute-window #click-add-attribute-form input:hover,
+#click-add-attribute-window #click-add-attribute-form input:focus {
+  background: #64ba12;
+  color: #fff;
+  border: 1px solid #4c8e0e;
+}
+#click-add-attribute-window #click-add-attribute-form select {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+#add-coefficient-attribute {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  font-weight: bold;
+}
+#add-coefficient-form label[for="add-coefficient-select"] {
+  max-width: initial;
+}
+#change-ruleset-window h2 {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+#change-ruleset-window #current-ruleset,
+#change-ruleset-window #change-ruleset-list {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 nav#navigation {
   -webkit-box-flex: 0;
@@ -947,34 +1511,35 @@ nav#navigation .separator {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-    -webkit-box-pack: start;
-    -moz-box-pack: start;
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: start;
-    -moz-box-align: start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    width: 100%;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
 }
-
 #attributes .clearfix ul li .att-with-input span,
 #data-fields .clearfix ul li .att-with-input span,
 #knowledge-base-select .clearfix ul li .att-with-input span {
-    width: 100%;
+  width: 100%;
 }
 #attributes .clearfix ul li input[type="checkbox"],
 #data-fields .clearfix ul li input[type="checkbox"],
 #knowledge-base-select .clearfix ul li input[type="checkbox"] {
-  margin: 4px;
+  margin: 0.4375em;
+  padding: 0.4375em;
 }
 @media only screen and (min-width: 1370px) {
   #attributes .clearfix ul li input[type="checkbox"],
   #data-fields .clearfix ul li input[type="checkbox"],
   #knowledge-base-select .clearfix ul li input[type="checkbox"] {
-    margin: 2px;
+    margin: 0.3125em;
+    padding: 0.3125em;
   }
 }
 #attributes .clearfix ul li span,
@@ -1019,10 +1584,9 @@ nav#navigation .separator {
   #attributes .clearfix ul li .add,
   #data-fields .clearfix ul li .add,
   #knowledge-base-select .clearfix ul li .add {
-      visibility: visible;
+    visibility: visible;
   }
 }
-
 @media only screen and (min-width: 768px) and (max-width: 1180px) {
   #attributes .clearfix ul li .show-histogram,
   #data-fields .clearfix ul li .show-histogram,
@@ -2114,26 +2678,34 @@ nav#navigation .separator {
   display: -ms-flexbox /* TWEENER - IE 10 */;
   display: -webkit-flex /* NEW - Chrome */;
   display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  margin-left: auto;
+  margin-right: auto;
   background: #075783;
-  font-size: 14px;
+  font-size: 0.875em;
   font-family: 'Arial', /*'Droid Sans',*/ 'sans-serif';
   font-weight: normal;
   text-decoration: none;
   cursor: pointer;
   color: #fff;
   border: 1px solid #314e64;
-  text-align: center;
-  display: inline-block;
-  padding: 8px 13px;
+  padding: 0.4375em;
   background: #4c8e0e;
   color: #fff;
   border: 1px solid #4c8e0e;
-  text-align: center;
-  display: block;
   margin: 15px auto;
-  font-size: 18.2px;
-  min-width: 150px;
+  font-size: 1.125em;
   margin: 0;
+}
+@media only screen and (min-width: 1370px) {
+  #start-mining,
+  #stop-mining {
+    padding: 0.3125em;
+  }
 }
 #start-mining:hover,
 #stop-mining:hover,

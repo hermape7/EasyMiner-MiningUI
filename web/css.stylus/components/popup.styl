@@ -1,0 +1,158 @@
+#overlay
+	color #434343
+	font 1em fontfamily
+	background none rgba(0, 0, 0, 0.6)
+	position fixed
+	top 0
+	left 0
+	visibility hidden
+	z-index 1
+	min-width 100%
+	min-height 100%
+
+div#overlay-inner
+	flex-center-column()
+	height 100vh
+	h2
+		width 100%
+		margin 0
+	form
+		flexbox(flex)
+		width 100%
+		margin-top 0.625em
+		> div
+			flex-start-row()
+			width 100%
+			label,
+			input,
+			select
+				flex-start-row()
+				flex-align(center)
+			label
+				padding 0.625em
+				max-width 80px
+			label[for="add-coefficient-select"]
+				flex(grow:1)
+		input[type="submit"]
+			mainButton()
+		
+		#add-coefficient-autocomplete
+			flex-center-column()
+			p
+				width 100%
+				padding 0.625em
+
+#change-ruleset-window,
+#add-attribute-window,
+#add-attributes-window,
+#edit-attribute-window,
+#new-task-window,
+#show-histogram-window,
+#create-user-report-window,
+#export-business-rules-window,
+#model-tester-window,
+#show-br-base-window
+	flex-start-column()
+	background-color white
+	width 70%
+	+pc()
+		width 60%
+	iframe
+		width 100%
+		background-color white
+		padding 1.250em
+		min-height 35em
+		border-width 0
+	#overlay-close
+		flexbox(flex)
+		flex-self(end)
+		color #126499
+		background transparent url('../images/sprite-icons.png') -67px -116px no-repeat
+		margin 5px 5px 0 0
+		+m_tablet()
+			margin 12px 12px 0 0
+		width 18px
+		height 18px
+		&:hover
+			text-decoration underline
+
+#loading-data-window
+#user-warning-window
+	text-align center
+	background #FFF url('../images/icon-stop-72.png') center 30px no-repeat
+	padding 120px 20px 20px 20px
+	p
+		margin 10px 0 20px 0
+	a
+		mainButton()
+		invisButton()
+		display block
+		width 100px
+		margin-bottom 0
+
+#loading-data-window
+	&.loading
+		font-size 1.2em
+		background #FFF url('../images/icon-loading-bw-72.gif') center 30px no-repeat
+
+#add-coefficient-window,
+#edit-coefficient-window,
+#add-im-window,
+#edit-im-window
+	flex-direction(column)
+	flex-justify(start)
+	flex-align(start)
+	width 25em
+	height 25em
+	box()
+	.help
+		color #666
+		font-size 0.9em
+	.autocomplete
+		flex-start-row()
+		flex-align(center)
+		flex-wrap(wrap)
+		width 100%
+		label
+			margin-right 5px
+		#add-im-threshold-value
+		#edit-im-threshold-value
+			form-input()
+			max-width 3em
+			margin-right 5px
+		#message
+			width 100%
+			margin 5px 0
+
+#click-add-attribute-window
+	overlay()
+	a
+		flex-self(end)
+		flex-align(center)
+		overlay-close()
+		padding 1em
+		background-position-x -60px
+		background-position-y -110px
+	#click-add-attribute-form
+		input
+			mainButton()
+			width 20%
+		select
+			flexbox(flex)
+			flex-self(center)
+
+#add-coefficient-attribute
+	flex-self(center)
+	font-weight bold
+
+#add-coefficient-form
+	label[for="add-coefficient-select"]
+		max-width initial
+
+#change-ruleset-window
+	h2
+		flex-center-row()
+	#current-ruleset
+	#change-ruleset-list
+		flex-center-column()
+		

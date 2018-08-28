@@ -298,7 +298,7 @@ var UIPainter = new Class({
     });
 
     sorter.sort(positions).chain(function () {
-      sorter.rearrangeDOM();
+      // sorter.rearrangeDOM();
 
       Array.each(this.ARBuilder.getDD().getAttributes(), function (attribute) {
         this.renderAttributeByList(attribute);

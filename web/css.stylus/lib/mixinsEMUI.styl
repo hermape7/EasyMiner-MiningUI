@@ -56,6 +56,69 @@ center-text()
 	flex-direction(row)
 	flex-justify(center)
 
+responsive-padding()
+	padding 0.4375em
+	+pc()
+		padding 0.3125em
+
+centerContent()
+	margin-left auto
+	margin-right auto
+
+button()
+	flexbox(flex)
+	centerContent()
+	background buttonBackground
+	font-size buttonFontSize
+	font-family buttonFontFamily
+	font-weight buttonFontWeight
+	text-decoration none
+	cursor pointer
+	color buttonColor
+	border buttonBorder
+	responsive-padding()
+	&:hover
+	&:focus
+		background buttonHoverBackground
+		color buttonHoverColor
+		border buttonHoverBorder
+		text-decoration none
+
+mainButton()
+	button()
+	background mainButtonBackground
+	color mainButtonColor
+	border mainButtonBorder
+	margin 15px auto
+	font-size 1.125em
+	//min-width 150px
+	&:hover
+	&:focus
+		background mainButtonHoverBackground
+		color mainButtonHoverColor
+		border mainButtonHoverBorder
+
+bigButton()
+	button()
+	//padding 12px 15px
+	//text-align left
+	//display block
+	//margin 5px auto
+	span.details
+		margin-top 1px
+		//display block
+		font-size buttonDetailsFontSize
+		font-weight buttonDetailsFontWeight
+		color buttonDetailsColor
+		//position relative
+		span.right
+			//display block
+			//float right
+			visibility hidden
+	&:hover
+		span.details span.right
+			visibility visible
+
 remove-padding()
 	padding 0
 
@@ -64,13 +127,32 @@ remove-margin()
 
 form-input()
 	flex-center-row()
-	box-sizing border-box
 	width 100%
-	margin 5px 0
+	padding 5px 0
 	height 3em
 	+pc()
-		height 2em
-	padding 0
+		height 2em //padding 0
 	border 1px solid rgba(0, 0, 0, 0.3)
 	+min(large-start-value)
 		font-size 1.0em
+
+overlay()
+	flex-start-column()
+	background-color #FFF
+	box-shadow(5px, 5px, 5px, 0, overlayShadowColor)
+	min-width 25em
+	padding 2.1875em 1.5625em
+
+box-shadow(h, v, blur, spread, color)
+	box-shadow v h blur spread color
+	-webkit-box-shadow v h blur spread color
+	-moz-box-shadow v h blur spread color
+
+overlay-close()
+	color #126499
+	background transparent url('../images/sprite-icons.png') -67px -116px no-repeat /*TODO přesun ikony doprava*/
+	width 18px
+	height 18px
+	&:hover
+		text-decoration underline
+	
